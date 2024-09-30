@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "980679065339",
+    "project_id": "disaster-management-syst-abe96",
+    "storage_bucket": "disaster-management-syst-abe96.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:980679065339:android:4324674bd0614d90e9fa5e",
+        "android_client_info": {
+          "package_name": "com.example.dimas"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgRNImV_NN_rDhqAbsH03YWoTglk2IlcQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:980679065339:android:cf0cb52383335dace9fa5e",
+        "android_client_info": {
+          "package_name": "com.seisme.dimas"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgRNImV_NN_rDhqAbsH03YWoTglk2IlcQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
