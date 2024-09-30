@@ -7,31 +7,25 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:980679065339:android:4324674bd0614d90e9fa5e",
-        "android_client_info": {
-          "package_name": "com.example.dimas"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDgRNImV_NN_rDhqAbsH03YWoTglk2IlcQ"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:980679065339:android:cf0cb52383335dace9fa5e",
         "android_client_info": {
           "package_name": "com.seisme.dimas"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "980679065339-eh676b280k55ioa3scdkbdujeqkshhev.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.seisme.dimas",
+            "certificate_hash": "0019faa8013e7ad72ee31e55f8a5a9b69ae6cf84"
+          }
+        },
+        {
+          "client_id": "980679065339-vuu5u94gd11ds5alt905mp2n53cvsm69.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDgRNImV_NN_rDhqAbsH03YWoTglk2IlcQ"
@@ -39,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "980679065339-vuu5u94gd11ds5alt905mp2n53cvsm69.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
