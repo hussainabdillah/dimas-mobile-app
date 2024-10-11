@@ -1,4 +1,4 @@
-package com.seisme.dimas.ui.screens.PetaScreen
+package com.seisme.dimas.ui.screens.petaScreen
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Text

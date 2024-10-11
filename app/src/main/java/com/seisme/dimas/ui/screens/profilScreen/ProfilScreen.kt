@@ -1,4 +1,4 @@
-package com.seisme.dimas.ui.screens.MitigasiScreen
+package com.seisme.dimas.ui.screens.profilScreen
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Text
@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun MitigasiScreen() {
+fun ProfilScreen() {
     Box(modifier = Modifier.fillMaxSize()) {
         Column(
             modifier = Modifier
@@ -17,7 +17,7 @@ fun MitigasiScreen() {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(text = "Welcome to the Mitigasi Screen!")
+            Text(text = "Welcome to the Profil Screenn!")
         }
     }
 }

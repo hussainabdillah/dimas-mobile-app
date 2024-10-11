@@ -1,4 +1,4 @@
-package com.seisme.dimas.ui.screens.NotificationScreen
+package com.seisme.dimas.ui.screens.mitigasiScreen
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Text
@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun NotificationScreen() {
+fun MitigasiScreen() {
     Box(modifier = Modifier.fillMaxSize()) {
         Column(
             modifier = Modifier
@@ -17,7 +17,7 @@ fun NotificationScreen() {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(text = "Welcome to the Notification Screen!")
+            Text(text = "Welcome to the Mitigasi Screen!")
         }
     }
 }
