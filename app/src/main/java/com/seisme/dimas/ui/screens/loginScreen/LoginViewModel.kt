@@ -1,4 +1,4 @@
-package com.seisme.dimas.ui.screens.LoginScreen
+package com.seisme.dimas.ui.screens.loginScreen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

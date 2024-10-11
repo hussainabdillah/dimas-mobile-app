@@ -7,7 +7,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.seisme.dimas.ui.screens.homeScreen.HomeScreen
-import com.seisme.dimas.ui.screens.LoginScreen.LoginScreen
+import com.seisme.dimas.ui.screens.loginScreen.LoginScreen
 import com.seisme.dimas.ui.screens.registerScreen.RegisterScreen
 
 @Composable

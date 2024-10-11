@@ -1,4 +1,4 @@
-package com.seisme.dimas.ui.screens.LoginScreen
+package com.seisme.dimas.ui.screens.loginScreen
 
 data class LoginState(
     val email: String = "",

@@ -12,10 +12,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.seisme.dimas.ui.components.BottomNavigationBar
 import com.seisme.dimas.ui.navigation.Routes
-import com.seisme.dimas.ui.screens.MitigasiScreen.MitigasiScreen
-import com.seisme.dimas.ui.screens.NotificationScreen.NotificationScreen
-import com.seisme.dimas.ui.screens.PetaScreen.PetaScreen
-import com.seisme.dimas.ui.screens.ProfilScreen.ProfilScreen
+import com.seisme.dimas.ui.screens.petaScreen.PetaScreen
+import com.seisme.dimas.ui.screens.profilScreen.ProfilScreen
+import com.seisme.dimas.ui.screens.timelineScreen.TimelineScreen
+import com.seisme.dimas.ui.screens.mitigasiScreen.MitigasiScreen
 import com.seisme.dimas.ui.theme.DimasTheme
 
 @Composable
@@ -35,8 +35,8 @@ fun HomeScreen() {
                 startDestination = Routes.Peta.route
             ) {
                 composable(Routes.Peta.route) { PetaScreen() }
+                composable(Routes.Timeline.route) { TimelineScreen() }
                 composable(Routes.Mitigasi.route) { MitigasiScreen() }
-                composable(Routes.Notification.route) { NotificationScreen() }
                 composable(Routes.Profil.route) { ProfilScreen() }
             }
         }
