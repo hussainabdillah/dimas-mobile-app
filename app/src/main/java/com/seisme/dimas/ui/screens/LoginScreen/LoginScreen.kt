@@ -1,7 +1,7 @@
 package com.seisme.dimas.ui.screens.LoginScreen
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -45,7 +45,7 @@ fun LoginScreen(
 
         // Show error message if exists
         state.errorMessage?.let { errorMessage ->
-            Text(text = errorMessage, color = MaterialTheme.colors.error)
+            Text(text = errorMessage, color = MaterialTheme.colorScheme.error)
             Spacer(modifier = Modifier.height(8.dp))
         }
 

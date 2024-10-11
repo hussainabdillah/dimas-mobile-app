@@ -13,10 +13,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Icon
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.runtime.Composable
@@ -103,7 +103,7 @@ fun EarthquakeItem(time: String, date: String, location: String, magnitude: Stri
         Surface(
             shape = RoundedCornerShape(8.dp),
             color = Color.White,
-            elevation = 3.dp,
+            shadowElevation = 3.dp,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(vertical = 8.dp)
