@@ -1,4 +1,4 @@
-package com.seisme.dimas.ui.screens.RegisterScreen
+package com.seisme.dimas.ui.screens.registerScreen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

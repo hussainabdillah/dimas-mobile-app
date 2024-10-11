@@ -1,4 +1,4 @@
-package com.seisme.dimas.ui.screens.HomeScreen
+package com.seisme.dimas.ui.screens.homeScreen
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.BottomAppBar
