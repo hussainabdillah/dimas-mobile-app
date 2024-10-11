@@ -1,15 +1,22 @@
 package com.seisme.dimas.ui.components
 
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.seisme.dimas.R
@@ -33,14 +40,53 @@ fun BottomNavigationBar(navigationController: NavHostController) {
                     popUpTo(Routes.Peta.route)
                 }
             },
-            modifier = Modifier.weight(1f)
+            modifier = Modifier.weight(1f).fillMaxHeight()
         ) {
-            Icon(
-                painter = painterResource(id = R.drawable.ic_peta),
-                contentDescription = null,
-                modifier = Modifier.size(50.dp),
-                tint = if (currentRoute == Routes.Peta.route) SkyBlue else Gray
-            )
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_peta),
+                    contentDescription = null,
+                    modifier = Modifier.size(24.dp),
+                    tint = if (currentRoute == Routes.Peta.route) SkyBlue else Gray
+                )
+                Text(
+                    text = "Peta",
+                    fontSize = 12.sp,
+                    color = if (currentRoute == Routes.Peta.route) SkyBlue else Gray,  // Update text color
+                    textAlign = TextAlign.Center
+                )
+            }
+        }
+
+        // Timeline Icon
+        IconButton(
+            onClick = {
+                navigationController.navigate(Routes.Timeline.route) {
+                    popUpTo(Routes.Timeline.route)
+                }
+            },
+            modifier = Modifier.weight(1f).fillMaxHeight()
+        ) {
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_timeline),
+                    contentDescription = null,
+                    modifier = Modifier.size(24.dp),
+                    tint = if (currentRoute == Routes.Timeline.route) SkyBlue else Gray
+                )
+                Text(
+                    text = "Timeline",
+                    fontSize = 12.sp,
+                    color = if (currentRoute == Routes.Timeline.route) SkyBlue else Gray,  // Update text color
+                    textAlign = TextAlign.Center
+                )
+            }
         }
 
         // Mitigasi Icon
@@ -50,31 +96,25 @@ fun BottomNavigationBar(navigationController: NavHostController) {
                     popUpTo(Routes.Mitigasi.route)
                 }
             },
-            modifier = Modifier.weight(1f)
+            modifier = Modifier.weight(1f).fillMaxHeight()
         ) {
-            Icon(
-                painter = painterResource(id = R.drawable.ic_mitigasi),
-                contentDescription = null,
-                modifier = Modifier.size(50.dp),
-                tint = if (currentRoute == Routes.Mitigasi.route) SkyBlue else Gray
-            )
-        }
-
-        // Notification Icon
-        IconButton(
-            onClick = {
-                navigationController.navigate(Routes.Notification.route) {
-                    popUpTo(Routes.Notification.route)
-                }
-            },
-            modifier = Modifier.weight(1f)
-        ) {
-            Icon(
-                painter = painterResource(id = R.drawable.ic_notifikasi),
-                contentDescription = null,
-                modifier = Modifier.size(50.dp),
-                tint = if (currentRoute == Routes.Notification.route) SkyBlue else Gray
-            )
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_mitigasi),
+                    contentDescription = null,
+                    modifier = Modifier.size(24.dp),
+                    tint = if (currentRoute == Routes.Mitigasi.route) SkyBlue else Gray
+                )
+                Text(
+                    text = "Mitigasi",
+                    fontSize = 12.sp,
+                    color = if (currentRoute == Routes.Mitigasi.route) SkyBlue else Gray,  // Update text color
+                    textAlign = TextAlign.Center
+                )
+            }
         }
 
         // Profile Icon
@@ -84,14 +124,25 @@ fun BottomNavigationBar(navigationController: NavHostController) {
                     popUpTo(Routes.Profil.route)
                 }
             },
-            modifier = Modifier.weight(1f)
+            modifier = Modifier.weight(1f).fillMaxHeight()
         ) {
-            Icon(
-                painter = painterResource(id = R.drawable.ic_profil),
-                contentDescription = null,
-                modifier = Modifier.size(50.dp),
-                tint = if (currentRoute == Routes.Profil.route) SkyBlue else Gray
-            )
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_profile),
+                    contentDescription = null,
+                    modifier = Modifier.size(24.dp),
+                    tint = if (currentRoute == Routes.Profil.route) SkyBlue else Gray
+                )
+                Text(
+                    text = "Profil",
+                    fontSize = 12.sp,
+                    color = if (currentRoute == Routes.Profil.route) SkyBlue else Gray,  // Update text color
+                    textAlign = TextAlign.Center
+                )
+            }
         }
     }
 }
