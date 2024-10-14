@@ -5,4 +5,5 @@
     <string name="navigation_timeline">Timeline</string>
     <string name="navigation_mitigation">Mitigasi</string>
     <string name="navigation_profile">Profil</string>
+    <string name="header_detail_informasi">Detail Informasi</string>
 </resources>
