@@ -121,14 +121,13 @@ fun ProfileScreen() {
                 onClick = { /* Handle add member */ },
                 modifier = Modifier
                     .fillMaxWidth(),
-                shape = RoundedCornerShape(16.dp)
+                shape = RoundedCornerShape(8.dp)
             ) {
                 Text(
                     text = "Add Member",
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 14.sp,
+                    fontSize = 16.sp,
                     modifier = Modifier
-                        .padding(vertical = 8.dp)
+                        .padding(vertical = 4.dp)
                 )
             }
             Spacer(modifier = Modifier.height(16.dp))
@@ -139,18 +138,17 @@ fun ProfileScreen() {
                     disabledContentColor = Color.Gray,
                     disabledContainerColor = Color.Gray
                 ),
-                border = BorderStroke(2.dp, HeaderLightBlue),
+                border = BorderStroke(1.dp, HeaderLightBlue),
                 onClick = { /* Handle add member */ },
                 modifier = Modifier
                     .fillMaxWidth(),
-                shape = RoundedCornerShape(16.dp)
+                shape = RoundedCornerShape(8.dp)
             ) {
                 Text(
                     text = "Log out",
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 14.sp,
+                    fontSize = 16.sp,
                     modifier = Modifier
-                        .padding(vertical = 8.dp),
+                        .padding(vertical = 4.dp),
                 )
             }
         }

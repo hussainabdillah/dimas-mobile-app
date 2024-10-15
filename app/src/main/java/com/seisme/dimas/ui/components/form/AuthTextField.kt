@@ -1,5 +1,4 @@
-package com.seisme.dimas.ui.screens.loginScreen
-
+package com.seisme.dimas.ui.components.form
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -12,24 +11,25 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.ButtonColors
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.seisme.dimas.R
-import com.seisme.dimas.ui.components.form.AuthTextField
-import com.seisme.dimas.ui.components.form.PrimaryButton
-import com.seisme.dimas.ui.components.form.SecondaryButton
 import com.seisme.dimas.ui.theme.GoogleGradientBlue
 import com.seisme.dimas.ui.theme.GoogleGradientGreen
 import com.seisme.dimas.ui.theme.GoogleGradientRed
@@ -38,44 +38,76 @@ import com.seisme.dimas.ui.theme.HeaderLightBlue
 import com.seisme.dimas.ui.theme.White
 
 @Composable
-fun LoginScreen(
-    viewModel: LoginViewModel = hiltViewModel(),
-    onNavigateToHome: () -> Unit,
-    onNavigateToRegister: () -> Unit
+fun AuthTextField(
+    value: String,
+    onValueChange: (String) -> Unit,
+    label: String,
+    placeholder: String,
+    spacer: Int,
+    isPassword: Boolean = false
 ) {
-    val state by viewModel.state.collectAsState()
+    Text(text = label, fontSize = 16.sp)
+    OutlinedTextField(
+        value = value,
+        onValueChange = onValueChange,
+        placeholder = { Text(text = placeholder, color = Color.Gray) },
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 8.dp),
+        shape = MaterialTheme.shapes.small,
+        colors = OutlinedTextFieldDefaults.colors(
+            focusedBorderColor = Color.Gray,
+            unfocusedBorderColor = Color.LightGray
+        ),
+        keyboardOptions = KeyboardOptions(keyboardType = if (isPassword) KeyboardType.Password else KeyboardType.Text),
+        visualTransformation = if (isPassword) PasswordVisualTransformation() else VisualTransformation.None
+    )
+    Spacer(modifier = Modifier.height(spacer.dp))
+}
 
-    LaunchedEffect(state.isLoggedIn) {
-        if (state.isLoggedIn) {
-            onNavigateToHome()
-        }
-    }
-
+@Preview(showBackground = true)
+@Composable
+fun PreviewCommonTextField() {
     Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp),
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Center,
     ) {
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            Text(
+                text = "Log In",
+                color = Color.Black,
+                fontSize = 32.sp,
+                fontWeight = FontWeight.Bold
+            )
+            Text(
+                text = "Enter into your account",
+                color = Color.Gray,
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Light
+            )
+        }
+        Spacer(modifier = Modifier.height(48.dp))
+
         AuthTextField(
-            value = state.email,
-            onValueChange = viewModel::onEmailChanged,
+            value = "",
+            onValueChange = {},
             label = "Email",
             placeholder = "Enter your email",
             spacer = 16
         )
         AuthTextField(
-            value = state.password,
-            onValueChange = viewModel::onPasswordChanged,
+            value = "",
+            onValueChange = {},
             label = "Password",
             placeholder = "Enter your password",
             spacer = 16
         )
-
-        state.errorMessage?.let { errorMessage ->
-            Text(text = errorMessage, color = MaterialTheme.colorScheme.error)
-            Spacer(modifier = Modifier.height(8.dp))
-        }
 
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -130,7 +162,7 @@ fun LoginScreen(
         ) {
             Text(text = "Don't have an account? ")
             TextButton(
-                onClick = { onNavigateToRegister() },
+                onClick = { },
                 colors = ButtonColors(
                     containerColor = Color.Transparent,
                     contentColor = HeaderLightBlue,
@@ -143,4 +175,5 @@ fun LoginScreen(
         }
     }
 }
+
 

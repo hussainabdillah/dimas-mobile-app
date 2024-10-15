@@ -17,3 +17,8 @@ val HeaderLightBlue = Color(0xFF2F8DEA)
 val HeaderDarkBlue = Color(0xFF1B4F84)
 
 val PrimaryBackground = Color(0xFFF7F7F7)
+
+val GoogleGradientRed = Color(0xFFFF3D00)
+val GoogleGradientYellow = Color(0xFFFFC107)
+val GoogleGradientGreen = Color(0xFF4CAF50)
+val GoogleGradientBlue = Color(0xFF1976D2)
