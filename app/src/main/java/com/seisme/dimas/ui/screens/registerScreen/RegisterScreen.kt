@@ -6,7 +6,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.seisme.dimas.ui.components.CommonTextField
+import com.seisme.dimas.ui.components.form.CommonTextField
 
 @Composable
 fun RegisterScreen(viewModel: RegisterViewModel = hiltViewModel(), onNavigateToLogin: () -> Unit) {

@@ -1,4 +1,4 @@
-package com.seisme.dimas.ui.components
+package com.seisme.dimas.ui.components.navigation
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -29,7 +29,8 @@ import com.seisme.dimas.ui.theme.HeaderLightBlue
 fun Header(
     title: String,
     navigationIcon: ImageVector? = null,
-    onNavigationClick: (() -> Unit)? = null
+    onNavigationClick: (() -> Unit)? = null,
+    isIconAtStart: Boolean? = null
 ) {
     TopAppBar(
         contentPadding = PaddingValues(0.dp),
@@ -52,15 +53,28 @@ fun Header(
             contentAlignment = Alignment.Center
         ) {
             if (navigationIcon != null && onNavigationClick != null) {
-                IconButton(
-                    onClick = onNavigationClick,
-                    modifier = Modifier.align(Alignment.CenterStart).padding(start = 16.dp)
-                ) {
-                    Icon(
-                        imageVector = navigationIcon,
-                        contentDescription = "Back",
-                        tint = Color.White
-                    )
+                if (isIconAtStart == true) {
+                    IconButton(
+                        onClick = onNavigationClick,
+                        modifier = Modifier.align(Alignment.CenterStart).padding(start = 16.dp)
+                    ) {
+                        Icon(
+                            imageVector = navigationIcon,
+                            contentDescription = "Back",
+                            tint = Color.White
+                        )
+                    }
+                } else {
+                    IconButton(
+                        onClick = onNavigationClick,
+                        modifier = Modifier.align(Alignment.CenterEnd).padding(end = 16.dp)
+                    ) {
+                        Icon(
+                            imageVector = navigationIcon,
+                            contentDescription = "Back",
+                            tint = Color.White
+                        )
+                    }
                 }
             }
 
@@ -75,3 +89,4 @@ fun Header(
         }
     }
 }
+

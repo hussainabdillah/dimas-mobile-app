@@ -29,7 +29,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.seisme.dimas.R
-import com.seisme.dimas.ui.components.Header
+import com.seisme.dimas.ui.components.navigation.Header
 import com.seisme.dimas.ui.theme.PrimaryBackground
 
 @Composable

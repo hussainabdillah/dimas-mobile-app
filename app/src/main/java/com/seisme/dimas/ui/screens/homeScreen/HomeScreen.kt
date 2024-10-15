@@ -10,10 +10,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.seisme.dimas.ui.components.BottomNavigationBar
+import com.seisme.dimas.ui.components.navigation.BottomNavigationBar
 import com.seisme.dimas.ui.navigation.Routes
 import com.seisme.dimas.ui.screens.petaScreen.PetaScreen
-import com.seisme.dimas.ui.screens.profilScreen.ProfilScreen
+import com.seisme.dimas.ui.screens.profileScreen.ProfileScreen
 import com.seisme.dimas.ui.screens.timelineScreen.TimelineScreen
 import com.seisme.dimas.ui.screens.mitigasiScreen.MitigasiScreen
 import com.seisme.dimas.ui.theme.DimasTheme
@@ -37,7 +37,7 @@ fun HomeScreen() {
                 composable(Routes.Peta.route) { PetaScreen() }
                 composable(Routes.Timeline.route) { TimelineScreen() }
                 composable(Routes.Mitigasi.route) { MitigasiScreen() }
-                composable(Routes.Profil.route) { ProfilScreen() }
+                composable(Routes.Profil.route) { ProfileScreen() }
             }
         }
     }

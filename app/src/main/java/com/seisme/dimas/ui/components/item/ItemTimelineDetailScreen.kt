@@ -1,6 +1,5 @@
-package com.seisme.dimas.ui.components
+package com.seisme.dimas.ui.components.item
 
-//noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -37,7 +36,7 @@ fun InformationDetail(
             modifier = Modifier
                 .padding(16.dp)
                 .clip(RoundedCornerShape(16.dp))
-                .shadow(10.dp, RoundedCornerShape(16.dp)) // Adding shadow to the Box
+                .shadow(10.dp, RoundedCornerShape(16.dp))
                 .background(Color.White)
                 .fillMaxWidth()
         ) {

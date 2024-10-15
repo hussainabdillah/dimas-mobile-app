@@ -1,4 +1,4 @@
-package com.seisme.dimas.ui.components
+package com.seisme.dimas.ui.components.navigation
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement

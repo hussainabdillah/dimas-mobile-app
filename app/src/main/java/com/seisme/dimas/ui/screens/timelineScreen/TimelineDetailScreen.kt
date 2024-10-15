@@ -11,8 +11,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.seisme.dimas.R
-import com.seisme.dimas.ui.components.Header
-import com.seisme.dimas.ui.components.InformationDetail
+import com.seisme.dimas.ui.components.navigation.Header
+import com.seisme.dimas.ui.components.item.InformationDetail
 
 @Composable
 fun TimelineDetailScreen() {
