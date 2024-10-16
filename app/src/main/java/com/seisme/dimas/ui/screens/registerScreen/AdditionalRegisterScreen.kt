@@ -16,23 +16,26 @@ import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.seisme.dimas.ui.components.form.AuthTextField
 import com.seisme.dimas.ui.components.form.PrimaryButton
 import com.seisme.dimas.ui.components.form.SecondaryButton
+import com.seisme.dimas.ui.theme.HeaderLightBlue
 import com.seisme.dimas.ui.theme.White
 
+@Preview(showBackground = true)
 @Composable
-fun RegisterScreen(
-    viewModel: RegisterViewModel? = hiltViewModel(),
-    onNavigateToLogin: () -> Unit?
-) {
+fun AdditionalRegisterScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -45,7 +48,7 @@ fun RegisterScreen(
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Text(
-                text = "Create Account",
+                text = "Set up your profile",
                 color = Color.Black,
                 fontSize = 32.sp,
                 fontWeight = FontWeight.Bold
@@ -56,23 +59,30 @@ fun RegisterScreen(
         AuthTextField(
             value = "",
             onValueChange = {},
-            label = "Email",
-            placeholder = "Enter your email",
+            label = "Username",
+            placeholder = "Enter your username",
             spacer = 16
         )
         AuthTextField(
             value = "",
             onValueChange = {},
-            label = "Password",
-            placeholder = "Enter your password",
+            label = "Contact",
+            placeholder = "Enter your contact",
             spacer = 16
         )
+
+        // Variable to handle dropdown
+        var selectedGender by remember { mutableStateOf("") }
+        val genderOptions = listOf("Male", "Female")
+
         AuthTextField(
-            value = "",
-            onValueChange = {},
-            label = "Confirm Password",
-            placeholder = "Confirm your password",
-            spacer = 16
+            value = selectedGender,
+            onValueChange = { selectedGender = it },
+            label = "Gender",
+            placeholder = "Select your gender",
+            spacer = 16,
+            isDropdown = true,
+            options = genderOptions
         )
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -99,9 +109,9 @@ fun RegisterScreen(
             )
 
             PrimaryButton(
-                text = "Next",
+                text = "Complete",
                 textColor = White,
-                containerColor = Color.Black,
+                containerColor = HeaderLightBlue,
                 onClick = {},
                 icon = {
                     Icon(
