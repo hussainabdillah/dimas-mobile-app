@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.absoluteOffset
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -39,7 +40,9 @@ fun TimelineScreen() {
             Header(title = stringResource(R.string.timeline_header))
         },
     ) { padding ->
-        Surface(color = PrimaryBackground) {
+        Surface(
+            color = PrimaryBackground,
+        ) {
             Box(
                 modifier = Modifier
                     .width(1.dp)

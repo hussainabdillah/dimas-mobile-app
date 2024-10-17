@@ -73,6 +73,9 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:33.3.0"))
     implementation("androidx.compose.material:material:1.7.2")
 
+    // flex
+    implementation("com.google.accompanist:accompanist-flowlayout:0.30.1")
+
     // hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
