@@ -7,4 +7,15 @@
     <string name="navigation_profile">Profil</string>
     <string name="header_detail_informasi">Detail Informasi</string>
     <string name="profile_header">Profile</string>
+    <string name="profile_settings">Profile Settings</string>
+    <string name="volume_and_vibration">Volume and Vibration</string>
+    <string name="volume">Volume</string>
+    <string name="silent">Silent</string>
+    <string name="manner_mode">Manner Mode Only Vibration</string>
+    <string name="earthquake">Earthquake</string>
+    <string name="earthquake_info">Earthquake Info</string>
+    <string name="early_warning">Earthquake Early Warning Drill</string>
+    <string name="tsunami">Tsunami</string>
+    <string name="tsunami_info">Tsunami Info</string>
+    <string name="early_warning_tsunami">Tsunami Early Warning Drill</string>
 </resources>
