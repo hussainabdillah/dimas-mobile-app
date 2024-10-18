@@ -1,11 +1,12 @@
 package com.seisme.dimas.ui.screens.profileScreen
 
+import HeaderSetting
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -19,7 +20,6 @@ import com.seisme.dimas.R
 import com.seisme.dimas.ui.components.item.ItemSetting
 import com.seisme.dimas.ui.components.item.ItemVolumeSetting
 import com.seisme.dimas.ui.components.item.SectionBox
-import com.seisme.dimas.ui.components.navigation.Header
 import com.seisme.dimas.ui.theme.PrimaryBackground
 
 @Composable
@@ -33,10 +33,11 @@ fun SettingsScreen() {
 
     Scaffold(
         topBar = {
-            Header(
+            HeaderSetting(
                 title = "Profile Settings",
-                navigationIcon = Icons.AutoMirrored.Filled.KeyboardArrowLeft,
-                onNavigationClick = { /* Handle back navigation */ },
+                navigationIcon = Icons.Filled.ArrowBack,
+                onNavigationClick = { },
+                onProfileClick = { },
                 isIconAtStart = true
             )
         }
@@ -65,7 +66,7 @@ fun SettingsScreen() {
                     // Use ItemVolumeSetting for the Volume slider
                     Text(text = "Volume", fontWeight = FontWeight.Bold, fontSize = 14.sp)
                     ItemVolumeSetting(
-                        imgResId = R.drawable.ic_peta,  // Replace with actual icon resource
+                        imgResId = R.drawable.ic_volume,
                         value = volume.value,
                         onValueChange = { volume.value = it }
                     )
@@ -74,7 +75,7 @@ fun SettingsScreen() {
                     Text(text = "When in Manner Mode", fontWeight = FontWeight.Bold, fontSize = 14.sp)
                     ItemSetting(
                         text = "Silent",
-                        imgResId = R.drawable.ic_peta,  // Replace with actual drawable resource
+                        imgResId = R.drawable.ic_silent,
                         isChecked = isSilent.value,
                         onCheckedChange = { isSilent.value = it }
                     )
@@ -83,7 +84,7 @@ fun SettingsScreen() {
                     Text(text = "Vibration", fontWeight = FontWeight.Bold, fontSize = 14.sp)
                     ItemSetting(
                         text = "Manner Mode Only",
-                        imgResId = R.drawable.ic_peta,  // Replace with actual drawable resource
+                        imgResId = R.drawable.ic_vibration,
                         isChecked = isVibrationEnabled.value,
                         onCheckedChange = { isVibrationEnabled.value = it }
                     )
@@ -102,7 +103,7 @@ fun SettingsScreen() {
                     Text(text = "Earthquake info", fontWeight = FontWeight.Bold, fontSize = 14.sp)
                     ItemSetting(
                         text = "Receive",
-                        imgResId = R.drawable.ic_peta,  // Replace with actual drawable resource
+                        imgResId = R.drawable.ic_receive,
                         isChecked = receiveEarthquakeInfo.value,
                         onCheckedChange = { receiveEarthquakeInfo.value = it }
                     )
@@ -110,7 +111,7 @@ fun SettingsScreen() {
                     Text(text = "Earthquake Early Warning Drill", fontWeight = FontWeight.Bold, fontSize = 14.sp)
                     ItemSetting(
                         text = "Participate",
-                        imgResId = R.drawable.ic_peta,  // Replace with actual drawable resource
+                        imgResId = R.drawable.ic_run,
                         isChecked = participateInDrill.value,
                         onCheckedChange = { participateInDrill.value = it }
                     )
@@ -129,7 +130,7 @@ fun SettingsScreen() {
                     Text(text = "Tsunami info", fontWeight = FontWeight.Bold, fontSize = 14.sp)
                     ItemSetting(
                         text = "Receive",
-                        imgResId = R.drawable.ic_peta,  // Replace with actual drawable resource
+                        imgResId = R.drawable.ic_receive,
                         isChecked = receiveTsunamiInfo.value,
                         onCheckedChange = { receiveTsunamiInfo.value = it }
                     )
@@ -137,7 +138,7 @@ fun SettingsScreen() {
                     Text(text = "Tsunami Early Warning Drill", fontWeight = FontWeight.Bold, fontSize = 14.sp)
                     ItemSetting(
                         text = "Participate",
-                        imgResId = R.drawable.ic_peta,  // Replace with actual drawable resource
+                        imgResId = R.drawable.ic_run,
                         isChecked = participateInDrill.value,
                         onCheckedChange = { participateInDrill.value = it }
                     )

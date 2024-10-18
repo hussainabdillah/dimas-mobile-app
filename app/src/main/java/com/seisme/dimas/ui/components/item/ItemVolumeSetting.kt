@@ -32,7 +32,7 @@ fun ItemVolumeSetting(
             painter = painterResource(id = imgResId),
             contentDescription = null,
             modifier = Modifier
-                .size(28.dp)
+                .size(36.dp)
                 .padding(end = 8.dp)
         )
 
