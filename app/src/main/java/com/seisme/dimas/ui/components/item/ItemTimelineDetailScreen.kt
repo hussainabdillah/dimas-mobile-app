@@ -22,9 +22,9 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun InformationDetail(
     tanggal: String,
-    pusatGempa: String,
+    wilayah: String,
     magnitudo: String,
-    intensitas: String,
+    coordinates: String,
     kedalaman: String
 ) {
     Column(
@@ -42,9 +42,9 @@ fun InformationDetail(
         ) {
             Column(modifier = Modifier.padding(16.dp)) {
                 DetailRow(label = "Tanggal", value = tanggal)
-                DetailRow(label = "Pusat Gempa", value = pusatGempa)
+                DetailRow(label = "Pusat Gempa", value = wilayah)
                 DetailRow(label = "Magnitudo", value = magnitudo)
-                DetailRow(label = "Intensitas", value = intensitas)
+                DetailRow(label = "Koordinat", value = coordinates)
                 DetailRow(label = "Kedalaman", value = kedalaman)
             }
         }

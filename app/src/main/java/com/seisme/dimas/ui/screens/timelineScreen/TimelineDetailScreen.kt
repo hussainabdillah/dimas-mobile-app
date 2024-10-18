@@ -15,7 +15,13 @@ import com.seisme.dimas.ui.components.navigation.Header
 import com.seisme.dimas.ui.components.item.InformationDetail
 
 @Composable
-fun TimelineDetailScreen() {
+fun TimelineDetailScreen(
+    tanggal: String,
+    wilayah: String,
+    magnitudo: String,
+    coordinates: String,
+    kedalaman: String
+) {
     Scaffold(
         topBar = {
             Header(
@@ -31,11 +37,11 @@ fun TimelineDetailScreen() {
                 .fillMaxSize()
         ) {
             InformationDetail(
-                tanggal = "14.41 WIB, 20 Sept 2019",
-                pusatGempa = "Selatan Gunung Semeru",
-                magnitudo = "2.2",
-                intensitas = "3",
-                kedalaman = "Sangat Dangkal"
+                tanggal = tanggal,
+                wilayah = wilayah,
+                magnitudo = magnitudo,
+                coordinates = coordinates,
+                kedalaman = kedalaman
             )
         }
     }
@@ -44,5 +50,5 @@ fun TimelineDetailScreen() {
 @Preview(showBackground = true)
 @Composable
 fun TimelineDetailScreenPreview() {
-    TimelineDetailScreen()
+    TimelineDetailScreen("15 Sept 2020", "Pus", "27 sr" ,"3", "4.1")
 }

@@ -8,7 +8,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.seisme.dimas.ui.screens.homeScreen.HomeScreen
 import com.seisme.dimas.ui.screens.loginScreen.LoginScreen
+import com.seisme.dimas.ui.screens.mitigasiScreen.MitigasiScreen
+import com.seisme.dimas.ui.screens.petaScreen.PetaScreen
+import com.seisme.dimas.ui.screens.profileScreen.ProfileScreen
 import com.seisme.dimas.ui.screens.registerScreen.RegisterScreen
+import com.seisme.dimas.ui.screens.timelineScreen.TimelineDetailScreen
+import com.seisme.dimas.ui.screens.timelineScreen.TimelineScreen
 
 @Composable
 fun NavGraph(navController: NavHostController) {
@@ -40,7 +45,20 @@ fun NavGraph(navController: NavHostController) {
 
         // Home Screen
         composable(Routes.Home.route) {
-            HomeScreen()
+            HomeScreen(navController = navController)
+        }
+        composable(Routes.Peta.route) { PetaScreen() }
+        composable(Routes.Timeline.route) { TimelineScreen(navController) }
+        composable(Routes.Mitigasi.route) { MitigasiScreen() }
+        composable(Routes.Profil.route) { ProfileScreen() }
+        composable(Routes.TimelineDetail.route) { backStackEntry ->
+            TimelineDetailScreen(
+                tanggal = backStackEntry.arguments?.getString("tanggal") ?: "",
+                wilayah = backStackEntry.arguments?.getString("wilayah") ?: "",
+                magnitudo = backStackEntry.arguments?.getString("magnitudo") ?: "",
+                coordinates = backStackEntry.arguments?.getString("coordinates") ?: "",
+                kedalaman = backStackEntry.arguments?.getString("kedalaman") ?: ""
+            )
         }
     }
 }

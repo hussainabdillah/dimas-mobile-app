@@ -8,4 +8,5 @@ sealed class Routes(val route: String) {
     object Mitigasi : Routes("mitigasi")
     object Peta : Routes("peta")
     object Profil : Routes("profil")
+    object TimelineDetail : Routes("timelineDetail/{tanggal}/{pusatGempa}/{magnitudo}/{intensitas}/{kedalaman}")
 }

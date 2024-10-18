@@ -2,12 +2,17 @@ package com.seisme.dimas.di
 
 import android.content.Context
 import com.google.firebase.auth.FirebaseAuth
+import com.seisme.dimas.data.remote.api.ApiService
+import com.seisme.dimas.data.repository.GempaRepository
+import com.seisme.dimas.data.repository.GempaRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module
@@ -26,5 +31,27 @@ object AppModule {
     @Singleton
     fun provideAppContext(@ApplicationContext context: Context): Context {
         return context
+    }
+
+    @Provides
+    @Singleton
+    fun provideRetrofit(): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl("https://data.bmkg.go.id/") // Ganti dengan base URL API BMKG yang sesuai
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+
+    // Provide
+    @Provides
+    @Singleton
+    fun provideGempaRepository(apiService: ApiService): GempaRepository {
+        return GempaRepositoryImpl(apiService)
+    }
+
+    @Provides
+    @Singleton
+    fun provideApiService(retrofit: Retrofit): ApiService {
+        return retrofit.create(ApiService::class.java)
     }
 }

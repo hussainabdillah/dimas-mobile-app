@@ -7,6 +7,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -16,37 +17,28 @@ import com.seisme.dimas.ui.screens.petaScreen.PetaScreen
 import com.seisme.dimas.ui.screens.profileScreen.ProfileScreen
 import com.seisme.dimas.ui.screens.timelineScreen.TimelineScreen
 import com.seisme.dimas.ui.screens.mitigasiScreen.MitigasiScreen
+import com.seisme.dimas.ui.screens.timelineScreen.TimelineDetailScreen
 import com.seisme.dimas.ui.theme.DimasTheme
 
 @Composable
-fun HomeScreen() {
-    val navigationController = rememberNavController()
+fun HomeScreen(navController: NavHostController) {
 
     Scaffold(
         bottomBar = {
-            BottomNavigationBar(navigationController = navigationController)
+            BottomNavigationBar(navigationController = navController)
         }
     ) {
         Box(modifier = Modifier
             .fillMaxSize()
             .padding(it)) {
-            NavHost(
-                navController = navigationController,
-                startDestination = Routes.Peta.route
-            ) {
-                composable(Routes.Peta.route) { PetaScreen() }
-                composable(Routes.Timeline.route) { TimelineScreen() }
-                composable(Routes.Mitigasi.route) { MitigasiScreen() }
-                composable(Routes.Profil.route) { ProfileScreen() }
-            }
+
         }
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun HomeScreenPreview() {
-    DimasTheme {
-        HomeScreen()
-    }
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun HomeScreenPreview() {
+//    DimasTheme {
+//        HomeScreen()
+//    }
+//}

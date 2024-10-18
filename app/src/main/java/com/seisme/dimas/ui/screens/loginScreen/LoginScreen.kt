@@ -154,7 +154,7 @@ fun LoginScreen(
             text = "Continue",
             textColor = White,
             containerColor = HeaderLightBlue,
-            onClick = {},
+            onClick = {viewModel.loginWithEmailAndPassword()},
             modifier = Modifier.fillMaxWidth()
         )
 

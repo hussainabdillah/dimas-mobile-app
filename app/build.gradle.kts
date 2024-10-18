@@ -70,18 +70,26 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    implementation(platform("com.google.firebase:firebase-bom:33.3.0"))
+    implementation(libs.firebase.bom)
     implementation("androidx.compose.material:material:1.7.2")
 
     // flex
     implementation("com.google.accompanist:accompanist-flowlayout:0.30.1")
 
-    // hilt
+//    Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.logging.interceptor)
+//    Hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
 //    implementation("androidx.hilt:hilt-navigation-fragment:1.0.0")
 //    implementation("androidx.hilt:hilt-work:1.0.0")
+
+    // navigation
+    implementation(libs.androidx.navigation.compose)
+
 }
 kapt {
     correctErrorTypes = true
