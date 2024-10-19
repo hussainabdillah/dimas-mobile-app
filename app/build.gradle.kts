@@ -23,13 +23,16 @@ android {
         }
     }
 
+    val apiKey = project.findProperty("MAPS_API_KEY") as String?
+
     buildTypes {
+        debug {
+            resValue("string", "maps_api_key", apiKey ?: "")
+        }
         release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+            resValue("string", "maps_api_key", apiKey ?: "")
+            isMinifyEnabled = true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
     compileOptions {
@@ -70,12 +73,18 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    implementation(libs.firebase.bom)
-    implementation("androidx.compose.material:material:1.7.2")
+    implementation(platform(libs.firebase.bom.v3340))
+    implementation(libs.androidx.material)
 
     // flex
-    implementation("com.google.accompanist:accompanist-flowlayout:0.30.1")
+    implementation(libs.accompanist.flowlayout)
 
+    // Google Maps
+    implementation(libs.maps.compose)
+    implementation(libs.play.services.maps)
+    implementation(libs.play.services.location)
+
+    // hilt
 //    Retrofit
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
@@ -86,10 +95,6 @@ dependencies {
     implementation(libs.androidx.hilt.navigation.compose)
 //    implementation("androidx.hilt:hilt-navigation-fragment:1.0.0")
 //    implementation("androidx.hilt:hilt-work:1.0.0")
-
-    // navigation
-    implementation(libs.androidx.navigation.compose)
-
 }
 kapt {
     correctErrorTypes = true
