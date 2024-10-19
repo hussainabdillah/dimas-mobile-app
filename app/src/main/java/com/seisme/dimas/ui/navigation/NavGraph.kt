@@ -52,7 +52,8 @@ fun NavGraph(navController: NavHostController) {
                 wilayah = backStackEntry.arguments?.getString("wilayah") ?: "",
                 magnitudo = backStackEntry.arguments?.getString("magnitudo") ?: "",
                 coordinates = backStackEntry.arguments?.getString("coordinates") ?: "",
-                kedalaman = backStackEntry.arguments?.getString("kedalaman") ?: ""
+                kedalaman = backStackEntry.arguments?.getString("kedalaman") ?: "",
+                navController = navController
             )
         }
         composable(Routes.Setting.route) { SettingScreen(navController) }

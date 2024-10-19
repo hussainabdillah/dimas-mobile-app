@@ -9,8 +9,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.seisme.dimas.R
 import com.seisme.dimas.ui.components.navigation.Header
 import com.seisme.dimas.ui.components.item.InformationDetail
@@ -23,7 +22,7 @@ fun TimelineDetailScreen(
     magnitudo: String,
     coordinates: String,
     kedalaman: String,
-    navController: NavController
+    navController: NavHostController
 ) {
     Scaffold(
         topBar = {
