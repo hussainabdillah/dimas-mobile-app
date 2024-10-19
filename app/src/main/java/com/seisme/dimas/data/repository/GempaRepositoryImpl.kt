@@ -16,7 +16,7 @@ class GempaRepositoryImpl @Inject constructor(
             val response = apiService.getDataGempa()
             if (response.isSuccessful) {
                 response.body()?.let { gempaResponse ->
-                    emit(gempaResponse.infogempa.gempa) // Emit list gempa dari objek `Infogempa`
+                    emit(gempaResponse.infogempa.gempa)
                     Log.d("GempaRepository", "Data berhasil diambil: ${gempaResponse.infogempa.gempa.size} item")
                 } ?: emit(emptyList())
             } else {

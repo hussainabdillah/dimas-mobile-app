@@ -32,28 +32,36 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.seisme.dimas.R
 import com.seisme.dimas.ui.components.item.ItemProfileScreen
+import com.seisme.dimas.ui.components.navigation.BottomNavigationBar
 import com.seisme.dimas.ui.components.navigation.Header
-import com.seisme.dimas.ui.theme.HeaderLightBlue
+import com.seisme.dimas.ui.navigation.Routes
+import com.seisme.dimas.ui.theme.LightBlue
 import com.seisme.dimas.ui.theme.PrimaryBackground
 import com.seisme.dimas.ui.theme.White
 
 @Composable
-fun ProfileScreen() {
+fun ProfileScreen(navController: NavHostController) {
     Scaffold(
         topBar = {
             Header(
                 title = stringResource(R.string.profile_header),
                 navigationIcon = Icons.Filled.Settings,
-                onNavigationClick = { },
+                onNavigationClick = {
+                    navController.navigate(Routes.Setting.route) {
+                        popUpTo(Routes.Setting.route)
+                    }
+                },
                 isIconAtStart = false
             )
         },
-
+        bottomBar = {
+            BottomNavigationBar(navigationController = navController)
+        }
     ) { padding ->
         Column(
             modifier = Modifier
@@ -113,7 +121,7 @@ fun ProfileScreen() {
             Spacer(modifier = Modifier.height(96.dp))
             Button(
                 colors = ButtonColors(
-                    containerColor = HeaderLightBlue,
+                    containerColor = LightBlue,
                     contentColor = White,
                     disabledContentColor = Color.Gray,
                     disabledContainerColor = Color.Gray
@@ -134,11 +142,11 @@ fun ProfileScreen() {
             OutlinedButton(
                 colors = ButtonColors(
                     containerColor = Color.Transparent,
-                    contentColor = HeaderLightBlue,
+                    contentColor = LightBlue,
                     disabledContentColor = Color.Gray,
                     disabledContainerColor = Color.Gray
                 ),
-                border = BorderStroke(1.dp, HeaderLightBlue),
+                border = BorderStroke(1.dp, LightBlue),
                 onClick = { /* Handle add member */ },
                 modifier = Modifier
                     .fillMaxWidth(),
@@ -153,10 +161,4 @@ fun ProfileScreen() {
             }
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun ProfileScreenPreview() {
-    ProfileScreen()
 }

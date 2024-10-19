@@ -10,9 +10,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
 import com.seisme.dimas.R
 import com.seisme.dimas.ui.components.navigation.Header
 import com.seisme.dimas.ui.components.item.InformationDetail
+import com.seisme.dimas.ui.navigation.Routes
 
 @Composable
 fun TimelineDetailScreen(
@@ -20,14 +22,20 @@ fun TimelineDetailScreen(
     wilayah: String,
     magnitudo: String,
     coordinates: String,
-    kedalaman: String
+    kedalaman: String,
+    navController: NavController
 ) {
     Scaffold(
         topBar = {
             Header(
                 title = stringResource(R.string.header_detail_informasi),
                 navigationIcon = Icons.AutoMirrored.Filled.ArrowBack,
-                onNavigationClick = {  }
+                onNavigationClick = {
+                    navController.navigate(Routes.Timeline.route) {
+                        popUpTo(Routes.Timeline.route)
+                    }
+                },
+                isIconAtStart = true
             )
         },
     ) { padding ->
@@ -45,10 +53,4 @@ fun TimelineDetailScreen(
             )
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun TimelineDetailScreenPreview() {
-    TimelineDetailScreen("15 Sept 2020", "Pus", "27 sr" ,"3", "4.1")
 }

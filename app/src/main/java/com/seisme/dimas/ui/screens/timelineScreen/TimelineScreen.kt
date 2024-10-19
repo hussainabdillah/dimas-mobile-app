@@ -35,6 +35,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.seisme.dimas.R
+import com.seisme.dimas.ui.components.navigation.BottomNavigationBar
 import com.seisme.dimas.ui.components.navigation.Header
 import com.seisme.dimas.ui.theme.PrimaryBackground
 
@@ -50,6 +51,9 @@ fun TimelineScreen(navController: NavHostController, viewModel: TimelineViewMode
         topBar = {
             Header(title = stringResource(R.string.timeline_header))
         },
+        bottomBar = {
+            BottomNavigationBar(navigationController = navController)
+        }
     ) { padding ->
         Surface(
             color = PrimaryBackground,
@@ -73,12 +77,12 @@ fun TimelineScreen(navController: NavHostController, viewModel: TimelineViewMode
                     )
             ) {
 
-                items(gempaData) { gempa -> // Jangan lupa 'items(gempaData)'
+                items(gempaData) { gempa ->
                     EarthquakeItem(
-                        time = gempa.jam, // Sesuaikan dengan data JSON dari API BMKG
-                        date = gempa.tanggal, // Sesuaikan dengan data JSON dari API BMKG
-                        location = gempa.wilayah, // Sesuaikan dengan data JSON dari API BMKG
-                        magnitude = gempa.magnitude, // Sesuaikan dengan data JSON dari API BMKG
+                        time = gempa.jam,
+                        date = gempa.tanggal,
+                        location = gempa.wilayah,
+                        magnitude = gempa.magnitude,
                         onClick = {
                             navController.navigate("timelineDetail/${gempa.tanggal}/${gempa.wilayah}/${gempa.magnitude}/${gempa.coordinates}/${gempa.kedalaman}")
                         }
@@ -89,9 +93,14 @@ fun TimelineScreen(navController: NavHostController, viewModel: TimelineViewMode
     }
 }
 
-
 @Composable
-fun EarthquakeItem(time: String, date: String, location: String, magnitude: String, onClick: () -> Unit) {
+fun EarthquakeItem(
+    time: String,
+    date: String,
+    location: String,
+    magnitude: String,
+    onClick: () -> Unit
+) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
@@ -103,8 +112,18 @@ fun EarthquakeItem(time: String, date: String, location: String, magnitude: Stri
             verticalArrangement = Arrangement.spacedBy(6.dp),
             modifier = Modifier.padding(end = 16.dp)
         ) {
-            Text(text = time, fontSize = 16.sp, fontWeight = FontWeight.Bold)
-            Text(text = date, fontSize = 10.sp, fontWeight = FontWeight.Light)
+            Text(
+                text = time,
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.Black
+            )
+            Text(
+                text = date,
+                fontSize = 10.sp,
+                fontWeight = FontWeight.Light,
+                color = Color.Black
+            )
         }
         Surface(
             shape = RoundedCornerShape(8.dp),
@@ -124,17 +143,24 @@ fun EarthquakeItem(time: String, date: String, location: String, magnitude: Stri
                 Column(
                     verticalArrangement = Arrangement.spacedBy(6.dp)
                 ) {
-                    Text(text = location, fontWeight = FontWeight.Bold, fontSize = 14.sp)
+                    Text(
+                        text = location,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 14.sp,
+                        color = Color.Black
+                    )
                     Row {
                         Text(
                             text = "Magnitudo",
                             fontSize = 12.sp,
-                            modifier = Modifier.padding(end = 12.dp)
+                            modifier = Modifier.padding(end = 12.dp),
+                            color = Color.Black
                         )
                         Text(
                             text = magnitude,
                             fontSize = 12.sp,
-                            fontWeight = FontWeight.Bold
+                            fontWeight = FontWeight.Bold,
+                            color = Color.Black
                         )
                     }
                 }
@@ -149,9 +175,3 @@ fun EarthquakeItem(time: String, date: String, location: String, magnitude: Stri
         }
     }
 }
-
-//@Preview(showBackground = true)
-//@Composable
-//fun TimelineScreenPreview() {
-//    TimelineScreen(viewModel = DummyViewModel())
-//}

@@ -51,7 +51,7 @@ import com.seisme.dimas.ui.theme.GoogleGradientBlue
 import com.seisme.dimas.ui.theme.GoogleGradientGreen
 import com.seisme.dimas.ui.theme.GoogleGradientRed
 import com.seisme.dimas.ui.theme.GoogleGradientYellow
-import com.seisme.dimas.ui.theme.HeaderLightBlue
+import com.seisme.dimas.ui.theme.LightBlue
 import com.seisme.dimas.ui.theme.White
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -229,7 +229,7 @@ fun PreviewLoginScreen() {
         PrimaryButton(
             text = "Continue",
             textColor = White,
-            containerColor = HeaderLightBlue,
+            containerColor = LightBlue,
             onClick = {},
             modifier = Modifier.fillMaxWidth()
         )
@@ -244,7 +244,7 @@ fun PreviewLoginScreen() {
                 onClick = {  },
                 colors = ButtonColors(
                     containerColor = Color.Transparent,
-                    contentColor = HeaderLightBlue,
+                    contentColor = LightBlue,
                     disabledContentColor = Color.Gray,
                     disabledContainerColor = Color.Gray
                 ),
@@ -422,7 +422,7 @@ fun PreviewSecondRegisterScreen() {
             PrimaryButton(
                 text = "Complete",
                 textColor = White,
-                containerColor = HeaderLightBlue,
+                containerColor = LightBlue,
                 onClick = {},
                 icon = {
                     Icon(

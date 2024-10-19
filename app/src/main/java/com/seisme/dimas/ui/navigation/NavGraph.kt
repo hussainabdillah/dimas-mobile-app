@@ -6,28 +6,26 @@ import androidx.compose.runtime.remember
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.seisme.dimas.ui.screens.homeScreen.HomeScreen
 import com.seisme.dimas.ui.screens.loginScreen.LoginScreen
-import com.seisme.dimas.ui.screens.mitigasiScreen.MitigasiScreen
-import com.seisme.dimas.ui.screens.petaScreen.PetaScreen
+import com.seisme.dimas.ui.screens.mitigationScreen.MitigationScreen
+import com.seisme.dimas.ui.screens.mapScreen.MapScreen
 import com.seisme.dimas.ui.screens.profileScreen.ProfileScreen
+import com.seisme.dimas.ui.screens.profileScreen.SettingScreen
 import com.seisme.dimas.ui.screens.registerScreen.RegisterScreen
 import com.seisme.dimas.ui.screens.timelineScreen.TimelineDetailScreen
 import com.seisme.dimas.ui.screens.timelineScreen.TimelineScreen
 
 @Composable
 fun NavGraph(navController: NavHostController) {
-    val isLoggedIn = remember { mutableStateOf(false) } // Login state
+    val isLoggedIn = remember { mutableStateOf(true) }
 
-    NavHost(navController = navController, startDestination = if (isLoggedIn.value) Routes.Home.route else Routes.Login.route) {
+    NavHost(navController = navController, startDestination = if (isLoggedIn.value) Routes.Map.route else Routes.Login.route) {
 
-        // Login Screen
         composable(Routes.Login.route) {
             LoginScreen(onNavigateToHome = {
-                // On successful login, set login state to true and navigate to Home
                 isLoggedIn.value = true
-                navController.navigate(Routes.Home.route) {
-                    popUpTo(Routes.Login.route) { inclusive = true } // Remove login screen from back stack
+                navController.navigate(Routes.Map.route) {
+                    popUpTo(Routes.Login.route) { inclusive = true }
                 }
             }, onNavigateToRegister = {
                 navController.navigate(Routes.Register.route)
@@ -38,19 +36,16 @@ fun NavGraph(navController: NavHostController) {
         composable(Routes.Register.route) {
             RegisterScreen(onNavigateToLogin = {
                 navController.navigate(Routes.Login.route) {
-                    popUpTo(Routes.Register.route) { inclusive = true } // Remove register screen from back stack
+                    popUpTo(Routes.Register.route) { inclusive = true }
                 }
             })
         }
 
         // Home Screen
-        composable(Routes.Home.route) {
-            HomeScreen(navController = navController)
-        }
-        composable(Routes.Peta.route) { PetaScreen() }
+        composable(Routes.Map.route) { MapScreen(navController) }
         composable(Routes.Timeline.route) { TimelineScreen(navController) }
-        composable(Routes.Mitigasi.route) { MitigasiScreen() }
-        composable(Routes.Profil.route) { ProfileScreen() }
+        composable(Routes.Mitigation.route) { MitigationScreen(navController) }
+        composable(Routes.Profile.route) { ProfileScreen(navController) }
         composable(Routes.TimelineDetail.route) { backStackEntry ->
             TimelineDetailScreen(
                 tanggal = backStackEntry.arguments?.getString("tanggal") ?: "",
@@ -60,5 +55,6 @@ fun NavGraph(navController: NavHostController) {
                 kedalaman = backStackEntry.arguments?.getString("kedalaman") ?: ""
             )
         }
+        composable(Routes.Setting.route) { SettingScreen(navController) }
     }
 }

@@ -17,7 +17,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.seisme.dimas.ui.theme.HeaderLightBlue
+import com.seisme.dimas.ui.theme.LightBlue
 import com.seisme.dimas.ui.theme.White
 
 @Composable
@@ -63,7 +63,7 @@ fun ItemSetting(
                 colors = SwitchDefaults.colors(
                     checkedThumbColor = White,
                     uncheckedThumbColor = Color.Gray,
-                    checkedTrackColor = HeaderLightBlue
+                    checkedTrackColor = LightBlue
                 )
             )
 

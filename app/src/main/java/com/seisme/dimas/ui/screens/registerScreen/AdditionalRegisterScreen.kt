@@ -30,7 +30,7 @@ import androidx.compose.ui.unit.sp
 import com.seisme.dimas.ui.components.form.AuthTextField
 import com.seisme.dimas.ui.components.form.PrimaryButton
 import com.seisme.dimas.ui.components.form.SecondaryButton
-import com.seisme.dimas.ui.theme.HeaderLightBlue
+import com.seisme.dimas.ui.theme.LightBlue
 import com.seisme.dimas.ui.theme.White
 
 @Preview(showBackground = true)
@@ -111,7 +111,7 @@ fun AdditionalRegisterScreen() {
             PrimaryButton(
                 text = "Complete",
                 textColor = White,
-                containerColor = HeaderLightBlue,
+                containerColor = LightBlue,
                 onClick = {},
                 icon = {
                     Icon(

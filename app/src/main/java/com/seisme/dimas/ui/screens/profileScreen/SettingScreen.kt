@@ -1,30 +1,32 @@
 package com.seisme.dimas.ui.screens.profileScreen
 
-import HeaderSetting
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.seisme.dimas.R
 import com.seisme.dimas.ui.components.item.ItemSetting
 import com.seisme.dimas.ui.components.item.ItemVolumeSetting
 import com.seisme.dimas.ui.components.item.SectionBox
+import com.seisme.dimas.ui.components.navigation.Header
+import com.seisme.dimas.ui.navigation.Routes
 import com.seisme.dimas.ui.theme.PrimaryBackground
 
 @Composable
-fun SettingsScreen() {
-    val volume = remember { mutableStateOf(0.5f) }
+fun SettingScreen(navController: NavHostController) {
+    val volume = remember { mutableFloatStateOf(0.5f) }
     val isSilent = remember { mutableStateOf(false) }
     val isVibrationEnabled = remember { mutableStateOf(true) }
     val receiveEarthquakeInfo = remember { mutableStateOf(true) }
@@ -33,11 +35,14 @@ fun SettingsScreen() {
 
     Scaffold(
         topBar = {
-            HeaderSetting(
+            Header(
                 title = "Profile Settings",
-                navigationIcon = Icons.Filled.ArrowBack,
-                onNavigationClick = { },
-                onProfileClick = { },
+                navigationIcon = Icons.AutoMirrored.Filled.ArrowBack,
+                onNavigationClick = {
+                    navController.navigate(Routes.Profile.route) {
+                        popUpTo(Routes.Profile.route)
+                    }
+                },
                 isIconAtStart = true
             )
         }
@@ -51,8 +56,6 @@ fun SettingsScreen() {
                 .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-
-            // Volume & Vibration Section
             Text(
                 text = "Volume & Vibration",
                 fontWeight = FontWeight.Bold,
@@ -63,15 +66,13 @@ fun SettingsScreen() {
                 Column(
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    // Use ItemVolumeSetting for the Volume slider
                     Text(text = "Volume", fontWeight = FontWeight.Bold, fontSize = 14.sp)
                     ItemVolumeSetting(
                         imgResId = R.drawable.ic_volume,
-                        value = volume.value,
-                        onValueChange = { volume.value = it }
+                        value = volume.floatValue,
+                        onValueChange = { volume.floatValue = it }
                     )
 
-                    // Silent Mode
                     Text(text = "When in Manner Mode", fontWeight = FontWeight.Bold, fontSize = 14.sp)
                     ItemSetting(
                         text = "Silent",
@@ -80,7 +81,6 @@ fun SettingsScreen() {
                         onCheckedChange = { isSilent.value = it }
                     )
 
-                    // Vibration Setting
                     Text(text = "Vibration", fontWeight = FontWeight.Bold, fontSize = 14.sp)
                     ItemSetting(
                         text = "Manner Mode Only",
@@ -91,7 +91,6 @@ fun SettingsScreen() {
                 }
             }
 
-            // Earthquake Section
             Text(
                 text = "Earthquake",
                 fontWeight = FontWeight.Bold,
@@ -118,7 +117,6 @@ fun SettingsScreen() {
                 }
             }
 
-            // Tsunami Section
             Text(
                 text = "Tsunami",
                 fontWeight = FontWeight.Bold,
@@ -148,10 +146,4 @@ fun SettingsScreen() {
             Spacer(modifier = Modifier.height(16.dp))
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun SettingsScreenPreview() {
-    SettingsScreen()
 }

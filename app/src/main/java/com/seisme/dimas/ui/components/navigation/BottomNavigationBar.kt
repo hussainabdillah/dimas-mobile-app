@@ -22,7 +22,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import com.seisme.dimas.R
 import com.seisme.dimas.ui.navigation.Routes
 import com.seisme.dimas.ui.theme.Gray
-import com.seisme.dimas.ui.theme.SkyBlue
+import com.seisme.dimas.ui.theme.LightBlue
 
 @Composable
 fun BottomNavigationBar(navigationController: NavHostController) {
@@ -36,8 +36,8 @@ fun BottomNavigationBar(navigationController: NavHostController) {
         // Peta Icon
         IconButton(
             onClick = {
-                navigationController.navigate(Routes.Peta.route) {
-                    popUpTo(Routes.Peta.route)
+                navigationController.navigate(Routes.Map.route) {
+                    popUpTo(Routes.Map.route)
                 }
             },
             modifier = Modifier.weight(1f).fillMaxHeight()
@@ -50,12 +50,12 @@ fun BottomNavigationBar(navigationController: NavHostController) {
                     painter = painterResource(id = R.drawable.ic_peta),
                     contentDescription = null,
                     modifier = Modifier.size(24.dp),
-                    tint = if (currentRoute == Routes.Peta.route) SkyBlue else Gray
+                    tint = if (currentRoute == Routes.Map.route) LightBlue else Gray
                 )
                 Text(
                     text = "Peta",
                     fontSize = 12.sp,
-                    color = if (currentRoute == Routes.Peta.route) SkyBlue else Gray,  // Update text color
+                    color = if (currentRoute == Routes.Map.route) LightBlue else Gray,
                     textAlign = TextAlign.Center
                 )
             }
@@ -78,22 +78,22 @@ fun BottomNavigationBar(navigationController: NavHostController) {
                     painter = painterResource(id = R.drawable.ic_timeline),
                     contentDescription = null,
                     modifier = Modifier.size(24.dp),
-                    tint = if (currentRoute == Routes.Timeline.route) SkyBlue else Gray
+                    tint = if (currentRoute == Routes.Timeline.route) LightBlue else Gray
                 )
                 Text(
                     text = "Timeline",
                     fontSize = 12.sp,
-                    color = if (currentRoute == Routes.Timeline.route) SkyBlue else Gray,  // Update text color
+                    color = if (currentRoute == Routes.Timeline.route) LightBlue else Gray,
                     textAlign = TextAlign.Center
                 )
             }
         }
 
-        // Mitigasi Icon
+        // Mitigation Icon
         IconButton(
             onClick = {
-                navigationController.navigate(Routes.Mitigasi.route) {
-                    popUpTo(Routes.Mitigasi.route)
+                navigationController.navigate(Routes.Mitigation.route) {
+                    popUpTo(Routes.Mitigation.route)
                 }
             },
             modifier = Modifier.weight(1f).fillMaxHeight()
@@ -106,12 +106,12 @@ fun BottomNavigationBar(navigationController: NavHostController) {
                     painter = painterResource(id = R.drawable.ic_mitigasi),
                     contentDescription = null,
                     modifier = Modifier.size(24.dp),
-                    tint = if (currentRoute == Routes.Mitigasi.route) SkyBlue else Gray
+                    tint = if (currentRoute == Routes.Mitigation.route) LightBlue else Gray
                 )
                 Text(
                     text = "Mitigasi",
                     fontSize = 12.sp,
-                    color = if (currentRoute == Routes.Mitigasi.route) SkyBlue else Gray,  // Update text color
+                    color = if (currentRoute == Routes.Mitigation.route) LightBlue else Gray,  // Update text color
                     textAlign = TextAlign.Center
                 )
             }
@@ -120,8 +120,8 @@ fun BottomNavigationBar(navigationController: NavHostController) {
         // Profile Icon
         IconButton(
             onClick = {
-                navigationController.navigate(Routes.Profil.route) {
-                    popUpTo(Routes.Profil.route)
+                navigationController.navigate(Routes.Profile.route) {
+                    popUpTo(Routes.Profile.route)
                 }
             },
             modifier = Modifier.weight(1f).fillMaxHeight()
@@ -134,12 +134,12 @@ fun BottomNavigationBar(navigationController: NavHostController) {
                     painter = painterResource(id = R.drawable.ic_profile),
                     contentDescription = null,
                     modifier = Modifier.size(24.dp),
-                    tint = if (currentRoute == Routes.Profil.route) SkyBlue else Gray
+                    tint = if (currentRoute == Routes.Profile.route) LightBlue else Gray
                 )
                 Text(
                     text = "Profil",
                     fontSize = 12.sp,
-                    color = if (currentRoute == Routes.Profil.route) SkyBlue else Gray,  // Update text color
+                    color = if (currentRoute == Routes.Profile.route) LightBlue else Gray,  // Update text color
                     textAlign = TextAlign.Center
                 )
             }

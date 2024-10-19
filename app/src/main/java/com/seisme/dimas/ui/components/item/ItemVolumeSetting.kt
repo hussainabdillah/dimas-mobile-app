@@ -14,7 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.seisme.dimas.R
 import com.seisme.dimas.ui.theme.Gray
-import com.seisme.dimas.ui.theme.HeaderLightBlue
+import com.seisme.dimas.ui.theme.LightBlue
 
 @Composable
 fun ItemVolumeSetting(
@@ -40,8 +40,8 @@ fun ItemVolumeSetting(
             value = value,
             onValueChange = onValueChange,
             colors = SliderDefaults.colors(
-                thumbColor = HeaderLightBlue,
-                activeTrackColor = HeaderLightBlue,
+                thumbColor = LightBlue,
+                activeTrackColor = LightBlue,
                 inactiveTrackColor = Gray
             ),
             modifier = Modifier.weight(1f)

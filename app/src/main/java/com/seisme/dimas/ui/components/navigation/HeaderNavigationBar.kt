@@ -22,8 +22,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.seisme.dimas.ui.theme.HeaderDarkBlue
-import com.seisme.dimas.ui.theme.HeaderLightBlue
+import com.seisme.dimas.ui.theme.DarkBlue
+import com.seisme.dimas.ui.theme.LightBlue
 
 @Composable
 fun Header(
@@ -45,8 +45,8 @@ fun Header(
                 .background(
                     brush = Brush.linearGradient(
                         colors = listOf(
-                            HeaderLightBlue,
-                            HeaderDarkBlue
+                            LightBlue,
+                            DarkBlue
                         )
                     )
                 ),

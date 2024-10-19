@@ -1,18 +1,18 @@
-package com.seisme.dimas.ui.screens.mitigasiScreen
+package com.seisme.dimas.ui.screens.mitigationScreen
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+//noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.material.Scaffold
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.seisme.dimas.R
 import com.seisme.dimas.ui.components.item.ItemMitigation
+import com.seisme.dimas.ui.components.navigation.BottomNavigationBar
 import com.seisme.dimas.ui.components.navigation.Header
 import com.seisme.dimas.ui.theme.PrimaryBackground
 
@@ -22,7 +22,7 @@ data class MitigationItem(
 )
 
 @Composable
-fun MitigasiScreen() {
+fun MitigationScreen(navController: NavHostController) {
     val mitigationItems = listOf(
         MitigationItem(
             imgResId = R.drawable.mitigation_item_1,
@@ -42,10 +42,11 @@ fun MitigasiScreen() {
         topBar = {
             Header(
                 title = "Gempa Bumi",
-                navigationIcon = Icons.AutoMirrored.Filled.KeyboardArrowLeft,
                 onNavigationClick = {},
-                isIconAtStart = true
             )
+        },
+        bottomBar = {
+            BottomNavigationBar(navigationController = navController)
         }
     ) { padding ->
         Surface(color = PrimaryBackground) {
@@ -69,10 +70,4 @@ fun MitigasiScreen() {
             }
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun PreviewMitigasiScreen() {
-    MitigasiScreen()
 }
