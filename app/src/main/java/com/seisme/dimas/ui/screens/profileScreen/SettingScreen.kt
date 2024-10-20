@@ -12,6 +12,7 @@ import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -61,20 +62,31 @@ fun SettingScreen(navController: NavHostController) {
                 text = "Volume & Vibration",
                 fontWeight = FontWeight.Bold,
                 fontSize = 20.sp,
+                color = Color.Black,
                 modifier = Modifier.padding(top = 4.dp, bottom = 2.dp)
             )
             SectionBox {
                 Column(
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    Text(text = "Volume", fontWeight = FontWeight.Bold, fontSize = 14.sp)
+                    Text(
+                        text = "Volume",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 14.sp,
+                        color = Color.Black
+                    )
                     ItemVolumeSetting(
                         imgResId = R.drawable.ic_volume,
                         value = volume.floatValue,
                         onValueChange = { volume.floatValue = it }
                     )
 
-                    Text(text = "When in Manner Mode", fontWeight = FontWeight.Bold, fontSize = 14.sp)
+                    Text(
+                        text = "When in Manner Mode",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 14.sp,
+                        color = Color.Black
+                    )
                     ItemSetting(
                         text = "Silent",
                         imgResId = R.drawable.ic_silent,
@@ -82,7 +94,12 @@ fun SettingScreen(navController: NavHostController) {
                         onCheckedChange = { isSilent.value = it }
                     )
 
-                    Text(text = "Vibration", fontWeight = FontWeight.Bold, fontSize = 14.sp)
+                    Text(
+                        text = "Vibration",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 14.sp,
+                        color = Color.Black
+                    )
                     ItemSetting(
                         text = "Manner Mode Only",
                         imgResId = R.drawable.ic_vibration,
@@ -96,11 +113,17 @@ fun SettingScreen(navController: NavHostController) {
                 text = "Earthquake",
                 fontWeight = FontWeight.Bold,
                 fontSize = 20.sp,
-                modifier = Modifier.padding(bottom = 2.dp)
+                modifier = Modifier.padding(bottom = 2.dp),
+                color = Color.Black
             )
             SectionBox {
                 Column {
-                    Text(text = "Earthquake info", fontWeight = FontWeight.Bold, fontSize = 14.sp)
+                    Text(
+                        text = "Earthquake info",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 14.sp,
+                        color = Color.Black
+                    )
                     ItemSetting(
                         text = "Receive",
                         imgResId = R.drawable.ic_receive,
@@ -108,7 +131,12 @@ fun SettingScreen(navController: NavHostController) {
                         onCheckedChange = { receiveEarthquakeInfo.value = it }
                     )
 
-                    Text(text = "Earthquake Early Warning Drill", fontWeight = FontWeight.Bold, fontSize = 14.sp)
+                    Text(
+                        text = "Earthquake Early Warning Drill",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 14.sp,
+                        color = Color.Black
+                    )
                     ItemSetting(
                         text = "Participate",
                         imgResId = R.drawable.ic_run,
@@ -122,11 +150,17 @@ fun SettingScreen(navController: NavHostController) {
                 text = "Tsunami",
                 fontWeight = FontWeight.Bold,
                 fontSize = 20.sp,
-                modifier = Modifier.padding(bottom = 2.dp)
+                modifier = Modifier.padding(bottom = 2.dp),
+                color = Color.Black
             )
             SectionBox {
                 Column {
-                    Text(text = "Tsunami info", fontWeight = FontWeight.Bold, fontSize = 14.sp)
+                    Text(
+                        text = "Tsunami info",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 14.sp,
+                        color = Color.Black
+                    )
                     ItemSetting(
                         text = "Receive",
                         imgResId = R.drawable.ic_receive,
@@ -134,7 +168,12 @@ fun SettingScreen(navController: NavHostController) {
                         onCheckedChange = { receiveTsunamiInfo.value = it }
                     )
 
-                    Text(text = "Tsunami Early Warning Drill", fontWeight = FontWeight.Bold, fontSize = 14.sp)
+                    Text(
+                        text = "Tsunami Early Warning Drill",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 14.sp,
+                        color = Color.Black
+                    )
                     ItemSetting(
                         text = "Participate",
                         imgResId = R.drawable.ic_run,

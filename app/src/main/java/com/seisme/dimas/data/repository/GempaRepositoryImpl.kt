@@ -1,6 +1,5 @@
 package com.seisme.dimas.data.repository
 
-import android.util.Log
 import com.seisme.dimas.data.remote.api.ApiService
 import com.seisme.dimas.data.remote.response.GempaItem
 import kotlinx.coroutines.flow.Flow
@@ -16,16 +15,19 @@ class GempaRepositoryImpl @Inject constructor(
             val response = apiService.getDataGempa()
             if (response.isSuccessful) {
                 response.body()?.let { gempaResponse ->
-                    emit(gempaResponse.infogempa.gempa)
-                    Log.d("GempaRepository", "Data berhasil diambil: ${gempaResponse.infogempa.gempa.size} item")
+                    val formattedGempaItems = gempaResponse.infogempa.gempa.map { gempaItem ->
+                        gempaItem.copy(
+                            jam = gempaItem.formattedTime,
+                            wilayah = gempaItem.formattedLocation
+                        )
+                    }
+                    emit(formattedGempaItems)
                 } ?: emit(emptyList())
             } else {
                 emit(emptyList())
-                Log.e("GempaRepository", "Response error: ${response.code()} - ${response.message()}")
             }
         } catch (e: Exception) {
             emit(emptyList())
-            Log.e("GempaRepository", "Exception saat mengambil data: ${e.message}", e)
         }
     }
 }

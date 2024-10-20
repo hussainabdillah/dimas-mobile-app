@@ -23,9 +23,9 @@ import com.seisme.dimas.ui.theme.White
 @Composable
 fun ItemSetting(
     text: String,
-    imgResId: Int,  // Icon resource ID
-    isChecked: Boolean,  // Switch state
-    onCheckedChange: (Boolean) -> Unit  // Callback for when the switch is toggled
+    imgResId: Int,
+    isChecked: Boolean,
+    onCheckedChange: (Boolean) -> Unit
 ) {
     Box(
         modifier = Modifier
@@ -40,7 +40,6 @@ fun ItemSetting(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                // Icon on the left side
                 Image(
                     painter = painterResource(id = imgResId),
                     contentDescription = null,
@@ -48,15 +47,14 @@ fun ItemSetting(
                         .size(28.dp)
                         .clip(CircleShape)
                 )
-                // Text in the middle
                 Text(
                     text = text,
                     fontSize = 14.sp,
-                    modifier = Modifier.padding(start = 16.dp)
+                    modifier = Modifier.padding(start = 16.dp),
+                    color = Color.Black
                 )
             }
 
-            // Switch on the right side
             Switch(
                 checked = isChecked,
                 onCheckedChange = onCheckedChange,
@@ -71,15 +69,14 @@ fun ItemSetting(
     }
 }
 
-// Custom composable for the section box
 @Composable
 fun SectionBox(content: @Composable () -> Unit) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(12.dp)) // Rounded corners
-            .background(White) // Background color
-            .padding(vertical = 16.dp, horizontal = 16.dp) // Adjusted padding inside the box
+            .clip(RoundedCornerShape(12.dp))
+            .background(White)
+            .padding(vertical = 16.dp, horizontal = 16.dp)
     ) {
         content()
     }

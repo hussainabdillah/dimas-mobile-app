@@ -94,7 +94,12 @@ fun ProfileScreen(navController: NavHostController) {
                 Column(
                     verticalArrangement = Arrangement.spacedBy(6.dp)
                 ) {
-                    Text(text = "Antonio Yono", fontWeight = FontWeight.Bold, fontSize = 20.sp)
+                    Text(
+                        text = "Antonio Yono",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp,
+                        color = Color.Black
+                    )
 
                     Row(
                         horizontalArrangement = Arrangement.spacedBy(6.dp),
@@ -104,9 +109,14 @@ fun ProfileScreen(navController: NavHostController) {
                             Icons.Filled.MailOutline,
                             contentDescription = "Navigate",
                             modifier = Modifier
-                                .size(20.dp)
+                                .size(20.dp),
+                            tint = Color.Black
                         )
-                        Text(text = "YonoTonioo@gmail.com", fontWeight = FontWeight.Light)
+                        Text(
+                            text = "YonoTonioo@gmail.com",
+                            fontWeight = FontWeight.Light,
+                            color = Color.Black
+                        )
                     }
                 }
             }
@@ -156,7 +166,7 @@ fun ProfileScreen(navController: NavHostController) {
                     text = "Log out",
                     fontSize = 16.sp,
                     modifier = Modifier
-                        .padding(vertical = 4.dp),
+                        .padding(vertical = 4.dp)
                 )
             }
         }

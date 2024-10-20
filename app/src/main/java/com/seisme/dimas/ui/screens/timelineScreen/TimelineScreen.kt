@@ -1,5 +1,7 @@
 package com.seisme.dimas.ui.screens.timelineScreen
 
+//noinspection UsingMaterialAndMaterial3Libraries
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -12,13 +14,14 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Scaffold
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material3.Icon
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -30,6 +33,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -39,6 +43,7 @@ import com.seisme.dimas.ui.components.navigation.BottomNavigationBar
 import com.seisme.dimas.ui.components.navigation.Header
 import com.seisme.dimas.ui.theme.PrimaryBackground
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun TimelineScreen(navController: NavHostController, viewModel: TimelineViewModel = hiltViewModel()) {
     val gempaData by viewModel.gempaData.collectAsState()
@@ -54,7 +59,7 @@ fun TimelineScreen(navController: NavHostController, viewModel: TimelineViewMode
         bottomBar = {
             BottomNavigationBar(navigationController = navController)
         }
-    ) { padding ->
+    ) { _ ->
         Surface(
             color = PrimaryBackground,
         ) {
@@ -62,21 +67,13 @@ fun TimelineScreen(navController: NavHostController, viewModel: TimelineViewMode
                 modifier = Modifier
                     .width(1.dp)
                     .fillMaxHeight()
-                    .absoluteOffset(x = 130.dp, y = 0.dp)
+                    .absoluteOffset(x = 150.dp, y = 0.dp)
                     .background(Color.LightGray)
             )
             LazyColumn(
-                contentPadding = padding,
-                verticalArrangement = Arrangement.spacedBy(10.dp),
                 modifier = Modifier
-                    .padding(
-                        start = 20.dp,
-                        top = 20.dp,
-                        end = 20.dp,
-                        bottom = 20.dp
-                    )
+                    .padding(bottom = 80.dp)
             ) {
-
                 items(gempaData) { gempa ->
                     EarthquakeItem(
                         time = gempa.jam,
@@ -104,12 +101,17 @@ fun EarthquakeItem(
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
+            .padding(
+                start = 20.dp,
+                top = 10.dp,
+                end = 0.dp,
+                bottom = 10.dp,
+            )
             .fillMaxWidth()
             .clickable(onClick = onClick)
     ) {
         Column(
             horizontalAlignment = Alignment.Start,
-            verticalArrangement = Arrangement.spacedBy(6.dp),
             modifier = Modifier.padding(end = 16.dp)
         ) {
             Text(
@@ -120,45 +122,49 @@ fun EarthquakeItem(
             )
             Text(
                 text = date,
-                fontSize = 10.sp,
+                fontSize = 14.sp,
                 fontWeight = FontWeight.Light,
                 color = Color.Black
             )
         }
         Surface(
-            shape = RoundedCornerShape(8.dp),
+            shadowElevation = (1.dp),
+            shape = RoundedCornerShape(
+                topStart = 8.dp,
+                topEnd = 0.dp,
+                bottomEnd = 0.dp,
+                bottomStart = 8.dp
+            ),
             color = Color.White,
-            shadowElevation = 3.dp,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = 8.dp)
         ) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp),
+                    .padding(12.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Column(
-                    verticalArrangement = Arrangement.spacedBy(6.dp)
-                ) {
+                Column {
                     Text(
                         text = location,
                         fontWeight = FontWeight.Bold,
-                        fontSize = 14.sp,
-                        color = Color.Black
+                        fontSize = 16.sp,
+                        color = Color.Black,
+                        modifier = Modifier.widthIn(max = 180.dp),
+                        overflow = TextOverflow.Visible
                     )
                     Row {
                         Text(
-                            text = "Magnitudo",
-                            fontSize = 12.sp,
-                            modifier = Modifier.padding(end = 12.dp),
+                            text = "Magnitude",
+                            fontSize = 14.sp,
+                            modifier = Modifier.padding(end = 6.dp),
                             color = Color.Black
                         )
                         Text(
                             text = magnitude,
-                            fontSize = 12.sp,
+                            fontSize = 14.sp,
                             fontWeight = FontWeight.Bold,
                             color = Color.Black
                         )
@@ -169,7 +175,8 @@ fun EarthquakeItem(
                     contentDescription = "Navigate",
                     modifier = Modifier
                         .height(30.dp)
-                        .width(30.dp)
+                        .width(30.dp),
+                    tint = Color.Black
                 )
             }
         }

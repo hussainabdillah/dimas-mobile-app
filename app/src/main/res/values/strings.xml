@@ -3,8 +3,8 @@
     <string name="timeline_header">Timeline Gempa Bumi</string>
     <string name="navigation_map">Peta</string>
     <string name="navigation_timeline">Timeline</string>
-    <string name="navigation_mitigation">Mitigasi</string>
-    <string name="navigation_profile">Profil</string>
+    <string name="navigation_mitigation">Mitigation</string>
+    <string name="navigation_profile">Profile</string>
     <string name="header_detail_informasi">Detail Informasi</string>
     <string name="profile_header">Profile</string>
     <string name="profile_settings">Profile Settings</string>

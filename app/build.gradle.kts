@@ -23,18 +23,21 @@ android {
         }
     }
 
-    val apiKey = project.findProperty("MAPS_API_KEY") as String?
-
     buildTypes {
+        android.buildFeatures.buildConfig = true
         debug {
-            resValue("string", "maps_api_key", apiKey ?: "")
+            isMinifyEnabled = true
         }
         release {
-            resValue("string", "maps_api_key", apiKey ?: "")
             isMinifyEnabled = true
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile(
+                    "proguard-android-optimize.txt"
+                ), "proguard-rules.pro"
+            )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -84,12 +87,12 @@ dependencies {
     implementation(libs.play.services.maps)
     implementation(libs.play.services.location)
 
-    // hilt
-//    Retrofit
+    // Retrofit
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
     implementation(libs.logging.interceptor)
-//    Hilt
+
+    // Hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
     implementation(libs.androidx.hilt.navigation.compose)

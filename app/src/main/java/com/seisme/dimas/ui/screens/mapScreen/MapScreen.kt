@@ -35,7 +35,6 @@ import com.seisme.dimas.ui.components.navigation.Header
 import com.seisme.dimas.ui.theme.Orange
 import com.seisme.dimas.ui.theme.White
 
-
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun MapScreen(navController: NavHostController) {

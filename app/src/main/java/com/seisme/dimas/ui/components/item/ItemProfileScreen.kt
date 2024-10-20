@@ -47,7 +47,7 @@ fun LabelText(label: String) {
     Text(
         text = label,
         fontSize = 14.sp,
-        color = Color.Gray
+        color = Color.Black
     )
 }
 
@@ -56,6 +56,7 @@ fun ValueText(value: String) {
     Text(
         text = value,
         fontSize = 16.sp,
-        fontWeight = FontWeight.Medium
+        fontWeight = FontWeight.Medium,
+        color = Color.Black
     )
 }
