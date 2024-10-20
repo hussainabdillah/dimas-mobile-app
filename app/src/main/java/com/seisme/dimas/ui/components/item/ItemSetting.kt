@@ -32,7 +32,7 @@ fun ItemSetting(
             .fillMaxWidth()
             .clip(RoundedCornerShape(12.dp))
             .background(White)
-            .padding(0.dp)
+            .padding(8.dp)
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),

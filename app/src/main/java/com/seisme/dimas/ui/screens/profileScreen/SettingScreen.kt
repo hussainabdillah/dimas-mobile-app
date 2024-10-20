@@ -30,8 +30,9 @@ fun SettingScreen(navController: NavHostController) {
     val isSilent = remember { mutableStateOf(false) }
     val isVibrationEnabled = remember { mutableStateOf(true) }
     val receiveEarthquakeInfo = remember { mutableStateOf(true) }
-    val participateInDrill = remember { mutableStateOf(true) }
+    val participateInEarthquakeDrill = remember { mutableStateOf(true) } // Separate state for Earthquake
     val receiveTsunamiInfo = remember { mutableStateOf(false) }
+    val participateInTsunamiDrill = remember { mutableStateOf(false) } // Separate state for Tsunami
 
     Scaffold(
         topBar = {
@@ -111,8 +112,8 @@ fun SettingScreen(navController: NavHostController) {
                     ItemSetting(
                         text = "Participate",
                         imgResId = R.drawable.ic_run,
-                        isChecked = participateInDrill.value,
-                        onCheckedChange = { participateInDrill.value = it }
+                        isChecked = participateInTsunamiDrill.value,
+                        onCheckedChange = { participateInTsunamiDrill.value = it }
                     )
                 }
             }
@@ -137,8 +138,8 @@ fun SettingScreen(navController: NavHostController) {
                     ItemSetting(
                         text = "Participate",
                         imgResId = R.drawable.ic_run,
-                        isChecked = participateInDrill.value,
-                        onCheckedChange = { participateInDrill.value = it }
+                        isChecked = participateInEarthquakeDrill.value,
+                        onCheckedChange = { participateInEarthquakeDrill.value = it }
                     )
                 }
             }
