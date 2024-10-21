@@ -10,6 +10,7 @@ import androidx.navigation.compose.composable
 import com.seisme.dimas.ui.screens.loginScreen.LoginScreen
 import com.seisme.dimas.ui.screens.mitigationScreen.MitigationScreen
 import com.seisme.dimas.ui.screens.mapScreen.MapScreen
+import com.seisme.dimas.ui.screens.mitigationScreen.TsunamiMitigation
 import com.seisme.dimas.ui.screens.profileScreen.ProfileScreen
 import com.seisme.dimas.ui.screens.profileScreen.SettingScreen
 import com.seisme.dimas.ui.screens.registerScreen.RegisterScreen
@@ -59,6 +60,6 @@ fun NavGraph(navController: NavHostController) {
         }
         composable(Routes.Setting.route) { SettingScreen(navController) }
         composable(Routes.EarthquakeMitigation.route) { EarthquakeMitigation(navController) }
-//        composable(Routes.TsunamiMitigation.route) { TsunamiMitigation(navController) }
+        composable(Routes.TsunamiMitigation.route) { TsunamiMitigation(navController) }
     }
 }

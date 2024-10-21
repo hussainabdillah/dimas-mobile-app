@@ -187,8 +187,9 @@ fun FeatureButton(iconRes: Int, label: String, modifier: Modifier = Modifier) {
         Spacer(modifier = Modifier.height(8.dp))
         Text(
             text = label,
-            fontSize = 16.sp,
-            color = Color.Black
+            fontSize = 12.sp,
+            color = Color.Black,
+            modifier = Modifier.wrapContentWidth(Alignment.CenterHorizontally)
         )
     }
 }
