@@ -14,6 +14,7 @@ val Pink40 = Color(0xFF7D5260)
 // Header
 val LightBlue = Color(0xFF2F8DEA)
 val DarkBlue = Color(0xFF1B4F84)
+val LightOrange = Color(0xFFFF6720)
 
 // Primary Background
 val PrimaryBackground = Color(0xFFF7F7F7)

@@ -1,5 +1,6 @@
 package com.seisme.dimas.ui.navigation
 
+import EarthquakeMitigation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -57,5 +58,7 @@ fun NavGraph(navController: NavHostController) {
             )
         }
         composable(Routes.Setting.route) { SettingScreen(navController) }
+        composable(Routes.EarthquakeMitigation.route) { EarthquakeMitigation(navController) }
+//        composable(Routes.TsunamiMitigation.route) { TsunamiMitigation(navController) }
     }
 }

@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Dimas</string>
     <string name="timeline_header">Timeline Gempa Bumi</string>
+    <string name="earthquake_header">Gempa Bumi</string>
+    <string name="tsunami_header">Tsunami</string>
+    <string name="feature_evacuation">Persiapan Evakuasi</string>
+    <string name="feature_supply">Persiapan Persediaan</string>
     <string name="navigation_map">Peta</string>
     <string name="navigation_timeline">Timeline</string>
     <string name="navigation_mitigation">Mitigation</string>
