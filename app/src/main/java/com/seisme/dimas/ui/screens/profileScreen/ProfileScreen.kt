@@ -25,6 +25,10 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -40,12 +44,16 @@ import com.seisme.dimas.ui.components.item.ItemProfileScreen
 import com.seisme.dimas.ui.components.navigation.BottomNavigationBar
 import com.seisme.dimas.ui.components.navigation.Header
 import com.seisme.dimas.ui.navigation.Routes
+import com.seisme.dimas.ui.screens.logoutScreen.LogoutConfirmationDialog
 import com.seisme.dimas.ui.theme.LightBlue
 import com.seisme.dimas.ui.theme.PrimaryBackground
 import com.seisme.dimas.ui.theme.White
 
 @Composable
 fun ProfileScreen(navController: NavHostController) {
+
+    var showLogoutDialog by remember { mutableStateOf(false) }
+
     Scaffold(
         topBar = {
             Header(
@@ -157,7 +165,9 @@ fun ProfileScreen(navController: NavHostController) {
                     disabledContainerColor = Color.Gray
                 ),
                 border = BorderStroke(1.dp, LightBlue),
-                onClick = { /* Handle add member */ },
+                onClick = {
+                    showLogoutDialog = true
+                },
                 modifier = Modifier
                     .fillMaxWidth(),
                 shape = RoundedCornerShape(8.dp)
@@ -167,6 +177,18 @@ fun ProfileScreen(navController: NavHostController) {
                     fontSize = 16.sp,
                     modifier = Modifier
                         .padding(vertical = 4.dp)
+                )
+            }
+
+            if (showLogoutDialog) {
+                LogoutConfirmationDialog(
+                    onDismiss = { showLogoutDialog = false },
+                    onConfirmLogout = {
+                        showLogoutDialog = false
+                        navController.navigate(Routes.Login.route) {
+                            popUpTo(Routes.Map.route) { inclusive = true }
+                        }
+                    }
                 )
             }
         }
