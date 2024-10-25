@@ -40,8 +40,8 @@ fun LogoutConfirmationDialog(
         text = { Text(
             text = "Ini akan mengakhiri sesi dan anda harus melakukan login kembali",
             color = Color.Black,
-            fontWeight = FontWeight.Light,
-            fontSize = 12.sp,
+            fontWeight = FontWeight.Normal,
+            fontSize = 14.sp,
             modifier = Modifier.widthIn(max = 180.dp),
             overflow = TextOverflow.Visible
         ) },

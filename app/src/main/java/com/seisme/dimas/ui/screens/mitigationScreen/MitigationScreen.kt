@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -21,7 +20,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.seisme.dimas.R
+import com.seisme.dimas.ui.components.navigation.BottomNavigationBar
 import com.seisme.dimas.ui.components.navigation.Header
 import com.seisme.dimas.ui.navigation.Routes
 import com.seisme.dimas.ui.theme.LightBlue
@@ -29,18 +30,25 @@ import com.seisme.dimas.ui.theme.LightOrange
 import com.seisme.dimas.ui.theme.PrimaryBackground
 
 @Composable
-fun MitigationScreen(navController: NavController) {
+fun MitigationScreen(navController: NavHostController) {
     Scaffold(
         topBar = {
             Header(title = stringResource(R.string.earthquake_header))
         },
+        bottomBar = {
+            BottomNavigationBar(navigationController = navController)
+        }
     ) { padding ->
-        Surface(color = PrimaryBackground) {
+        Column (
+            modifier = Modifier
+                .background(PrimaryBackground)
+                .fillMaxSize()
+                .padding(padding)
+                .padding(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
             LazyColumn(
-                contentPadding = padding,
-                verticalArrangement = Arrangement.spacedBy(10.dp),
-                modifier = Modifier
-                    .padding(top = 20.dp)
+                verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
                 item {
                     RecommendationsSection(navController)
@@ -58,7 +66,7 @@ fun RecommendationsSection(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(start = 30.dp, end = 30.dp),
+            .padding(horizontal = 30.dp),
         verticalArrangement = Arrangement.spacedBy(5.dp)
     ) {
         Text(
@@ -151,19 +159,19 @@ fun AdditionalFeaturesSection() {
             fontWeight = FontWeight.Bold
         )
         Row(
-            horizontalArrangement = Arrangement.spacedBy(10.dp), // Spacing between buttons
+            horizontalArrangement = Arrangement.spacedBy(10.dp),
             modifier = Modifier.fillMaxWidth()
         ) {
             FeatureButton(
-                iconRes = R.drawable.ic_evacuation, // Replace with your actual icon resource
+                iconRes = R.drawable.ic_evacuation,
                 label = stringResource(R.string.feature_evacuation),
-                modifier = Modifier.weight(1f) // Make this button take equal space
+                modifier = Modifier.weight(1f)
 
             )
             FeatureButton(
-                iconRes = R.drawable.ic_supply, // Replace with your actual icon resource
+                iconRes = R.drawable.ic_supply,
                 label = stringResource(R.string.feature_supply),
-                modifier = Modifier.weight(1f) // Make this button take equal space
+                modifier = Modifier.weight(1f)
             )
         }
     }
@@ -173,7 +181,7 @@ fun AdditionalFeaturesSection() {
 fun FeatureButton(iconRes: Int, label: String, modifier: Modifier = Modifier) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = modifier // Modifier passed from parent (Row)
+        modifier = modifier
             .clip(RoundedCornerShape(12.dp))
             .background(Color.White)
             .clickable { /* Handle Click Action */ }
@@ -182,7 +190,7 @@ fun FeatureButton(iconRes: Int, label: String, modifier: Modifier = Modifier) {
         Image(
             painter = painterResource(id = iconRes),
             contentDescription = label,
-            modifier = Modifier.size(53.dp) // Adjust icon size if needed
+            modifier = Modifier.size(53.dp)
         )
         Spacer(modifier = Modifier.height(8.dp))
         Text(

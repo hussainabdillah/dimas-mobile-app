@@ -1,15 +1,16 @@
+package com.seisme.dimas.ui.screens.mitigationScreen
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items // Tambahkan ini
+import androidx.compose.foundation.lazy.items
+//noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.material.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.seisme.dimas.R
 import com.seisme.dimas.ui.components.item.ItemMitigation
 import com.seisme.dimas.ui.components.navigation.BottomNavigationBar
@@ -22,7 +23,7 @@ data class MitigationItem(
 )
 
 @Composable
-fun EarthquakeMitigation(navController: NavHostController) {
+fun EarthquakeMitigationScreen(navController: NavHostController) {
     val mitigationItems = listOf(
         MitigationItem(
             imgResId = R.drawable.mitigation_item_1,
@@ -54,12 +55,7 @@ fun EarthquakeMitigation(navController: NavHostController) {
                 contentPadding = padding,
                 verticalArrangement = Arrangement.spacedBy(10.dp),
                 modifier = Modifier
-                    .padding(
-                        start = 20.dp,
-                        top = 20.dp,
-                        end = 20.dp,
-                        bottom = 20.dp
-                    )
+                    .padding(20.dp)
             ) {
                 items(mitigationItems) { item ->
                     ItemMitigation(
@@ -70,11 +66,4 @@ fun EarthquakeMitigation(navController: NavHostController) {
             }
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun EarthquakeMitigationPreview() {
-    val mockNavController = rememberNavController()
-    EarthquakeMitigation(navController = mockNavController)
 }
