@@ -31,9 +31,9 @@ fun SettingScreen(navController: NavHostController) {
     val isSilent = remember { mutableStateOf(false) }
     val isVibrationEnabled = remember { mutableStateOf(true) }
     val receiveEarthquakeInfo = remember { mutableStateOf(true) }
-    val participateInEarthquakeDrill = remember { mutableStateOf(true) } // Separate state for Earthquake
+    val participateInEarthquakeDrill = remember { mutableStateOf(true) }
     val receiveTsunamiInfo = remember { mutableStateOf(false) }
-    val participateInTsunamiDrill = remember { mutableStateOf(false) } // Separate state for Tsunami
+    val participateInTsunamiDrill = remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {

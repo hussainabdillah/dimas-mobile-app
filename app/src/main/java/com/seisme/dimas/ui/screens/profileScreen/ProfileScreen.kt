@@ -77,111 +77,120 @@ fun ProfileScreen(navController: NavHostController) {
                 .fillMaxSize()
                 .padding(padding)
                 .padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.SpaceBetween
         ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Box(
-                    modifier = Modifier
-                        .size(60.dp)
-                        .clip(CircleShape)
-                        .background(Color.Gray),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.ic_profile),
-                        contentDescription = null,
-                        modifier = Modifier.size(48.dp),
-                        tint = White
-                    )
-                }
-                Spacer(modifier = Modifier.width(16.dp))
-                Column(
-                    verticalArrangement = Arrangement.spacedBy(6.dp)
-                ) {
-                    Text(
-                        text = "Antonio Yono",
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 20.sp,
-                        color = Color.Black
-                    )
-
+            Box {
+                Column {
                     Row(
-                        horizontalArrangement = Arrangement.spacedBy(6.dp),
+                        modifier = Modifier
+                            .fillMaxWidth(),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Icon(
-                            Icons.Filled.MailOutline,
-                            contentDescription = "Navigate",
+                        Box(
                             modifier = Modifier
-                                .size(20.dp),
-                            tint = Color.Black
-                        )
-                        Text(
-                            text = "YonoTonioo@gmail.com",
-                            fontWeight = FontWeight.Light,
-                            color = Color.Black
-                        )
+                                .size(60.dp)
+                                .clip(CircleShape)
+                                .background(Color.Gray),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.ic_profile),
+                                contentDescription = null,
+                                modifier = Modifier.size(48.dp),
+                                tint = White
+                            )
+                        }
+                        Spacer(modifier = Modifier.width(16.dp))
+                        Column(
+                            verticalArrangement = Arrangement.spacedBy(6.dp)
+                        ) {
+                            Text(
+                                text = "Antonio Yono",
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 20.sp,
+                                color = Color.Black
+                            )
+
+                            Row(
+                                horizontalArrangement = Arrangement.spacedBy(6.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Icon(
+                                    Icons.Filled.MailOutline,
+                                    contentDescription = "Navigate",
+                                    modifier = Modifier
+                                        .size(20.dp),
+                                    tint = Color.Black
+                                )
+                                Text(
+                                    text = "YonoTonioo@gmail.com",
+                                    fontWeight = FontWeight.Light,
+                                    color = Color.Black
+                                )
+                            }
+                        }
+                    }
+                    Spacer(modifier = Modifier.height(24.dp))
+                    Column(
+                        verticalArrangement = Arrangement.spacedBy(16.dp)
+                    ) {
+                        ItemProfileScreen(label = "Mobile Number", value = "+6289 1245 8131")
+                        ItemProfileScreen(label = "Username", value = "AntonYono")
+                        ItemProfileScreen(label = "Gender", value = "Laki-laki")
                     }
                 }
             }
-            Spacer(modifier = Modifier.height(24.dp))
-            Column(
-                verticalArrangement = Arrangement.spacedBy(16.dp)
-            ) {
-                ItemProfileScreen(label = "Mobile Number", value = "+6289 1245 8131")
-                ItemProfileScreen(label = "Username", value = "AntonYono")
-                ItemProfileScreen(label = "Gender", value = "Laki-laki")
-            }
-            Spacer(modifier = Modifier.height(96.dp))
-            Button(
-                colors = ButtonColors(
-                    containerColor = LightBlue,
-                    contentColor = White,
-                    disabledContentColor = Color.Gray,
-                    disabledContainerColor = Color.Gray
-                ),
-                onClick = {
-                    navController.navigate(Routes.AddMember.route) {
-                        popUpTo(Routes.AddMember.route)
+
+            Box {
+                Column {
+                    Button(
+                        colors = ButtonColors(
+                            containerColor = LightBlue,
+                            contentColor = White,
+                            disabledContentColor = Color.Gray,
+                            disabledContainerColor = Color.Gray
+                        ),
+                        onClick = {
+                            navController.navigate(Routes.AddMember.route) {
+                                popUpTo(Routes.AddMember.route)
+                            }
+                        },
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        shape = RoundedCornerShape(8.dp)
+                    ) {
+                        Text(
+                            text = "Add Member",
+                            fontSize = 14.sp,
+                            modifier = Modifier
+                                .padding(vertical = 4.dp)
+                        )
                     }
-                },
-                modifier = Modifier
-                    .fillMaxWidth(),
-                shape = RoundedCornerShape(8.dp)
-            ) {
-                Text(
-                    text = "Add Member",
-                    fontSize = 16.sp,
-                    modifier = Modifier
-                        .padding(vertical = 4.dp)
-                )
-            }
-            Spacer(modifier = Modifier.height(16.dp))
-            OutlinedButton(
-                colors = ButtonColors(
-                    containerColor = Color.Transparent,
-                    contentColor = LightBlue,
-                    disabledContentColor = Color.Gray,
-                    disabledContainerColor = Color.Gray
-                ),
-                border = BorderStroke(1.dp, LightBlue),
-                onClick = {
-                    showLogoutDialog = true
-                },
-                modifier = Modifier
-                    .fillMaxWidth(),
-                shape = RoundedCornerShape(8.dp)
-            ) {
-                Text(
-                    text = "Log out",
-                    fontSize = 16.sp,
-                    modifier = Modifier
-                        .padding(vertical = 4.dp)
-                )
+                    Spacer(modifier = Modifier.height(16.dp))
+                    OutlinedButton(
+                        colors = ButtonColors(
+                            containerColor = Color.Transparent,
+                            contentColor = LightBlue,
+                            disabledContentColor = Color.Gray,
+                            disabledContainerColor = Color.Gray
+                        ),
+                        border = BorderStroke(1.dp, LightBlue),
+                        onClick = {
+                            showLogoutDialog = true
+                        },
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        shape = RoundedCornerShape(8.dp)
+                    ) {
+                        Text(
+                            text = "Log out",
+                            fontSize = 14.sp,
+                            modifier = Modifier
+                                .padding(vertical = 4.dp)
+                        )
+                    }
+                }
             }
 
             if (showLogoutDialog) {

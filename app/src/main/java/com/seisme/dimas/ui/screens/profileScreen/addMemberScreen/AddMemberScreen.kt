@@ -168,13 +168,13 @@ fun MemberItem(
                         tint = Color.Gray,
                         modifier = Modifier.size(32.dp)
                     )
-                    Text(
-                        text = name,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 18.sp,
-                        color = Color.Black
-                    )
                 }
+                Text(
+                    text = name,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 18.sp,
+                    color = Color.Black
+                )
             }
         }
         IconButton(
