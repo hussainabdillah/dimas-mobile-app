@@ -21,11 +21,11 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun InformationDetail(
-    tanggal: String,
-    wilayah: String,
-    magnitudo: String,
+    date: String,
+    location: String,
+    magnitude: String,
     coordinates: String,
-    kedalaman: String
+    depth: String
 ) {
     Column(
         modifier = Modifier
@@ -41,11 +41,11 @@ fun InformationDetail(
                 .fillMaxWidth()
         ) {
             Column(modifier = Modifier.padding(16.dp)) {
-                DetailRow(label = "Tanggal", value = tanggal)
-                DetailRow(label = "Pusat Gempa", value = wilayah)
-                DetailRow(label = "Magnitudo", value = magnitudo)
-                DetailRow(label = "Koordinat", value = coordinates)
-                DetailRow(label = "Kedalaman", value = kedalaman)
+                DetailRow(label = "Date", value = date)
+                DetailRow(label = "Epicenter", value = location)
+                DetailRow(label = "Magnitude", value = magnitude)
+                DetailRow(label = "Coordinates", value = coordinates)
+                DetailRow(label = "Depth", value = depth)
             }
         }
     }

@@ -22,4 +22,5 @@
     <string name="tsunami">Tsunami</string>
     <string name="tsunami_info">Tsunami Info</string>
     <string name="early_warning_tsunami">Tsunami Early Warning Drill</string>
+    <string name="no_earthquake_data">Tidak ada data gempa.</string>
 </resources>

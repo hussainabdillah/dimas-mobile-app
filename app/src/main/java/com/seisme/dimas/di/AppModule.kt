@@ -3,9 +3,8 @@ package com.seisme.dimas.di
 import android.content.Context
 import com.google.firebase.auth.FirebaseAuth
 import com.seisme.dimas.data.remote.api.ApiService
-import com.seisme.dimas.data.repository.GempaRepository
-import com.seisme.dimas.data.repository.GempaRepositoryImpl
-import dagger.Binds
+import com.seisme.dimas.data.repository.EarthquakeRepository
+import com.seisme.dimas.data.repository.EarthquakeRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -37,16 +36,16 @@ object AppModule {
     @Singleton
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://data.bmkg.go.id/") // Ganti dengan base URL API BMKG yang sesuai
+            .baseUrl("https://data.bmkg.go.id/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
 
-    // Provide
+    // Provide the EarthquakeRepository
     @Provides
     @Singleton
-    fun provideGempaRepository(apiService: ApiService): GempaRepository {
-        return GempaRepositoryImpl(apiService)
+    fun provideEarthquakeRepository(apiService: ApiService): EarthquakeRepository {
+        return EarthquakeRepositoryImpl(apiService)
     }
 
     @Provides

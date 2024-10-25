@@ -17,11 +17,11 @@ import com.seisme.dimas.ui.navigation.Routes
 
 @Composable
 fun TimelineDetailScreen(
-    tanggal: String,
-    wilayah: String,
-    magnitudo: String,
+    date: String,
+    location: String,
+    magnitude: String,
     coordinates: String,
-    kedalaman: String,
+    depth: String,
     navController: NavHostController
 ) {
     Scaffold(
@@ -44,11 +44,11 @@ fun TimelineDetailScreen(
                 .fillMaxSize()
         ) {
             InformationDetail(
-                tanggal = tanggal,
-                wilayah = wilayah,
-                magnitudo = magnitudo,
+                date = date,
+                location = location,
+                magnitude = magnitude,
                 coordinates = coordinates,
-                kedalaman = kedalaman
+                depth = depth
             )
         }
     }

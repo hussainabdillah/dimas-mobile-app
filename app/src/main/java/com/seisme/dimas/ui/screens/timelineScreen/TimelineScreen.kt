@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.absoluteOffset
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -18,9 +19,10 @@ import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Scaffold
+import androidx.compose.material3.Scaffold
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -45,11 +47,16 @@ import com.seisme.dimas.ui.theme.PrimaryBackground
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun TimelineScreen(navController: NavHostController, viewModel: TimelineViewModel = hiltViewModel()) {
-    val gempaData by viewModel.gempaData.collectAsState()
+fun TimelineScreen(
+    navController: NavHostController,
+    viewModel: TimelineViewModel = hiltViewModel()
+) {
+    val earthquakeData by viewModel.earthquakeData.collectAsState()
+    val isLoading by viewModel.isLoading.collectAsState()
+    val errorMessage by viewModel.errorMessage.collectAsState()
 
     LaunchedEffect(Unit) {
-        viewModel.getGempaData()
+        viewModel.fetchEarthquakeData()
     }
 
     Scaffold(
@@ -59,31 +66,47 @@ fun TimelineScreen(navController: NavHostController, viewModel: TimelineViewMode
         bottomBar = {
             BottomNavigationBar(navigationController = navController)
         }
-    ) { _ ->
+    ) { padding ->
         Surface(
-            color = PrimaryBackground,
+            color = PrimaryBackground
         ) {
-            Box(
-                modifier = Modifier
-                    .width(1.dp)
-                    .fillMaxHeight()
-                    .absoluteOffset(x = 150.dp, y = 0.dp)
-                    .background(Color.LightGray)
-            )
-            LazyColumn(
-                modifier = Modifier
-                    .padding(bottom = 80.dp)
-            ) {
-                items(gempaData) { gempa ->
-                    EarthquakeItem(
-                        time = gempa.jam,
-                        date = gempa.tanggal,
-                        location = gempa.wilayah,
-                        magnitude = gempa.magnitude,
-                        onClick = {
-                            navController.navigate("timelineDetail/${gempa.tanggal}/${gempa.wilayah}/${gempa.magnitude}/${gempa.coordinates}/${gempa.kedalaman}")
-                        }
+            when {
+                isLoading -> {
+                    Column(
+                        modifier = Modifier.fillMaxSize(),
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        CircularProgressIndicator()
+                    }
+                }
+                errorMessage != null -> {
+                    Text(text = errorMessage!!, color = Color.Red)
+                }
+                earthquakeData.isEmpty() -> {
+                    Text(text = stringResource(R.string.no_earthquake_data), color = Color.Black)
+                }
+                else -> {
+                    Box(
+                        modifier = Modifier
+                            .width(1.dp)
+                            .fillMaxHeight()
+                            .absoluteOffset(x = 150.dp, y = 0.dp)
+                            .background(Color.LightGray)
                     )
+                    LazyColumn(modifier = Modifier.padding(bottom = 80.dp)) {
+                        items(earthquakeData) { earthquake ->
+                            EarthquakeItem(
+                                time = earthquake.time,
+                                date = earthquake.date,
+                                location = earthquake.location,
+                                magnitude = earthquake.magnitude,
+                                onClick = {
+                                    navController.navigate("timelineDetail/${earthquake.date}/${earthquake.location}/${earthquake.magnitude}/${earthquake.coordinates}/${earthquake.depth}")
+                                }
+                            )
+                        }
+                    }
                 }
             }
         }

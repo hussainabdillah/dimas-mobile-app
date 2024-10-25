@@ -1,6 +1,5 @@
 package com.seisme.dimas.ui.navigation
 
-import EarthquakeMitigation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -10,7 +9,8 @@ import androidx.navigation.compose.composable
 import com.seisme.dimas.ui.screens.loginScreen.LoginScreen
 import com.seisme.dimas.ui.screens.mitigationScreen.MitigationScreen
 import com.seisme.dimas.ui.screens.mapScreen.MapScreen
-import com.seisme.dimas.ui.screens.mitigationScreen.TsunamiMitigation
+import com.seisme.dimas.ui.screens.mitigationScreen.EarthquakeMitigationScreen
+import com.seisme.dimas.ui.screens.mitigationScreen.TsunamiMitigationScreen
 import com.seisme.dimas.ui.screens.profileScreen.ProfileScreen
 import com.seisme.dimas.ui.screens.profileScreen.SettingScreen
 import com.seisme.dimas.ui.screens.profileScreen.addMemberScreen.AddMemberScreen
@@ -51,11 +51,11 @@ fun NavGraph(navController: NavHostController) {
         composable(Routes.Timeline.route) { TimelineScreen(navController) }
         composable(Routes.TimelineDetail.route) { backStackEntry ->
             TimelineDetailScreen(
-                tanggal = backStackEntry.arguments?.getString("tanggal") ?: "",
-                wilayah = backStackEntry.arguments?.getString("wilayah") ?: "",
-                magnitudo = backStackEntry.arguments?.getString("magnitudo") ?: "",
+                date = backStackEntry.arguments?.getString("date") ?: "",
+                location = backStackEntry.arguments?.getString("location") ?: "",
+                magnitude = backStackEntry.arguments?.getString("magnitude") ?: "",
                 coordinates = backStackEntry.arguments?.getString("coordinates") ?: "",
-                kedalaman = backStackEntry.arguments?.getString("kedalaman") ?: "",
+                depth = backStackEntry.arguments?.getString("depth") ?: "",
                 navController = navController
             )
         }
@@ -65,7 +65,7 @@ fun NavGraph(navController: NavHostController) {
         composable(Routes.Setting.route) { SettingScreen(navController) }
 
         composable(Routes.Mitigation.route) { MitigationScreen(navController) }
-        composable(Routes.EarthquakeMitigation.route) { EarthquakeMitigation(navController) }
-        composable(Routes.TsunamiMitigation.route) { TsunamiMitigation(navController) }
+        composable(Routes.EarthquakeMitigation.route) { EarthquakeMitigationScreen(navController) }
+        composable(Routes.TsunamiMitigation.route) { TsunamiMitigationScreen(navController) }
     }
 }

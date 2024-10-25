@@ -7,7 +7,7 @@ sealed class Routes(val route: String) {
     object Map : Routes("map")
 
     object Timeline : Routes("timeline")
-    object TimelineDetail : Routes("timelineDetail/{tanggal}/{pusatGempa}/{magnitudo}/{intensitas}/{kedalaman}")
+    object TimelineDetail : Routes("timelineDetail/{date}/{location}/{magnitude}/{coordinates}/{depth}")
 
     object Profile : Routes("profile")
     object AddMember : Routes("addMember")

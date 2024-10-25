@@ -2,52 +2,52 @@ package com.seisme.dimas.data.remote.response
 
 import com.google.gson.annotations.SerializedName
 
-data class Infogempa(
+data class EarthquakeInfo(
 	@field:SerializedName("gempa")
-	val gempa: List<GempaItem>
+	val earthquakes: List<EarthquakeItem>
 )
 
-data class GempaResponse(
+data class EarthquakeResponse(
 	@field:SerializedName("Infogempa")
-	val infogempa: Infogempa
+	val earthquakeInfo: EarthquakeInfo
 )
 
-data class GempaItem(
+data class EarthquakeItem(
 	@field:SerializedName("Dirasakan")
-	val dirasakan: String,
+	val felt: String,
 
 	@field:SerializedName("Wilayah")
-	val wilayah: String,
+	val location: String,
 
 	@field:SerializedName("Kedalaman")
-	val kedalaman: String,
+	val depth: String,
 
 	@field:SerializedName("Jam")
-	val jam: String,
+	val time: String,
 
 	@field:SerializedName("Coordinates")
 	val coordinates: String,
 
 	@field:SerializedName("Tanggal")
-	val tanggal: String,
+	val date: String,
 
 	@field:SerializedName("Bujur")
-	val bujur: String,
+	val longitude: String,
 
 	@field:SerializedName("Magnitude")
 	val magnitude: String,
 
 	@field:SerializedName("Lintang")
-	val lintang: String,
+	val latitude: String,
 
 	@field:SerializedName("DateTime")
 	val dateTime: String
 ) {
 	val formattedTime: String
-		get() = formatTime(jam)
+		get() = formatTime(time)
 
 	val formattedLocation: String
-		get() = formatLocation(wilayah)
+		get() = formatLocation(location)
 }
 
 fun formatTime(time: String): String {
