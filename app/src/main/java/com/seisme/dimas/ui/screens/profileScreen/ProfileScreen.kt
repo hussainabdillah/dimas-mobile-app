@@ -44,7 +44,7 @@ import com.seisme.dimas.ui.components.item.ItemProfileScreen
 import com.seisme.dimas.ui.components.navigation.BottomNavigationBar
 import com.seisme.dimas.ui.components.navigation.Header
 import com.seisme.dimas.ui.navigation.Routes
-import com.seisme.dimas.ui.screens.logoutScreen.LogoutConfirmationDialog
+import com.seisme.dimas.ui.screens.profileScreen.logoutScreen.LogoutConfirmationDialog
 import com.seisme.dimas.ui.theme.LightBlue
 import com.seisme.dimas.ui.theme.PrimaryBackground
 import com.seisme.dimas.ui.theme.White
@@ -144,7 +144,11 @@ fun ProfileScreen(navController: NavHostController) {
                     disabledContentColor = Color.Gray,
                     disabledContainerColor = Color.Gray
                 ),
-                onClick = { /* Handle add member */ },
+                onClick = {
+                    navController.navigate(Routes.AddMember.route) {
+                        popUpTo(Routes.AddMember.route)
+                    }
+                },
                 modifier = Modifier
                     .fillMaxWidth(),
                 shape = RoundedCornerShape(8.dp)

@@ -1,4 +1,4 @@
-package com.seisme.dimas.ui.screens.logoutScreen
+package com.seisme.dimas.ui.screens.profileScreen.logoutScreen
 
 //noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.foundation.border

@@ -13,6 +13,7 @@ import com.seisme.dimas.ui.screens.mapScreen.MapScreen
 import com.seisme.dimas.ui.screens.mitigationScreen.TsunamiMitigation
 import com.seisme.dimas.ui.screens.profileScreen.ProfileScreen
 import com.seisme.dimas.ui.screens.profileScreen.SettingScreen
+import com.seisme.dimas.ui.screens.profileScreen.addMemberScreen.AddMemberScreen
 import com.seisme.dimas.ui.screens.registerScreen.RegisterScreen
 import com.seisme.dimas.ui.screens.timelineScreen.TimelineDetailScreen
 import com.seisme.dimas.ui.screens.timelineScreen.TimelineScreen
@@ -23,6 +24,7 @@ fun NavGraph(navController: NavHostController) {
 
     NavHost(navController = navController, startDestination = if (isLoggedIn.value) Routes.Map.route else Routes.Login.route) {
 
+        // Login Screen
         composable(Routes.Login.route) {
             LoginScreen(onNavigateToHome = {
                 isLoggedIn.value = true
@@ -45,9 +47,8 @@ fun NavGraph(navController: NavHostController) {
 
         // Home Screen
         composable(Routes.Map.route) { MapScreen(navController) }
+
         composable(Routes.Timeline.route) { TimelineScreen(navController) }
-        composable(Routes.Mitigation.route) { MitigationScreen(navController) }
-        composable(Routes.Profile.route) { ProfileScreen(navController) }
         composable(Routes.TimelineDetail.route) { backStackEntry ->
             TimelineDetailScreen(
                 tanggal = backStackEntry.arguments?.getString("tanggal") ?: "",
@@ -58,7 +59,12 @@ fun NavGraph(navController: NavHostController) {
                 navController = navController
             )
         }
+
+        composable(Routes.Profile.route) { ProfileScreen(navController) }
+        composable(Routes.AddMember.route) { AddMemberScreen(navController) }
         composable(Routes.Setting.route) { SettingScreen(navController) }
+
+        composable(Routes.Mitigation.route) { MitigationScreen(navController) }
         composable(Routes.EarthquakeMitigation.route) { EarthquakeMitigation(navController) }
         composable(Routes.TsunamiMitigation.route) { TsunamiMitigation(navController) }
     }
