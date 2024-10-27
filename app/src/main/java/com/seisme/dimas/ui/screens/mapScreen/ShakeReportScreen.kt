@@ -28,6 +28,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.seisme.dimas.R
@@ -51,6 +52,31 @@ fun ShakeReportScreen(
     if (isSuccess) {
         // Show success message or navigate away
         Text(text = "Report submitted successfully!")
+    }
+
+    val context = LocalContext.current
+    val permissionState = remember { mutableStateOf(false) }
+
+    // Function to request permission
+    fun requestLocationPermission() {
+        ActivityCompat.requestPermissions(
+            context as Activity,
+            arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+            REQUEST_LOCATION_PERMISSION
+        )
+    }
+
+    // Check and Request Permission
+    LaunchedEffect(Unit) {
+        if (ContextCompat.checkSelfPermission(
+                context,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            permissionState.value = true
+        } else {
+            requestLocationPermission()
+        }
     }
 
     Column(
@@ -143,7 +169,7 @@ fun ShakeReportScreen(
 
         // Submit button
         Button(
-            onClick = { viewModel.submitReport(user) },
+            onClick = { viewModel.getLocationAndSubmitReport(user) },
             enabled = !isLoading,
             modifier = Modifier
                 .fillMaxWidth()
@@ -204,6 +230,7 @@ fun ShakeIntensityOption(
         )
     }
 }
+const val REQUEST_LOCATION_PERMISSION = 1001
 
 @Preview(showBackground = true)
 @Composable

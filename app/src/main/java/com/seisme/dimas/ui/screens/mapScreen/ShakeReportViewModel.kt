@@ -1,14 +1,21 @@
 package com.seisme.dimas.ui.screens.mapScreen
 
+import android.Manifest
+import android.annotation.SuppressLint
+import android.content.Context
+import android.content.pm.PackageManager
 import android.location.Location
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableDoubleStateOf
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.core.app.ActivityCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.firebase.firestore.GeoPoint
 import com.seisme.dimas.data.model.ShakeReport
 import com.seisme.dimas.data.repository.ShakeReportRepository
@@ -17,8 +24,12 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ShakeReportViewModel @Inject constructor(
-    private val repository: ShakeReportRepository
+    private val repository: ShakeReportRepository,
+    private val context: Context // Inject Context here
 ) : ViewModel() {
+
+    private val fusedLocationClient: FusedLocationProviderClient =
+        LocationServices.getFusedLocationProviderClient(context)
 
     var intensity by mutableIntStateOf(1)
     var comment by mutableStateOf("")
@@ -29,7 +40,34 @@ class ShakeReportViewModel @Inject constructor(
     var isSuccess by mutableStateOf(false)
     var errorMessage by mutableStateOf("")
 
-    fun submitReport(user: String) {
+    @SuppressLint("MissingPermission") // Suppress permission check warning if permissions are handled
+    fun getLocationAndSubmitReport(user: String) {
+        if (ActivityCompat.checkSelfPermission(
+                context, Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                context, Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            errorMessage = "Location permissions not granted"
+            return
+        }
+
+        fusedLocationClient.lastLocation.addOnSuccessListener { location ->
+            if (location != null) {
+                latitude = location.latitude
+                longitude = location.longitude
+                submitReport(user)
+            } else {
+                isLoading = false
+                errorMessage = "Failed to retrieve location"
+            }
+        }.addOnFailureListener {
+            isLoading = false
+            errorMessage = it.localizedMessage ?: "Failed to retrieve location"
+        }
+    }
+
+    private fun submitReport(user: String) {
         isLoading = true
         val report = ShakeReport(
             intensity = intensity,
@@ -49,6 +87,4 @@ class ShakeReportViewModel @Inject constructor(
             }
         )
     }
-
-
 }
