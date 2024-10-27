@@ -1,3 +1,11 @@
+package com.seisme.dimas.ui.screens.mapScreen
+
+import android.Manifest
+import android.app.Activity
+import android.content.pm.PackageManager
+import android.widget.Toast
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -12,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -19,22 +28,36 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.seisme.dimas.R
+import com.seisme.dimas.ui.screens.mapScreen.ShakeReportViewModel
 import com.seisme.dimas.ui.theme.Orange
 
+
 @Composable
-fun ShakeReportScreen(onCloseClick: () -> Unit = {}) {
-    var selectedIntensity by remember { mutableStateOf("Medium quake") }
-    var comment by remember { mutableStateOf("") }
-    var floor by remember { mutableStateOf("") }
+fun ShakeReportScreen(
+    viewModel: ShakeReportViewModel = hiltViewModel(),
+    onCloseClick: () -> Unit = {},
+    user: String = "defaultUser"
+) {
+    val intensity = viewModel.intensity
+    val comment = viewModel.comment
+    val floor = viewModel.floor
+    val isLoading = viewModel.isLoading
+    val isSuccess = viewModel.isSuccess
+    val errorMessage = viewModel.errorMessage
+
+    if (isSuccess) {
+        // Show success message or navigate away
+        Text(text = "Report submitted successfully!")
+    }
 
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp)
     ) {
-
-        // Title Row with "Shaking Report" and Close button
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.fillMaxWidth()
@@ -58,40 +81,40 @@ fun ShakeReportScreen(onCloseClick: () -> Unit = {}) {
             }
         }
 
-        // Earthquake intensity options using drawable resources
+        // Earthquake intensity options
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
             ShakeIntensityOption(
                 label = "Felt nothing",
-                imgResId = R.drawable.ic_felt_nothing, // Custom drawable
-                isSelected = selectedIntensity == "Felt nothing",
-                onClick = { selectedIntensity = "Felt nothing" }
+                imgResId = R.drawable.ic_felt_nothing,
+                isSelected = intensity == 1,
+                onClick = { viewModel.intensity = 1 }
             )
             ShakeIntensityOption(
                 label = "Slight tremor",
                 imgResId = R.drawable.ic_slight_tremor,
-                isSelected = selectedIntensity == "Slight tremor",
-                onClick = { selectedIntensity = "Slight tremor" }
+                isSelected = intensity == 2,
+                onClick = { viewModel.intensity = 2 }
             )
             ShakeIntensityOption(
                 label = "Medium quake",
                 imgResId = R.drawable.ic_medium_quake,
-                isSelected = selectedIntensity == "Medium quake",
-                onClick = { selectedIntensity = "Medium quake" }
+                isSelected = intensity == 3,
+                onClick = { viewModel.intensity = 3 }
             )
             ShakeIntensityOption(
                 label = "Strong quake",
                 imgResId = R.drawable.ic_strong_quake,
-                isSelected = selectedIntensity == "Strong quake",
-                onClick = { selectedIntensity = "Strong quake" }
+                isSelected = intensity == 4,
+                onClick = { viewModel.intensity = 4 }
             )
             ShakeIntensityOption(
                 label = "Very scary",
                 imgResId = R.drawable.ic_very_scary,
-                isSelected = selectedIntensity == "Very scary",
-                onClick = { selectedIntensity = "Very scary" }
+                isSelected = intensity == 5,
+                onClick = { viewModel.intensity = 5 }
             )
         }
 
@@ -99,8 +122,8 @@ fun ShakeReportScreen(onCloseClick: () -> Unit = {}) {
 
         OutlinedTextField(
             value = comment,
-            onValueChange = { comment = it },
-            label =  { Text("Input comment (optional)") },
+            onValueChange = { viewModel.comment = it },
+            label = { Text("Input comment (optional)") },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(vertical = 8.dp)
@@ -111,7 +134,7 @@ fun ShakeReportScreen(onCloseClick: () -> Unit = {}) {
         // Floor input field
         OutlinedTextField(
             value = floor,
-            onValueChange = { floor = it },
+            onValueChange = { viewModel.floor = it },
             label = { Text("Floor: (optional)") },
             modifier = Modifier.fillMaxWidth()
         )
@@ -120,7 +143,8 @@ fun ShakeReportScreen(onCloseClick: () -> Unit = {}) {
 
         // Submit button
         Button(
-            onClick = { },
+            onClick = { viewModel.submitReport(user) },
+            enabled = !isLoading,
             modifier = Modifier
                 .fillMaxWidth()
                 .height(50.dp)
@@ -131,7 +155,11 @@ fun ShakeReportScreen(onCloseClick: () -> Unit = {}) {
                 contentColor = Orange
             )
         ) {
-            Text(text = "Posting Report", fontSize = 20.sp)
+            Text(text = if (isLoading) "Submitting..." else "Posting Report", fontSize = 20.sp)
+        }
+
+        if (errorMessage.isNotEmpty()) {
+            Text(text = errorMessage, color = Color.Red)
         }
     }
 }

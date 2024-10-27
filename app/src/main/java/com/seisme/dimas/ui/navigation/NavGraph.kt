@@ -17,6 +17,7 @@ import com.seisme.dimas.ui.screens.profileScreen.addMemberScreen.AddMemberScreen
 import com.seisme.dimas.ui.screens.registerScreen.RegisterScreen
 import com.seisme.dimas.ui.screens.timelineScreen.TimelineDetailScreen
 import com.seisme.dimas.ui.screens.timelineScreen.TimelineScreen
+import com.seisme.dimas.ui.screens.mapScreen.ShakeReportScreen
 
 @Composable
 fun NavGraph(navController: NavHostController) {
@@ -63,6 +64,9 @@ fun NavGraph(navController: NavHostController) {
         composable(Routes.Profile.route) { ProfileScreen(navController) }
         composable(Routes.AddMember.route) { AddMemberScreen(navController) }
         composable(Routes.Setting.route) { SettingScreen(navController) }
+        composable(Routes.EarthquakeMitigation.route) { EarthquakeMitigationScreen(navController) }
+        composable(Routes.TsunamiMitigation.route) { TsunamiMitigationScreen(navController) }
+        composable(Routes.ShakingReportScreen.route) { ShakeReportScreen()}
 
         composable(Routes.Mitigation.route) { MitigationScreen(navController) }
         composable(Routes.EarthquakeMitigation.route) { EarthquakeMitigationScreen(navController) }

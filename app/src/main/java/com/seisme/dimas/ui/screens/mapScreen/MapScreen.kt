@@ -66,7 +66,7 @@ fun MapScreen(navController: NavHostController) {
                     )
                 }
                 IconButton(
-                    onClick = { },
+                    onClick = { navController.navigate("shakingreport") },
                     modifier = Modifier
                         .size(54.dp)
                         .shadow(3.dp, RoundedCornerShape(100), clip = true)

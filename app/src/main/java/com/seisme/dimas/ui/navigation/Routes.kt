@@ -12,8 +12,9 @@ sealed class Routes(val route: String) {
     object Profile : Routes("profile")
     object AddMember : Routes("addMember")
     object Setting : Routes("setting")
+    object EarthquakeMitigation : Routes("earthquakemitigation")
+    object TsunamiMitigation : Routes("tsunamimitigation")
+    object ShakingReportScreen : Routes("shakingreport")
 
     object Mitigation : Routes("mitigation")
-    object EarthquakeMitigation : Routes("earthquakeMitigation")
-    object TsunamiMitigation : Routes("tsunamiMitigation")
 }
