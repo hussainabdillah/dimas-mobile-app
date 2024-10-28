@@ -3,7 +3,9 @@ package com.seisme.dimas.ui.components.item
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -19,27 +21,28 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.google.accompanist.flowlayout.FlowRow
+import androidx.compose.foundation.layout.FlowRow
 import com.seisme.dimas.R
 import com.seisme.dimas.ui.theme.LightBlue
 import com.seisme.dimas.ui.theme.White
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun ItemMitigationDropdown() {
     FlowRow(
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp),
-        mainAxisSpacing = 8.dp,
-        crossAxisSpacing = 8.dp,
+        verticalArrangement = Arrangement.spacedBy(8.dp, Alignment.Top),
+        horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.Start),
     ) {
-        FlexItem(text = "Rumah", imgResId = R.drawable.mitigation_item_1)
-        FlexItem(text = "Kamar Mandi", imgResId = R.drawable.mitigation_item_2)
-        FlexItem(text = "Gedung Tinggi", imgResId = R.drawable.mitigation_item_3)
-        FlexItem(text = "Sekolah", imgResId = R.drawable.mitigation_item_1)
-        FlexItem(text = "Lansia", isSelected = true, imgResId = R.drawable.mitigation_item_2)
-        FlexItem(text = "Anak-anak", imgResId = R.drawable.mitigation_item_2)
-        FlexItem(text = "Elevator", imgResId = R.drawable.mitigation_item_3)
+        FlexItem(text = "Rumah", imgResId = R.drawable.img_mitigation_1)
+        FlexItem(text = "Kamar Mandi", imgResId = R.drawable.img_mitigation_2)
+        FlexItem(text = "Gedung Tinggi", imgResId = R.drawable.img_mitigation_3)
+        FlexItem(text = "Sekolah", imgResId = R.drawable.img_mitigation_1)
+        FlexItem(text = "Lansia", isSelected = true, imgResId = R.drawable.img_mitigation_2)
+        FlexItem(text = "Anak-anak", imgResId = R.drawable.img_mitigation_2)
+        FlexItem(text = "Elevator", imgResId = R.drawable.img_mitigation_3)
     }
 }
 

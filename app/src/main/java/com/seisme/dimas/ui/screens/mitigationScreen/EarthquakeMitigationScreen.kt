@@ -1,67 +1,86 @@
 package com.seisme.dimas.ui.screens.mitigationScreen
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 //noinspection UsingMaterialAndMaterial3Libraries
-import androidx.compose.material.Scaffold
+import android.annotation.SuppressLint
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.shrinkVertically
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Scaffold
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.seisme.dimas.R
+import com.seisme.dimas.data.repository.MitigationItem
 import com.seisme.dimas.ui.components.item.ItemMitigation
+import com.seisme.dimas.ui.components.item.ItemMitigationDropdown
 import com.seisme.dimas.ui.components.navigation.BottomNavigationBar
 import com.seisme.dimas.ui.components.navigation.Header
+import com.seisme.dimas.ui.navigation.Routes
 import com.seisme.dimas.ui.theme.PrimaryBackground
 
-data class MitigationItem(
-    val text: String,
-    val imgResId: Int
-)
-
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun EarthquakeMitigationScreen(navController: NavHostController) {
-    val mitigationItems = listOf(
-        MitigationItem(
-            imgResId = R.drawable.mitigation_item_1,
-            text = "Di Dalam Ruangan"
-        ),
-        MitigationItem(
-            imgResId = R.drawable.mitigation_item_2,
-            text = "Di Luar Ruangan"
-        ),
-        MitigationItem(
-            imgResId = R.drawable.mitigation_item_3,
-            text = "Saat Berkendara"
-        )
-    )
+    val dropdownVisibility = remember { mutableIntStateOf(-1) }
 
     Scaffold(
         topBar = {
             Header(
                 title = "Gempa Bumi",
-                onNavigationClick = {},
+                navigationIcon = Icons.AutoMirrored.Filled.KeyboardArrowLeft,
+                onNavigationClick = {
+                    navController.navigate(Routes.Mitigation.route) {
+                        popUpTo(Routes.Mitigation.route)
+                    }
+                },
+                isIconAtStart = true
             )
         },
         bottomBar = {
             BottomNavigationBar(navigationController = navController)
         }
-    ) { padding ->
+    ) { _ ->
         Surface(color = PrimaryBackground) {
-            LazyColumn(
-                contentPadding = padding,
-                verticalArrangement = Arrangement.spacedBy(10.dp),
+            Column(
                 modifier = Modifier
-                    .padding(20.dp)
+                    .fillMaxWidth()
+                    .verticalScroll(rememberScrollState())
+                    .padding(bottom = 80.dp)
             ) {
-                items(mitigationItems) { item ->
+                val items = listOf(
+                    MitigationItem("Di Dalam Ruangan", R.drawable.img_mitigation_1),
+                    MitigationItem("Di Luar Ruangan", R.drawable.img_mitigation_2),
+                    MitigationItem("Saat Berkendara", R.drawable.img_mitigation_3)
+                )
+
+                items.forEachIndexed { index, item ->
                     ItemMitigation(
+                        imgResId = item.imgResId,
                         text = item.text,
-                        imgResId = item.imgResId
+                        onClick = {
+                            dropdownVisibility.intValue = if (dropdownVisibility.intValue == index) -1 else index
+                        },
+                        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
                     )
+
+                    AnimatedVisibility(
+                        visible = dropdownVisibility.intValue == index,
+                        enter = expandVertically(),
+                        exit = shrinkVertically()
+                    ) {
+                        ItemMitigationDropdown()
+                    }
                 }
             }
         }

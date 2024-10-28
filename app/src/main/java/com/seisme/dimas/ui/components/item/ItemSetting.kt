@@ -76,7 +76,7 @@ fun SectionBox(content: @Composable () -> Unit) {
             .fillMaxWidth()
             .clip(RoundedCornerShape(12.dp))
             .background(White)
-            .padding(vertical = 16.dp, horizontal = 16.dp)
+            .padding(16.dp)
     ) {
         content()
     }

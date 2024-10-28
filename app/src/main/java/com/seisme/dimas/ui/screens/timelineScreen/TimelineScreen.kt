@@ -82,12 +82,15 @@ fun TimelineScreen(
                         CircularProgressIndicator()
                     }
                 }
+
                 errorMessage != null -> {
                     Text(text = errorMessage!!, color = Color.Red)
                 }
+
                 earthquakeData.isEmpty() -> {
                     Text(text = stringResource(R.string.no_earthquake_data), color = Color.Black)
                 }
+
                 else -> {
                     Box(
                         modifier = Modifier
@@ -95,11 +98,13 @@ fun TimelineScreen(
                             .fillMaxHeight()
                             .absoluteOffset(x = 150.dp, y = 0.dp)
                             .background(Color.LightGray)
+                    )
+                    LazyColumn(
+                        modifier = Modifier.padding(
+                            bottom = 80.dp,
+                            top = 55.dp
                         )
-                    LazyColumn(modifier = Modifier.padding(
-                        bottom = 80.dp,
-                        top = 55.dp
-                    )) {
+                    ) {
                         items(earthquakeData) { earthquake ->
                             EarthquakeItem(
                                 time = earthquake.time,
@@ -136,7 +141,6 @@ fun EarthquakeItem(
                 bottom = 10.dp,
             )
             .fillMaxWidth()
-            .clickable(onClick = onClick)
     ) {
         Column(
             horizontalAlignment = Alignment.Start,
@@ -166,6 +170,7 @@ fun EarthquakeItem(
             color = Color.White,
             modifier = Modifier
                 .fillMaxWidth()
+                .clickable(onClick = onClick)
         ) {
             Row(
                 modifier = Modifier
