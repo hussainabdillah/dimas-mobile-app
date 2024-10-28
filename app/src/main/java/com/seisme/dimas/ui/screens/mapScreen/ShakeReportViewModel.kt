@@ -4,15 +4,12 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
-import android.location.Location
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableDoubleStateOf
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.core.app.ActivityCompat
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -25,7 +22,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ShakeReportViewModel @Inject constructor(
     private val repository: ShakeReportRepository,
-    private val context: Context // Inject Context here
+    private val context: Context
 ) : ViewModel() {
 
     private val fusedLocationClient: FusedLocationProviderClient =
