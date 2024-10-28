@@ -47,11 +47,8 @@ fun MitigationScreen(navController: NavHostController) {
         Surface(color = PrimaryBackground) {
             Column(
                 modifier = Modifier
-                    .padding(
-                        bottom = 80.dp,
-                        top = 55.dp
-                    )
                     .fillMaxWidth()
+                    .padding(bottom = 80.dp, top = 55.dp)
                     .verticalScroll(rememberScrollState())
             ) {
                 Text(

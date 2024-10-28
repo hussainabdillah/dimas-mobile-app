@@ -6,6 +6,7 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -51,12 +52,15 @@ fun EarthquakeMitigationScreen(navController: NavHostController) {
             BottomNavigationBar(navigationController = navController)
         }
     ) { _ ->
-        Surface(color = PrimaryBackground) {
+        Surface(
+            color = PrimaryBackground,
+            modifier = Modifier.fillMaxSize()
+        ) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
+                    .padding(bottom = 90.dp, top = 65.dp)
                     .verticalScroll(rememberScrollState())
-                    .padding(bottom = 80.dp)
             ) {
                 val items = listOf(
                     MitigationItem("Di Dalam Ruangan", R.drawable.img_mitigation_1),
