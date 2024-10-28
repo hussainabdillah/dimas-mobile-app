@@ -53,10 +53,11 @@ fun NavGraph(navController: NavHostController) {
         composable(Routes.TimelineDetail.route) { backStackEntry ->
             TimelineDetailScreen(
                 date = backStackEntry.arguments?.getString("date") ?: "",
+                time = backStackEntry.arguments?.getString("time") ?: "",
                 location = backStackEntry.arguments?.getString("location") ?: "",
                 magnitude = backStackEntry.arguments?.getString("magnitude") ?: "",
-                coordinates = backStackEntry.arguments?.getString("coordinates") ?: "",
                 depth = backStackEntry.arguments?.getString("depth") ?: "",
+                coordinates = backStackEntry.arguments?.getString("coordinates") ?: "",
                 navController = navController
             )
         }

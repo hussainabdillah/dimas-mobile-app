@@ -5,7 +5,6 @@ import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 //noinspection UsingMaterialAndMaterial3Libraries
@@ -41,6 +40,7 @@ fun MapScreen(navController: NavHostController) {
     Scaffold(
         topBar = {
             Header(
+                // Perlu dibenahi menjadi datetime gempa terbaru
                 title = "Terjadi pada 9/10 12:27",
             )
         },
@@ -48,7 +48,7 @@ fun MapScreen(navController: NavHostController) {
             Column(
                 verticalArrangement = Arrangement.spacedBy(12.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                ) {
+            ) {
                 IconButton(
                     onClick = { },
                     modifier = Modifier
@@ -92,7 +92,6 @@ fun MapScreen(navController: NavHostController) {
         val shakingReports: List<ShakingReportData> = getShakingReport()
 
         MapComponent(
-            modifier = Modifier.fillMaxSize(),
             userLocation = userLocation,
             earthquakeData = earthquakeData,
             shakingReports = shakingReports

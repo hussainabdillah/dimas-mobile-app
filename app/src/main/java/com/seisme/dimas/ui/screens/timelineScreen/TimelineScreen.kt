@@ -45,7 +45,7 @@ import com.seisme.dimas.ui.components.navigation.BottomNavigationBar
 import com.seisme.dimas.ui.components.navigation.Header
 import com.seisme.dimas.ui.theme.PrimaryBackground
 
-@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun TimelineScreen(
     navController: NavHostController,
@@ -66,14 +66,16 @@ fun TimelineScreen(
         bottomBar = {
             BottomNavigationBar(navigationController = navController)
         }
-    ) { padding ->
+    ) { _ ->
         Surface(
             color = PrimaryBackground
         ) {
             when {
                 isLoading -> {
                     Column(
-                        modifier = Modifier.fillMaxSize(),
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(top = 55.dp),
                         verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
@@ -93,8 +95,11 @@ fun TimelineScreen(
                             .fillMaxHeight()
                             .absoluteOffset(x = 150.dp, y = 0.dp)
                             .background(Color.LightGray)
-                    )
-                    LazyColumn(modifier = Modifier.padding(bottom = 80.dp)) {
+                        )
+                    LazyColumn(modifier = Modifier.padding(
+                        bottom = 80.dp,
+                        top = 55.dp
+                    )) {
                         items(earthquakeData) { earthquake ->
                             EarthquakeItem(
                                 time = earthquake.time,
@@ -102,7 +107,7 @@ fun TimelineScreen(
                                 location = earthquake.location,
                                 magnitude = earthquake.magnitude,
                                 onClick = {
-                                    navController.navigate("timelineDetail/${earthquake.date}/${earthquake.location}/${earthquake.magnitude}/${earthquake.coordinates}/${earthquake.depth}")
+                                    navController.navigate("timelineDetail/${earthquake.date}/${earthquake.time}/${earthquake.location}/${earthquake.magnitude}/${earthquake.depth}/${earthquake.coordinates}/")
                                 }
                             )
                         }

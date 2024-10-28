@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -22,15 +21,15 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun InformationDetail(
     date: String,
+    time: String,
     location: String,
     magnitude: String,
-    coordinates: String,
     depth: String
 ) {
     Column(
         modifier = Modifier
-            .fillMaxSize()
-            .background(Color(0xFFF5F5F5))
+            .background(Color.Transparent)
+            .padding(top = 60.dp)
     ) {
         Box(
             modifier = Modifier
@@ -42,9 +41,9 @@ fun InformationDetail(
         ) {
             Column(modifier = Modifier.padding(16.dp)) {
                 DetailRow(label = "Date", value = date)
+                DetailRow(label = "Time", value = time)
                 DetailRow(label = "Epicenter", value = location)
                 DetailRow(label = "Magnitude", value = magnitude)
-                DetailRow(label = "Coordinates", value = coordinates)
                 DetailRow(label = "Depth", value = depth)
             }
         }

@@ -13,10 +13,9 @@ import com.seisme.dimas.data.repository.ShakingReportData
 
 @Composable
 fun MapComponent(
-    modifier: Modifier = Modifier,
-    earthquakeData: EarthquakeData?,
-    userLocation: LatLng?,
-    shakingReports: List<ShakingReportData>?,
+    earthquakeData: EarthquakeData? = null,
+    userLocation: LatLng? = null,
+    shakingReports: List<ShakingReportData>? = null,
 ) {
     val cameraPositionState = rememberCameraPositionState {
         position = CameraPosition.fromLatLngZoom(
@@ -24,9 +23,8 @@ fun MapComponent(
             10f
         )
     }
-
     GoogleMap(
-        modifier = modifier.fillMaxSize(),
+        modifier = Modifier.fillMaxSize(),
         cameraPositionState = cameraPositionState,
         uiSettings = MapUiSettings(
             zoomControlsEnabled = false,
