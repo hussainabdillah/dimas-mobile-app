@@ -1,11 +1,10 @@
 package com.seisme.dimas.data.repository
 
 import com.google.android.gms.maps.model.LatLng
+import com.seisme.dimas.data.model.EarthquakeData
+import com.seisme.dimas.data.remote.api.ApiService
+import javax.inject.Inject
 
-data class EarthquakeData(
-    val location: LatLng,
-    val magnitude: Int
-)
 
 data class ShakingReportData(
     val location: LatLng,
@@ -16,9 +15,9 @@ fun getUserLocation(): LatLng {
     return LatLng(-6.355521,106.660981)
 }
 
-fun getLatestEarthquakeLocation(): EarthquakeData {
-    return EarthquakeData(LatLng(-7.081899,105.635777), 5)
-}
+//fun getLatestEarthquakeLocation(): EarthquakeData {
+//    return EarthquakeData(LatLng(-7.081899,105.635777), 5)
+//}
 
 fun getShakingReport(): List<ShakingReportData> {
     return listOf(
@@ -29,4 +28,22 @@ fun getShakingReport(): List<ShakingReportData> {
         ShakingReportData(LatLng(-6.924936, 106.333923), 1),
         ShakingReportData(LatLng(-6.545796, 106.298218), 4)
     )
+}
+
+class MapRepository @Inject constructor(
+    private val api: ApiService
+) {
+    suspend fun getLatestEarthquake(): EarthquakeData {
+        val response = api.getLatestEarthquake().infogempa.gempa
+        val coordinates = response.coordinates.split(",").map { it.trim().toDouble() }
+        return EarthquakeData(
+            date = response.tanggal,
+            time = response.jam,
+            coordinates = LatLng(coordinates[0], coordinates[1]),
+            magnitude = response.magnitude.toDouble(),
+            depth = response.kedalaman,
+            region = response.wilayah,
+            felt = response.dirasakan
+        )
+    }
 }

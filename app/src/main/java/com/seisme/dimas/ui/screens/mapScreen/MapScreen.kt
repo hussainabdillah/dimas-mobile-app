@@ -23,6 +23,9 @@ import androidx.compose.material.icons.sharp.Warning
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -31,11 +34,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.google.android.gms.maps.model.LatLng
-import com.seisme.dimas.data.repository.EarthquakeData
 import com.seisme.dimas.data.repository.ShakingReportData
-import com.seisme.dimas.data.repository.getLatestEarthquakeLocation
 import com.seisme.dimas.data.repository.getShakingReport
 import com.seisme.dimas.data.repository.getUserLocation
 import com.seisme.dimas.ui.components.geolocation.MapComponent
@@ -44,15 +46,23 @@ import com.seisme.dimas.ui.components.navigation.Header
 import com.seisme.dimas.ui.theme.Orange
 import com.seisme.dimas.ui.theme.White
 
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "RememberReturnType")
 @Composable
-fun MapScreen(navController: NavHostController) {
+fun MapScreen(
+    navController: NavHostController,
+    viewModel: MapViewModel = hiltViewModel()
+    ) {
     val dropdownVisibility = remember { mutableStateOf(false) }
+    val earthquakeData by viewModel.earthquakeData.observeAsState()
+
+    LaunchedEffect(Unit) {
+        viewModel.fetchLatestEarthquake()
+    }
 
     Scaffold(topBar = {
         Header(
-            // Perlu dibenahi menjadi datetime gempa terbaru
-            title = "Terjadi pada 9/10 12:27",
+            // Perlu dibenahi menjadi datetime gempa terbaru: done
+            title = "Terjadi pada ${earthquakeData?.date ?: "N/A"} ${earthquakeData?.time ?: ""}",
         )
     }, floatingActionButton = {
         if (!dropdownVisibility.value) {
@@ -61,7 +71,7 @@ fun MapScreen(navController: NavHostController) {
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 IconButton(
-                    onClick = { },
+                    onClick = { viewModel.fetchLatestEarthquake() },
                     modifier = Modifier
                         .size(54.dp)
                         .shadow(3.dp, RoundedCornerShape(100), clip = true)
@@ -96,9 +106,9 @@ fun MapScreen(navController: NavHostController) {
         }
     }, bottomBar = {
         BottomNavigationBar(navigationController = navController)
-    }) { padding ->
+    }
+    ) { padding ->
         val userLocation: LatLng = getUserLocation()
-        val earthquakeData: EarthquakeData = getLatestEarthquakeLocation()
         val shakingReports: List<ShakingReportData> = getShakingReport()
 
         MapComponent(

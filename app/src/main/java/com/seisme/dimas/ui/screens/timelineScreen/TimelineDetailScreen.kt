@@ -9,7 +9,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import com.google.android.gms.maps.model.LatLng
 import com.seisme.dimas.R
-import com.seisme.dimas.data.repository.EarthquakeData
+import com.seisme.dimas.data.model.EarthquakeData
 import com.seisme.dimas.ui.components.geolocation.MapComponent
 import com.seisme.dimas.ui.components.item.InformationDetail
 import com.seisme.dimas.ui.components.navigation.Header
@@ -24,13 +24,26 @@ fun TimelineDetailScreen(
     magnitude: String,
     coordinates: String,
     depth: String,
+    region: String,
+    felt: String,
     navController: NavHostController
 ) {
     val parsedCoordinates = coordinates.split(",").let {
         LatLng(it[0].toDouble(), it[1].toDouble())
     }
 
-    val parsedMagnitude = magnitude.toFloatOrNull() ?: 0f
+    val parsedMagnitude = magnitude.toDoubleOrNull() ?: 0.0
+
+    // Creating EarthquakeData instance
+    val earthquakeData = EarthquakeData(
+        date = date,
+        time = time,
+        coordinates = parsedCoordinates,
+        magnitude = parsedMagnitude,
+        depth = depth,
+        region = region,
+        felt = felt
+    )
 
     Scaffold(
         topBar = {
@@ -47,7 +60,7 @@ fun TimelineDetailScreen(
         },
     ) { _ ->
         MapComponent(
-            earthquakeData = EarthquakeData(parsedCoordinates, parsedMagnitude.toInt()),
+            earthquakeData = earthquakeData
         )
         InformationDetail(
             date = date,

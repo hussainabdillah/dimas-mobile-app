@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 import com.google.maps.android.compose.MarkerComposable
 import com.google.maps.android.compose.rememberMarkerState
 import com.seisme.dimas.R
-import com.seisme.dimas.data.repository.EarthquakeData
+import com.seisme.dimas.data.model.EarthquakeData
 import com.seisme.dimas.ui.theme.GreenPin
 import com.seisme.dimas.ui.theme.LightBlue
 import com.seisme.dimas.ui.theme.PurplePin
@@ -26,7 +26,7 @@ fun MarkerEarthquake(earthquakeData: EarthquakeData) {
     val magnitudeColor = getMagnitudeColor(earthquakeData.magnitude)
 
     MarkerComposable(
-        state = rememberMarkerState(position = earthquakeData.location),
+        state = rememberMarkerState(position = earthquakeData.coordinates),
         title = "Earthquake Location",
         snippet = "Magnitude: ${earthquakeData.magnitude}"
     ) {
@@ -59,12 +59,12 @@ fun MarkerEarthquake(earthquakeData: EarthquakeData) {
     }
 }
 
-fun getMagnitudeColor(magnitude: Int): Color {
-    return when (magnitude) {
-        1 -> LightBlue
-        2, 3, 4 -> GreenPin
-        5, 6 -> YellowPin
-        7, 8 -> RedPin
+fun getMagnitudeColor(magnitude: Double): Color {
+    return when {
+        magnitude == 1.0 -> LightBlue
+        magnitude in 2.0..4.9 -> GreenPin
+        magnitude in 5.0..6.9 -> YellowPin
+        magnitude in 7.0..8.9 -> RedPin
         else -> PurplePin
     }
 }

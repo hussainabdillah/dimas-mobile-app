@@ -58,6 +58,8 @@ fun NavGraph(navController: NavHostController) {
                 magnitude = backStackEntry.arguments?.getString("magnitude") ?: "",
                 depth = backStackEntry.arguments?.getString("depth") ?: "",
                 coordinates = backStackEntry.arguments?.getString("coordinates") ?: "",
+                region = backStackEntry.arguments?.getString("region") ?: "",
+                felt = backStackEntry.arguments?.getString("felt") ?: "",
                 navController = navController
             )
         }

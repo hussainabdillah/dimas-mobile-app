@@ -72,6 +72,10 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+    // livedata
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.runtime.livedata)
+
     implementation(libs.androidx.material)
 
     // firebase
