@@ -22,6 +22,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.ui.res.stringResource
 import com.seisme.dimas.R
 import com.seisme.dimas.ui.theme.LightBlue
 import com.seisme.dimas.ui.theme.White
@@ -36,13 +37,13 @@ fun ItemMitigationDropdown() {
         verticalArrangement = Arrangement.spacedBy(8.dp, Alignment.Top),
         horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.Start),
     ) {
-        FlexItem(text = "Rumah", imgResId = R.drawable.img_mitigation_1)
-        FlexItem(text = "Kamar Mandi", imgResId = R.drawable.img_mitigation_2)
-        FlexItem(text = "Gedung Tinggi", imgResId = R.drawable.img_mitigation_3)
-        FlexItem(text = "Sekolah", imgResId = R.drawable.img_mitigation_1)
-        FlexItem(text = "Lansia", isSelected = true, imgResId = R.drawable.img_mitigation_2)
-        FlexItem(text = "Anak-anak", imgResId = R.drawable.img_mitigation_2)
-        FlexItem(text = "Elevator", imgResId = R.drawable.img_mitigation_3)
+        FlexItem(text = stringResource(R.string.home), imgResId = R.drawable.img_mitigation_1)
+        FlexItem(text = stringResource(R.string.bathroom), imgResId = R.drawable.img_mitigation_2)
+        FlexItem(text = stringResource(R.string.tall_building), imgResId = R.drawable.img_mitigation_3)
+        FlexItem(text = stringResource(R.string.school), imgResId = R.drawable.img_mitigation_1)
+        FlexItem(text = stringResource(R.string.elderly), isSelected = true, imgResId = R.drawable.img_mitigation_2)
+        FlexItem(text = stringResource(R.string.kids), imgResId = R.drawable.img_mitigation_2)
+        FlexItem(text = stringResource(R.string.elevator), imgResId = R.drawable.img_mitigation_3)
     }
 }
 

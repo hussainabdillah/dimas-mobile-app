@@ -14,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -109,7 +110,7 @@ fun BottomNavigationBar(navigationController: NavHostController) {
                     tint = if (currentRoute == Routes.Mitigation.route) LightBlue else Gray
                 )
                 Text(
-                    text = "Mitigasi",
+                    text = stringResource(R.string.navigation_mitigation),
                     fontSize = 12.sp,
                     color = if (currentRoute == Routes.Mitigation.route) LightBlue else Gray,  // Update text color
                     textAlign = TextAlign.Center
@@ -137,7 +138,7 @@ fun BottomNavigationBar(navigationController: NavHostController) {
                     tint = if (currentRoute == Routes.Profile.route) LightBlue else Gray
                 )
                 Text(
-                    text = "Profil",
+                    text = stringResource(R.string.profile_header),
                     fontSize = 12.sp,
                     color = if (currentRoute == Routes.Profile.route) LightBlue else Gray,  // Update text color
                     textAlign = TextAlign.Center
