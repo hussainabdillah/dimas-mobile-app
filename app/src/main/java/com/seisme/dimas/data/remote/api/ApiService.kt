@@ -9,6 +9,6 @@ interface ApiService {
     @GET("DataMKG/TEWS/gempadirasakan.json")
     suspend fun getEarthquakeData(): Response<EarthquakeResponse>
 
-    @GET("DataMKG/TEWS/autogempa.json") // Ganti dengan endpoint API BMKG yang sesuai
+    @GET("DataMKG/TEWS/autogempa.json")
     suspend fun getLatestEarthquake(): LatestEarthquakeResponse
 }

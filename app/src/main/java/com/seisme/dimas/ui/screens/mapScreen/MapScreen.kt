@@ -45,6 +45,8 @@ import com.seisme.dimas.ui.components.navigation.BottomNavigationBar
 import com.seisme.dimas.ui.components.navigation.Header
 import com.seisme.dimas.ui.theme.Orange
 import com.seisme.dimas.ui.theme.White
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "RememberReturnType")
 @Composable
@@ -59,10 +61,34 @@ fun MapScreen(
         viewModel.fetchLatestEarthquake()
     }
 
+    // format tanggal
+    fun formatDateTime(date: String?, time: String?): String {
+        if (date.isNullOrBlank() || time.isNullOrBlank() || date == "N/A") {
+            return "N/A"
+        }
+
+        return try {
+            val dateFormat = SimpleDateFormat("dd MMM yyyy", Locale("id", "ID"))
+            val timeFormat = SimpleDateFormat("HH:mm:ss 'WIB'", Locale("id", "ID"))
+            val outputDateFormat = SimpleDateFormat("dd/MM", Locale("id", "ID"))
+            val outputTimeFormat = SimpleDateFormat("HH:mm", Locale("id", "ID"))
+
+            val parsedDate = dateFormat.parse(date)
+            val parsedTime = timeFormat.parse(time)
+
+            val formattedDate = outputDateFormat.format(parsedDate)
+            val formattedTime = outputTimeFormat.format(parsedTime)
+
+            "$formattedDate $formattedTime"
+        } catch (e: Exception) {
+            "N/A" // Fallback jika parsing gagal
+        }
+    }
+
     Scaffold(topBar = {
         Header(
-            // Perlu dibenahi menjadi datetime gempa terbaru: done
-            title = "Terjadi pada ${earthquakeData?.date ?: "N/A"} ${earthquakeData?.time ?: ""}",
+            // Perlu dibenahi menjadi datetime gempa terbaru
+            title = "Terjadi pada ${formatDateTime(earthquakeData?.date, earthquakeData?.time)}"
         )
     }, floatingActionButton = {
         if (!dropdownVisibility.value) {
