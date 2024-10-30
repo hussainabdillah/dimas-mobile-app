@@ -14,10 +14,12 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.seisme.dimas.R
 import com.seisme.dimas.ui.theme.Gray
 import com.seisme.dimas.ui.theme.LightBlue
 import com.seisme.dimas.ui.theme.White
@@ -30,7 +32,7 @@ fun LogoutConfirmationDialog(
     AlertDialog(
         onDismissRequest = onDismiss,
         title = { Text(
-            text = "Konfirmasi Logout",
+            text = stringResource(R.string.logout),
             color = Color.Black,
             fontWeight = FontWeight.Bold,
             fontSize = 20.sp,
@@ -38,7 +40,7 @@ fun LogoutConfirmationDialog(
             overflow = TextOverflow.Visible
         ) },
         text = { Text(
-            text = "Ini akan mengakhiri sesi dan anda harus melakukan login kembali",
+            text = stringResource(R.string.logout_confirmation),
             color = Color.Black,
             fontWeight = FontWeight.Normal,
             fontSize = 14.sp,
@@ -57,7 +59,7 @@ fun LogoutConfirmationDialog(
                         .fillMaxWidth()
                 ) {
                     Text(
-                        text = "Logout",
+                        text = stringResource(R.string.logout),
                         color = LightBlue
                     )
                 }
@@ -67,7 +69,7 @@ fun LogoutConfirmationDialog(
                             .fillMaxWidth()
                 ) {
                     Text(
-                        text = "Batal",
+                        text = stringResource(R.string.cancel),
                         color = Gray
                     )
                 }

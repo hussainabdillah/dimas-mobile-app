@@ -19,6 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.seisme.dimas.R
@@ -38,7 +39,7 @@ fun EarthquakeMitigationScreen(navController: NavHostController) {
     Scaffold(
         topBar = {
             Header(
-                title = "Gempa Bumi",
+                title = stringResource(R.string.earthquake_header),
                 navigationIcon = Icons.AutoMirrored.Filled.KeyboardArrowLeft,
                 onNavigationClick = {
                     navController.navigate(Routes.Mitigation.route) {
@@ -63,9 +64,9 @@ fun EarthquakeMitigationScreen(navController: NavHostController) {
                     .verticalScroll(rememberScrollState())
             ) {
                 val items = listOf(
-                    MitigationItem("Di Dalam Ruangan", R.drawable.img_mitigation_1),
-                    MitigationItem("Di Luar Ruangan", R.drawable.img_mitigation_2),
-                    MitigationItem("Saat Berkendara", R.drawable.img_mitigation_3)
+                    MitigationItem(stringResource(R.string.indoor), R.drawable.img_mitigation_1),
+                    MitigationItem(stringResource(R.string.outdoor), R.drawable.img_mitigation_2),
+                    MitigationItem(stringResource(R.string.driving), R.drawable.img_mitigation_3)
                 )
 
                 items.forEachIndexed { index, item ->

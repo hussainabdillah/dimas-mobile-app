@@ -64,8 +64,8 @@ fun TsunamiMitigationScreen(navController: NavHostController) {
                     .verticalScroll(rememberScrollState())
             ) {
                 val items = listOf(
-                    MitigationItem("Potensi Tsunami", R.drawable.img_mitigation_4),
-                    MitigationItem("Saat Berkendara", R.drawable.img_mitigation_3)
+                    MitigationItem(stringResource(R.string.tsunami_potency), R.drawable.img_mitigation_4),
+                    MitigationItem(stringResource(R.string.driving), R.drawable.img_mitigation_3)
                 )
 
                 items.forEachIndexed { index, item ->

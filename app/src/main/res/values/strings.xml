@@ -31,4 +31,13 @@
     <string name="elderly">Lansia</string>
     <string name="kids">Anak-anak</string>
     <string name="elevator">Elevator</string>
+    
+    <string name="indoor">Di Dalam Ruangan</string>
+    <string name="outdoor">Di Luar Ruangan</string>
+    <string name="driving">Saat Berkendara</string>
+    <string name="tsunami_potency">Potensi Tsunami</string>
+
+    <string name="logout">Konfirmasi Logout</string>
+    <string name="logout_confirmation">Ini akan mengakhiri sesi dan anda harus melakukan login kembali</string>
+    <string name="cancel">Batal</string>
 </resources>
