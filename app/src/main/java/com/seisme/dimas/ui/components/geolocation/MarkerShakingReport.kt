@@ -11,10 +11,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.google.android.gms.maps.model.LatLng
+import com.google.firebase.firestore.GeoPoint
 import com.google.maps.android.compose.MarkerComposable
 import com.google.maps.android.compose.rememberMarkerState
 import com.seisme.dimas.R
-import com.seisme.dimas.data.repository.ShakingReportData
+import com.seisme.dimas.data.model.ShakeReport
 import com.seisme.dimas.ui.theme.GreenPin
 import com.seisme.dimas.ui.theme.LightBlue
 import com.seisme.dimas.ui.theme.PurplePin
@@ -22,13 +24,16 @@ import com.seisme.dimas.ui.theme.RedPin
 import com.seisme.dimas.ui.theme.YellowPin
 
 @Composable
-fun MarkerShakingReport(shakingReportData: ShakingReportData) {
-    val shakingReportColor = getShakePowerColor(shakingReportData.shakePower)
+fun MarkerShakingReport(shakingReportData: ShakeReport) {
+    val shakingReportColor = getShakePowerColor(shakingReportData.intensity)
+    fun GeoPoint.toLatLng(): LatLng {
+        return LatLng(this.latitude, this.longitude)
+    }
 
     MarkerComposable(
-        state = rememberMarkerState(position = shakingReportData.location),
+        state = rememberMarkerState(position = shakingReportData.location.toLatLng()),
         title = "Shaking Report",
-        snippet = "Reported ${shakingReportData.shakePower}"
+        snippet = "Reported ${shakingReportData.intensity}"
     ) {
         Box(
             modifier = Modifier

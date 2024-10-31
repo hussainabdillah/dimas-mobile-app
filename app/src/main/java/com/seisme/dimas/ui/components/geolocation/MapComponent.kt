@@ -11,13 +11,13 @@ import com.google.maps.android.compose.GoogleMap
 import com.google.maps.android.compose.MapUiSettings
 import com.google.maps.android.compose.rememberCameraPositionState
 import com.seisme.dimas.data.model.EarthquakeData
-import com.seisme.dimas.data.repository.ShakingReportData
+import com.seisme.dimas.data.model.ShakeReport
 
 @Composable
 fun MapComponent(
     earthquakeData: EarthquakeData? = null,
     userLocation: LatLng? = null,
-    shakingReports: List<ShakingReportData>? = null,
+    shakingReports: List<ShakeReport>? = null,
 ) {
     val cameraPositionState = rememberCameraPositionState {
         position = CameraPosition.fromLatLngZoom(

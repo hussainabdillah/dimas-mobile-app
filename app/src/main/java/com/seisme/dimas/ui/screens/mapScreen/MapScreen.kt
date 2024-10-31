@@ -37,8 +37,6 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.google.android.gms.maps.model.LatLng
-import com.seisme.dimas.data.repository.ShakingReportData
-import com.seisme.dimas.data.repository.getShakingReport
 import com.seisme.dimas.data.repository.getUserLocation
 import com.seisme.dimas.ui.components.geolocation.MapComponent
 import com.seisme.dimas.ui.components.navigation.BottomNavigationBar
@@ -56,9 +54,11 @@ fun MapScreen(
     ) {
     val dropdownVisibility = remember { mutableStateOf(false) }
     val earthquakeData by viewModel.earthquakeData.observeAsState()
+    val shakingReports = viewModel.shakingReports.value
 
     LaunchedEffect(Unit) {
         viewModel.fetchLatestEarthquake()
+        viewModel.fetchRecentShakeReports()
     }
 
     // format tanggal
@@ -87,7 +87,6 @@ fun MapScreen(
 
     Scaffold(topBar = {
         Header(
-            // Perlu dibenahi menjadi datetime gempa terbaru
             title = "Terjadi pada ${formatDateTime(earthquakeData?.date, earthquakeData?.time)}"
         )
     }, floatingActionButton = {
@@ -135,7 +134,6 @@ fun MapScreen(
     }
     ) { padding ->
         val userLocation: LatLng = getUserLocation()
-        val shakingReports: List<ShakingReportData> = getShakingReport()
 
         MapComponent(
             userLocation = userLocation,
