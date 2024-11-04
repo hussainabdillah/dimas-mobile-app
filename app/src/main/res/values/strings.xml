@@ -24,6 +24,13 @@
     <string name="early_warning_tsunami">Tsunami Early Warning Drill</string>
     <string name="no_earthquake_data">Tidak ada data gempa.</string>
 
+    <!-- Detail Mitigasi -->
+    <string name="indoor">Di Dalam Ruangan</string>
+    <string name="outdoor">Di Luar Ruangan</string>
+    <string name="driving">Saat Berkendara</string>
+    <string name="tsunami_potency">Potensi Tsunami</string>
+
+    <!-- Dropdown Detail Mitigasi -->
     <string name="home">Rumah</string>
     <string name="bathroom">Kamar Mandi</string>
     <string name="tall_building">Gedung Tinggi</string>
@@ -31,13 +38,36 @@
     <string name="elderly">Lansia</string>
     <string name="kids">Anak-anak</string>
     <string name="elevator">Elevator</string>
-    
-    <string name="indoor">Di Dalam Ruangan</string>
-    <string name="outdoor">Di Luar Ruangan</string>
-    <string name="driving">Saat Berkendara</string>
-    <string name="tsunami_potency">Potensi Tsunami</string>
 
+    <!-- Log Out -->
     <string name="logout">Konfirmasi Logout</string>
     <string name="logout_confirmation">Ini akan mengakhiri sesi dan anda harus melakukan login kembali</string>
     <string name="cancel">Batal</string>
+
+    <!-- Log In -->
+    <string name="login">Masuk</string>
+    <string name="enter_account">Masuk ke Akun Anda</string>
+    <string name="email">Email</string>
+    <string name="input_email">Masukkan email anda</string>
+    <string name="password">Kata sandi</string>
+    <string name="input_password">Masukkan kata sandi anda</string>
+    <string name="or">Atau</string>
+    <string name="continue_google">Masuk dengan Google</string>
+    <string name="dont_have_account">Tidak punya akun?</string>
+    <string name="register">Daftar</string>
+
+    <!-- Register -->
+    <string name="create_account">Membuat Akun</string>
+    <string name="confirm_password">Konfirmasi kata sandi</string>
+    <string name="input_confirm_password">Konfirmasi kata sandi anda</string>
+    <string name="back">Kembali</string>
+    <string name="next">Selanjutnya</string>
+    <string name="setup_profile">Atur profil anda</string>
+    <string name="username">Nama pengguna</string>
+    <string name="input_username">Masukkan nama pengguna anda</string>
+    <string name="contact">Kontak</string>
+    <string name="input_contact">Masukkan kontak anda</string>
+    <string name="gender">Jenis kelamin</string>
+    <string name="select_gender">Pilih jenis kelamin anda</string>
+    <string name="complete">Selesai</string>
 </resources>

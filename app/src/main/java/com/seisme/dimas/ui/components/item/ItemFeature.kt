@@ -44,7 +44,7 @@ fun FeatureItem(
         Spacer(modifier = Modifier.height(8.dp))
         Text(
             text = label,
-            fontSize = 12.sp,
+            fontSize = 14.sp,
             color = Color.Black,
             textAlign = TextAlign.Center,
             fontWeight = FontWeight.Bold,

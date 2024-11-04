@@ -49,7 +49,7 @@ fun MitigationScreen(navController: NavHostController) {
             ) {
                 Text(
                     text = "Recommendations for Action",
-                    fontSize = 16.sp,
+                    fontSize = 20.sp,
                     color = Color.Black,
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier
@@ -102,7 +102,7 @@ fun MitigationScreen(navController: NavHostController) {
 
                 Text(
                     text = "Additional Features",
-                    fontSize = 16.sp,
+                    fontSize = 20.sp,
                     color = Color.Black,
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier

@@ -39,6 +39,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -148,13 +149,13 @@ fun PreviewLoginScreen() {
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Text(
-                text = "Log In",
+                text = stringResource(R.string.login),
                 color = Color.Black,
                 fontSize = 32.sp,
                 fontWeight = FontWeight.Bold
             )
             Text(
-                text = "Enter into your account",
+                text = stringResource(R.string.enter_account),
                 color = Color.Gray,
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Light
@@ -165,15 +166,15 @@ fun PreviewLoginScreen() {
         AuthTextField(
             value = "",
             onValueChange = {},
-            label = "Email",
-            placeholder = "Enter your email",
+            label = stringResource(R.string.email),
+            placeholder = stringResource(R.string.input_email),
             spacer = 16
         )
         AuthTextField(
             value = "",
             onValueChange = {},
-            label = "Password",
-            placeholder = "Enter your password",
+            label = stringResource(R.string.password),
+            placeholder = stringResource(R.string.input_password),
             spacer = 16
         )
 
@@ -189,7 +190,7 @@ fun PreviewLoginScreen() {
                     .width(130.dp)
             )
             Text(
-                text = "or",
+                text = stringResource(R.string.or),
                 modifier = Modifier.padding(horizontal = 8.dp),
                 color = Color.Gray,
                 fontSize = 16.sp
@@ -204,7 +205,7 @@ fun PreviewLoginScreen() {
         Spacer(modifier = Modifier.height(16.dp))
 
         SecondaryButton(
-            text = "Continue with Google",
+            text = stringResource(R.string.continue_google),
             textColor = Color.Black,
             icon = {
                 Image(
@@ -227,7 +228,7 @@ fun PreviewLoginScreen() {
         Spacer(modifier = Modifier.height(60.dp))
 
         PrimaryButton(
-            text = "Continue",
+            text = stringResource(R.string.login),
             textColor = White,
             containerColor = LightBlue,
             onClick = {},
@@ -239,7 +240,7 @@ fun PreviewLoginScreen() {
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(text = "Don't have an account? ")
+            Text(text = stringResource(R.string.dont_have_account))
             TextButton(
                 onClick = {  },
                 colors = ButtonColors(
@@ -249,7 +250,7 @@ fun PreviewLoginScreen() {
                     disabledContainerColor = Color.Gray
                 ),
                 contentPadding = PaddingValues(0.dp),
-                content = { Text(text = "Register") }
+                content = { Text(text = stringResource(R.string.register)) }
             )
         }
     }
@@ -270,7 +271,7 @@ fun PreviewRegisterScreen() {
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Text(
-                text = "Create Account",
+                text = stringResource(R.string.create_account),
                 color = Color.Black,
                 fontSize = 32.sp,
                 fontWeight = FontWeight.Bold
@@ -281,22 +282,22 @@ fun PreviewRegisterScreen() {
         AuthTextField(
             value = "",
             onValueChange = {},
-            label = "Email",
-            placeholder = "Enter your email",
+            label = stringResource(R.string.email),
+            placeholder = stringResource(R.string.input_email),
             spacer = 16
         )
         AuthTextField(
             value = "",
             onValueChange = {},
-            label = "Password",
-            placeholder = "Enter your password",
+            label = stringResource(R.string.password),
+            placeholder = stringResource(R.string.input_password),
             spacer = 16
         )
         AuthTextField(
             value = "",
             onValueChange = {},
-            label = "Confirm Password",
-            placeholder = "Confirm your password",
+            label = stringResource(R.string.confirm_password),
+            placeholder = stringResource(R.string.input_confirm_password),
             spacer = 16
         )
 
@@ -308,7 +309,7 @@ fun PreviewRegisterScreen() {
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             SecondaryButton(
-                text = "Back",
+                text = stringResource(R.string.back),
                 textColor = Color.LightGray,
                 icon = {
                     Icon(
@@ -324,7 +325,7 @@ fun PreviewRegisterScreen() {
             )
 
             PrimaryButton(
-                text = "Next",
+                text = stringResource(R.string.next),
                 textColor = White,
                 containerColor = Color.Black,
                 onClick = {},
@@ -359,7 +360,7 @@ fun PreviewSecondRegisterScreen() {
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Text(
-                text = "Set up your profile",
+                text = stringResource(R.string.setup_profile),
                 color = Color.Black,
                 fontSize = 32.sp,
                 fontWeight = FontWeight.Bold
@@ -370,15 +371,15 @@ fun PreviewSecondRegisterScreen() {
         AuthTextField(
             value = "",
             onValueChange = {},
-            label = "Username",
-            placeholder = "Enter your username",
+            label = stringResource(R.string.username),
+            placeholder = stringResource(R.string.input_username),
             spacer = 16
         )
         AuthTextField(
             value = "",
             onValueChange = {},
-            label = "Contact",
-            placeholder = "Enter your contact",
+            label = stringResource(R.string.contact),
+            placeholder = stringResource(R.string.input_contact),
             spacer = 16
         )
 
@@ -389,8 +390,8 @@ fun PreviewSecondRegisterScreen() {
         AuthTextField(
             value = selectedGender,
             onValueChange = { selectedGender = it },
-            label = "Gender",
-            placeholder = "Select your gender",
+            label = stringResource(R.string.gender),
+            placeholder = stringResource(R.string.select_gender),
             spacer = 16,
             isDropdown = true,
             options = genderOptions
@@ -404,7 +405,7 @@ fun PreviewSecondRegisterScreen() {
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             SecondaryButton(
-                text = "Back",
+                text = stringResource(R.string.back),
                 textColor = Color.LightGray,
                 icon = {
                     Icon(
@@ -420,7 +421,7 @@ fun PreviewSecondRegisterScreen() {
             )
 
             PrimaryButton(
-                text = "Complete",
+                text = stringResource(R.string.complete),
                 textColor = White,
                 containerColor = LightBlue,
                 onClick = {},
@@ -448,8 +449,8 @@ fun PreviewDropsown() {
     AuthTextField(
         value = selectedGender,
         onValueChange = { selectedGender = it },
-        label = "Gender",
-        placeholder = "Select your gender",
+        label = stringResource(R.string.gender),
+        placeholder = stringResource(R.string.select_gender),
         spacer = 16,
         isDropdown = true,
         options = genderOptions
