@@ -2,12 +2,10 @@ package com.seisme.dimas.ui.screens.mitigationScreen
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -16,14 +14,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.seisme.dimas.R
+import com.seisme.dimas.ui.components.item.FeatureItem
 import com.seisme.dimas.ui.components.item.RecommendationItem
 import com.seisme.dimas.ui.components.navigation.BottomNavigationBar
 import com.seisme.dimas.ui.components.navigation.Header
@@ -130,7 +127,7 @@ fun MitigationScreen(navController: NavHostController) {
                         horizontalArrangement = Arrangement.spacedBy(16.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        FeatureButton(
+                        FeatureItem(
                             iconRes = R.drawable.ic_evacuation,
                             label = stringResource(R.string.feature_evacuation),
                             modifier = Modifier.weight(1f)
@@ -143,7 +140,7 @@ fun MitigationScreen(navController: NavHostController) {
                                 .background(Color.LightGray)
                         )
 
-                        FeatureButton(
+                        FeatureItem(
                             iconRes = R.drawable.ic_supply,
                             label = stringResource(R.string.feature_supply),
                             modifier = Modifier.weight(1f)
@@ -154,36 +151,5 @@ fun MitigationScreen(navController: NavHostController) {
                 Spacer(modifier = Modifier.height(16.dp))
             }
         }
-    }
-}
-
-@Composable
-fun FeatureButton(
-    iconRes: Int,
-    label: String,
-    modifier: Modifier = Modifier
-) {
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
-        modifier = modifier
-            .clip(RoundedCornerShape(12.dp))
-            .background(Color.White)
-            .clickable { /* Handle Click Action */ }
-    ) {
-        Icon(
-            painter = painterResource(id = iconRes),
-            contentDescription = label,
-            modifier = Modifier.size(50.dp),
-            tint = Color.LightGray
-        )
-        Spacer(modifier = Modifier.height(8.dp))
-        Text(
-            text = label,
-            fontSize = 12.sp,
-            color = Color.Black,
-            textAlign = TextAlign.Center,
-            fontWeight = FontWeight.Bold,
-        )
     }
 }
