@@ -1,7 +1,6 @@
 package com.seisme.dimas.ui.screens.mitigationScreen
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -17,7 +16,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -26,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.seisme.dimas.R
+import com.seisme.dimas.ui.components.item.RecommendationItem
 import com.seisme.dimas.ui.components.navigation.BottomNavigationBar
 import com.seisme.dimas.ui.components.navigation.Header
 import com.seisme.dimas.ui.navigation.Routes
@@ -155,40 +154,6 @@ fun MitigationScreen(navController: NavHostController) {
                 Spacer(modifier = Modifier.height(16.dp))
             }
         }
-    }
-}
-
-@Composable
-fun RecommendationItem(
-    imageRes: Int,
-    label: String,
-    backgroundColor: Color,
-    onClick: () -> Unit
-) {
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
-        modifier = Modifier.clickable(onClick = onClick)
-    ) {
-        Image(
-            painter = painterResource(id = imageRes),
-            contentDescription = label,
-            modifier = Modifier.size(175.dp),
-            contentScale = ContentScale.Fit
-
-        )
-        Text(
-            text = label,
-            fontSize = 12.sp,
-            fontWeight = FontWeight.Bold,
-            color = Color.White,
-            modifier = Modifier
-                .fillMaxWidth(0.7f)
-                .clip(RoundedCornerShape(bottomStart = 8.dp, bottomEnd = 8.dp))
-                .background(backgroundColor)
-                .padding(horizontal = 50.dp, vertical = 4.dp)
-                .wrapContentWidth(Alignment.CenterHorizontally)
-        )
     }
 }
 
