@@ -13,6 +13,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -38,7 +39,7 @@ fun SettingScreen(navController: NavHostController) {
     Scaffold(
         topBar = {
             Header(
-                title = "Profile Settings",
+                title = stringResource(R.string.profile_settings),
                 navigationIcon = Icons.AutoMirrored.Filled.ArrowBack,
                 onNavigationClick = {
                     navController.navigate(Routes.Profile.route) {
@@ -59,7 +60,7 @@ fun SettingScreen(navController: NavHostController) {
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             Text(
-                text = "Volume & Vibration",
+                text = stringResource(R.string.volume_and_vibration),
                 fontWeight = FontWeight.Bold,
                 fontSize = 20.sp,
                 color = Color.Black,
@@ -70,7 +71,7 @@ fun SettingScreen(navController: NavHostController) {
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     Text(
-                        text = "Volume",
+                        text = stringResource(R.string.volume),
                         fontWeight = FontWeight.Bold,
                         fontSize = 14.sp,
                         color = Color.Black
@@ -82,26 +83,26 @@ fun SettingScreen(navController: NavHostController) {
                     )
 
                     Text(
-                        text = "When in Manner Mode",
+                        text = stringResource(R.string.when_manner_mode),
                         fontWeight = FontWeight.Bold,
                         fontSize = 14.sp,
                         color = Color.Black
                     )
                     ItemSetting(
-                        text = "Silent",
+                        text = stringResource(R.string.silent),
                         imgResId = R.drawable.ic_silent,
                         isChecked = isSilent.value,
                         onCheckedChange = { isSilent.value = it }
                     )
 
                     Text(
-                        text = "Vibration",
+                        text = stringResource(R.string.vibration),
                         fontWeight = FontWeight.Bold,
                         fontSize = 14.sp,
                         color = Color.Black
                     )
                     ItemSetting(
-                        text = "Manner Mode Only",
+                        text = stringResource(R.string.manner_mode),
                         imgResId = R.drawable.ic_vibration,
                         isChecked = isVibrationEnabled.value,
                         onCheckedChange = { isVibrationEnabled.value = it }
@@ -110,7 +111,7 @@ fun SettingScreen(navController: NavHostController) {
             }
 
             Text(
-                text = "Earthquake",
+                text = stringResource(R.string.earthquake_header),
                 fontWeight = FontWeight.Bold,
                 fontSize = 20.sp,
                 modifier = Modifier.padding(bottom = 2.dp),
@@ -119,26 +120,26 @@ fun SettingScreen(navController: NavHostController) {
             SectionBox {
                 Column {
                     Text(
-                        text = "Earthquake info",
+                        text = stringResource(R.string.earthquake_info),
                         fontWeight = FontWeight.Bold,
                         fontSize = 14.sp,
                         color = Color.Black
                     )
                     ItemSetting(
-                        text = "Receive",
+                        text = stringResource(R.string.receive),
                         imgResId = R.drawable.ic_receive,
                         isChecked = receiveEarthquakeInfo.value,
                         onCheckedChange = { receiveEarthquakeInfo.value = it }
                     )
 
                     Text(
-                        text = "Earthquake Early Warning Drill",
+                        text = stringResource(R.string.early_warning_earthquake),
                         fontWeight = FontWeight.Bold,
                         fontSize = 14.sp,
                         color = Color.Black
                     )
                     ItemSetting(
-                        text = "Participate",
+                        text = stringResource(R.string.participate),
                         imgResId = R.drawable.ic_run,
                         isChecked = participateInTsunamiDrill.value,
                         onCheckedChange = { participateInTsunamiDrill.value = it }
@@ -147,7 +148,7 @@ fun SettingScreen(navController: NavHostController) {
             }
 
             Text(
-                text = "Tsunami",
+                text = stringResource(R.string.tsunami_header),
                 fontWeight = FontWeight.Bold,
                 fontSize = 20.sp,
                 modifier = Modifier.padding(bottom = 2.dp),
@@ -156,26 +157,26 @@ fun SettingScreen(navController: NavHostController) {
             SectionBox {
                 Column {
                     Text(
-                        text = "Tsunami info",
+                        text = stringResource(R.string.tsunami_info),
                         fontWeight = FontWeight.Bold,
                         fontSize = 14.sp,
                         color = Color.Black
                     )
                     ItemSetting(
-                        text = "Receive",
+                        text = stringResource(R.string.receive),
                         imgResId = R.drawable.ic_receive,
                         isChecked = receiveTsunamiInfo.value,
                         onCheckedChange = { receiveTsunamiInfo.value = it }
                     )
 
                     Text(
-                        text = "Tsunami Early Warning Drill",
+                        text = stringResource(R.string.early_warning_tsunami),
                         fontWeight = FontWeight.Bold,
                         fontSize = 14.sp,
                         color = Color.Black
                     )
                     ItemSetting(
-                        text = "Participate",
+                        text = stringResource(R.string.participate),
                         imgResId = R.drawable.ic_run,
                         isChecked = participateInEarthquakeDrill.value,
                         onCheckedChange = { participateInEarthquakeDrill.value = it }

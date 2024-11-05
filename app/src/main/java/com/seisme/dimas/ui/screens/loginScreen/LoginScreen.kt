@@ -26,6 +26,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -67,13 +68,13 @@ fun LoginScreen(
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Text(
-                text = "Log In",
+                text = stringResource(R.string.login),
                 color = Color.Black,
                 fontSize = 32.sp,
                 fontWeight = FontWeight.Bold
             )
             Text(
-                text = "Enter into your account",
+                text = stringResource(R.string.enter_account),
                 color = Color.Gray,
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Light
@@ -84,15 +85,15 @@ fun LoginScreen(
         AuthTextField(
             value = state.email,
             onValueChange = viewModel::onEmailChanged,
-            label = "Email",
-            placeholder = "Enter your email",
+            label = stringResource(R.string.email),
+            placeholder = stringResource(R.string.input_email),
             spacer = 16
         )
         AuthTextField(
             value = state.password,
             onValueChange = viewModel::onPasswordChanged,
-            label = "Password",
-            placeholder = "Enter your password",
+            label = stringResource(R.string.password),
+            placeholder = stringResource(R.string.input_password),
             spacer = 16
         )
 
@@ -113,7 +114,7 @@ fun LoginScreen(
                     .width(130.dp)
             )
             Text(
-                text = "or",
+                text = stringResource(R.string.or),
                 modifier = Modifier.padding(horizontal = 8.dp),
                 color = Color.Gray,
                 fontSize = 16.sp
@@ -128,7 +129,7 @@ fun LoginScreen(
         Spacer(modifier = Modifier.height(16.dp))
 
         SecondaryButton(
-            text = "Continue with Google",
+            text = stringResource(R.string.continue_google),
             textColor = Color.Black,
             icon = {
                 Image(
@@ -151,7 +152,7 @@ fun LoginScreen(
         Spacer(modifier = Modifier.height(60.dp))
 
         PrimaryButton(
-            text = "Continue",
+            text = stringResource(R.string.next),
             textColor = White,
             containerColor = LightBlue,
             onClick = {viewModel.loginWithEmailAndPassword()},
@@ -163,7 +164,7 @@ fun LoginScreen(
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(text = "Don't have an account? ")
+            Text(text = stringResource(R.string.dont_have_account))
             TextButton(
                 onClick = { onNavigateToRegister() },
                 colors = ButtonColors(
@@ -173,7 +174,7 @@ fun LoginScreen(
                     disabledContainerColor = Color.Gray
                 ),
                 contentPadding = PaddingValues(0.dp),
-                content = { Text(text = "Register") }
+                content = { Text(text = stringResource(R.string.register)) }
             )
         }
     }

@@ -19,10 +19,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.seisme.dimas.R
 import com.seisme.dimas.ui.components.form.AuthTextField
 import com.seisme.dimas.ui.components.form.PrimaryButton
 import com.seisme.dimas.ui.components.form.SecondaryButton
@@ -45,7 +47,7 @@ fun RegisterScreen(
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Text(
-                text = "Create Account",
+                text = stringResource(R.string.create_account),
                 color = Color.Black,
                 fontSize = 32.sp,
                 fontWeight = FontWeight.Bold
@@ -56,22 +58,22 @@ fun RegisterScreen(
         AuthTextField(
             value = "",
             onValueChange = {},
-            label = "Email",
-            placeholder = "Enter your email",
+            label = stringResource(R.string.email),
+            placeholder = stringResource(R.string.input_email),
             spacer = 16
         )
         AuthTextField(
             value = "",
             onValueChange = {},
-            label = "Password",
-            placeholder = "Enter your password",
+            label = stringResource(R.string.password),
+            placeholder = stringResource(R.string.input_password),
             spacer = 16
         )
         AuthTextField(
             value = "",
             onValueChange = {},
-            label = "Confirm Password",
-            placeholder = "Confirm your password",
+            label = stringResource(R.string.confirm_password),
+            placeholder = stringResource(R.string.input_confirm_password),
             spacer = 16
         )
 
@@ -83,7 +85,7 @@ fun RegisterScreen(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             SecondaryButton(
-                text = "Back",
+                text = stringResource(R.string.back),
                 textColor = Color.LightGray,
                 icon = {
                     Icon(
@@ -99,7 +101,7 @@ fun RegisterScreen(
             )
 
             PrimaryButton(
-                text = "Next",
+                text = stringResource(R.string.next),
                 textColor = White,
                 containerColor = Color.Black,
                 onClick = {},

@@ -48,7 +48,7 @@ fun MitigationScreen(navController: NavHostController) {
                     .verticalScroll(rememberScrollState())
             ) {
                 Text(
-                    text = "Recommendations for Action",
+                    text = stringResource(R.string.recommendation),
                     fontSize = 20.sp,
                     color = Color.Black,
                     fontWeight = FontWeight.Bold,
@@ -101,7 +101,7 @@ fun MitigationScreen(navController: NavHostController) {
                 }
 
                 Text(
-                    text = "Additional Features",
+                    text = stringResource(R.string.additional_feature),
                     fontSize = 20.sp,
                     color = Color.Black,
                     fontWeight = FontWeight.Bold,

@@ -34,10 +34,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.seisme.dimas.R
 import com.seisme.dimas.ui.components.navigation.BottomNavigationBar
 import com.seisme.dimas.ui.components.navigation.Header
 import com.seisme.dimas.ui.navigation.Routes
@@ -55,7 +57,7 @@ fun AddMemberScreen(
     Scaffold(
         topBar = {
             Header(
-                title = "Add Member",
+                title = stringResource(R.string.add_member),
                 navigationIcon = Icons.AutoMirrored.Filled.ArrowBack,
                 onNavigationClick = {
                     navController.navigate(Routes.Profile.route) {
@@ -82,7 +84,7 @@ fun AddMemberScreen(
                 onValueChange = { searchQuery = it },
                 placeholder = {
                     Text(
-                        text = "Search",
+                        text = stringResource(R.string.search),
                         color = Color.Gray,
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Light
@@ -91,7 +93,7 @@ fun AddMemberScreen(
                 leadingIcon = {
                     Icon(
                         imageVector = Icons.Filled.Search,
-                        contentDescription = "Search Icon",
+                        contentDescription = stringResource(R.string.search_icon),
                         modifier = Modifier.size(24.dp),
                         tint = Color.Gray
                     )
@@ -113,7 +115,7 @@ fun AddMemberScreen(
             ) {
                 Column {
                     Text(
-                        text = "Add Member",
+                        text = stringResource(R.string.add_member),
                         color = LightBlue,
                         fontWeight = FontWeight.Bold,
                         fontSize = 20.sp,

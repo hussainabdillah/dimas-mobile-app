@@ -14,9 +14,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.seisme.dimas.R
 import com.seisme.dimas.ui.theme.LightBlue
 import com.seisme.dimas.ui.theme.White
 
@@ -86,7 +88,7 @@ fun SectionBox(content: @Composable () -> Unit) {
 @Composable
 fun ItemSettingPreview() {
     ItemSetting(
-        text = "Receive Notifications",
+        text = stringResource(R.string.notifications),
         imgResId = com.seisme.dimas.R.drawable.ic_peta,  // Example icon
         isChecked = true,  // Example value
         onCheckedChange = { /* Handle switch change */ }

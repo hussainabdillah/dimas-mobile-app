@@ -22,7 +22,7 @@ import com.seisme.dimas.ui.theme.White
 fun MarkerUser(userLocation: LatLng) {
     MarkerComposable(
         state = rememberMarkerState(position = userLocation),
-        title = stringResource(R.string.location),
+        title = stringResource(R.string.your_location),
         snippet = "User Location"
     ) {
         Box(

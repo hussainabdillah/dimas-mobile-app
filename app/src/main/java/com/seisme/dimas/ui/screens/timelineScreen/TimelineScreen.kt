@@ -112,7 +112,7 @@ fun TimelineScreen(
                                 location = earthquake.location,
                                 magnitude = earthquake.magnitude,
                                 onClick = {
-                                    navController.navigate("timelineDetail/${earthquake.date}/${earthquake.time}/${earthquake.location}/${earthquake.magnitude}/${earthquake.depth}/${earthquake.coordinates}/")
+                                    navController.navigate("linimasaDetail/${earthquake.date}/${earthquake.time}/${earthquake.location}/${earthquake.magnitude}/${earthquake.depth}/${earthquake.coordinates}/")
                                 }
                             )
                         }
@@ -190,7 +190,7 @@ fun EarthquakeItem(
                     )
                     Row {
                         Text(
-                            text = "Magnitude",
+                            text = stringResource(R.string.magnitude),
                             fontSize = 14.sp,
                             modifier = Modifier.padding(end = 6.dp),
                             color = Color.Black
@@ -205,7 +205,7 @@ fun EarthquakeItem(
                 }
                 Icon(
                     Icons.AutoMirrored.Filled.KeyboardArrowRight,
-                    contentDescription = "Navigate",
+                    contentDescription = stringResource(R.string.email_navigate),
                     modifier = Modifier
                         .height(30.dp)
                         .width(30.dp),

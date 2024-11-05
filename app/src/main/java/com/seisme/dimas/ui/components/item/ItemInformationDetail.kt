@@ -15,8 +15,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.seisme.dimas.R
 
 @Composable
 fun InformationDetail(
@@ -40,11 +42,11 @@ fun InformationDetail(
                 .fillMaxWidth()
         ) {
             Column(modifier = Modifier.padding(16.dp)) {
-                DetailRow(label = "Date", value = date)
-                DetailRow(label = "Time", value = time)
-                DetailRow(label = "Epicenter", value = location)
-                DetailRow(label = "Magnitude", value = magnitude)
-                DetailRow(label = "Depth", value = depth)
+                DetailRow(label = stringResource(R.string.date), value = date)
+                DetailRow(label = stringResource(R.string.time), value = time)
+                DetailRow(label = stringResource(R.string.epicenter), value = location)
+                DetailRow(label = stringResource(R.string.magnitude), value = magnitude)
+                DetailRow(label = stringResource(R.string.depth), value = depth)
             }
         }
     }

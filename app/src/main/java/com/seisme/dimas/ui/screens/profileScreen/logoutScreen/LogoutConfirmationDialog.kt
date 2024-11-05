@@ -32,7 +32,7 @@ fun LogoutConfirmationDialog(
     AlertDialog(
         onDismissRequest = onDismiss,
         title = { Text(
-            text = stringResource(R.string.logout),
+            text = stringResource(R.string.logout_confirm),
             color = Color.Black,
             fontWeight = FontWeight.Bold,
             fontSize = 20.sp,

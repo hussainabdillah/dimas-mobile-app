@@ -20,6 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -37,7 +38,7 @@ import com.seisme.dimas.ui.theme.White
 fun ShakeReportScreen(
     viewModel: ShakeReportViewModel = hiltViewModel(),
     onCloseClick: () -> Unit = {},
-    user: String = "defaultUser",
+    user: String = stringResource(R.string.default_user),
 ) {
     val intensity = viewModel.intensity
     val comment = viewModel.comment
@@ -47,7 +48,7 @@ fun ShakeReportScreen(
     val errorMessage = viewModel.errorMessage
 
     if (isSuccess) {
-        Text(text = "Report submitted successfully!")
+        Text(text = stringResource(R.string.report_success))
     }
 
     val context = LocalContext.current
@@ -96,7 +97,7 @@ fun ShakeReportScreen(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text(
-                    text = "Shaking Report",
+                    text = stringResource(R.string.shaking_report),
                     fontWeight = FontWeight.Bold,
                     fontSize = 18.sp,
                     modifier = Modifier
@@ -109,7 +110,7 @@ fun ShakeReportScreen(
                 IconButton(onClick = { onCloseClick() }) {
                     Icon(
                         imageVector = Icons.Default.Close,
-                        contentDescription = "Close",
+                        contentDescription = stringResource(R.string.close),
                         tint = Color.Black
                     )
                 }
@@ -121,35 +122,35 @@ fun ShakeReportScreen(
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
                 ShakeIntensityOption(
-                    label = "Felt nothing",
+                    label = stringResource(R.string.felt_nothing),
                     selectedImgResId = R.drawable.ic_felt_nothing,
                     unselectImgResId = R.drawable.ic_not_felt_nothing,
                     isSelected = intensity == 1,
                     onClick = { viewModel.intensity = 1 }
                 )
                 ShakeIntensityOption(
-                    label = "Slight tremor",
+                    label = stringResource(R.string.slight_tremor),
                     selectedImgResId = R.drawable.ic_slight_tremor,
                     unselectImgResId = R.drawable.ic_not_slight_tremor,
                     isSelected = intensity == 2,
                     onClick = { viewModel.intensity = 2 }
                 )
                 ShakeIntensityOption(
-                    label = "Medium quake",
+                    label = stringResource(R.string.medium_quake),
                     selectedImgResId = R.drawable.ic_medium_quake,
                     unselectImgResId = R.drawable.ic_not_medium_quake,
                     isSelected = intensity == 3,
                     onClick = { viewModel.intensity = 3 }
                 )
                 ShakeIntensityOption(
-                    label = "Strong quake",
+                    label = stringResource(R.string.strong_quake),
                     selectedImgResId = R.drawable.ic_strong_quake,
                     unselectImgResId = R.drawable.ic_not_strong_quake,
                     isSelected = intensity == 4,
                     onClick = { viewModel.intensity = 4 }
                 )
                 ShakeIntensityOption(
-                    label = "Very scary",
+                    label = stringResource(R.string.very_scary),
                     selectedImgResId = R.drawable.ic_very_scary,
                     unselectImgResId = R.drawable.ic_not_very_scary,
                     isSelected = intensity == 5,
@@ -160,7 +161,7 @@ fun ShakeReportScreen(
             TextField(
                 value = comment,
                 onValueChange = { viewModel.comment = it },
-                placeholder = { Text("Input Comment") },
+                placeholder = { Text(stringResource(R.string.input_comment)) },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 8.dp),
@@ -178,7 +179,7 @@ fun ShakeReportScreen(
             TextField(
                 value = floor,
                 onValueChange = { viewModel.floor = it },
-                label = { Text("Floor: (optional)") },
+                label = { Text(stringResource(R.string.floor)) },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 8.dp),
@@ -209,7 +210,7 @@ fun ShakeReportScreen(
                     contentColor = Orange
                 )
             ) {
-                Text(text = if (isLoading) "Submitting..." else "Posting Report", fontSize = 20.sp)
+                Text(text = if (isLoading) stringResource(R.string.submit) else stringResource(R.string.posting_report), fontSize = 20.sp)
             }
 
             if (errorMessage.isNotEmpty()) {

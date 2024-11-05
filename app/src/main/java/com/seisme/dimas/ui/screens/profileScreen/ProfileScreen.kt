@@ -106,7 +106,7 @@ fun ProfileScreen(navController: NavHostController) {
                             verticalArrangement = Arrangement.spacedBy(6.dp)
                         ) {
                             Text(
-                                text = "Antonio Yono",
+                                text = stringResource(R.string.antonio),
                                 fontWeight = FontWeight.Bold,
                                 fontSize = 20.sp,
                                 color = Color.Black
@@ -118,13 +118,13 @@ fun ProfileScreen(navController: NavHostController) {
                             ) {
                                 Icon(
                                     Icons.Filled.MailOutline,
-                                    contentDescription = "Navigate",
+                                    contentDescription = stringResource(R.string.email_navigate),
                                     modifier = Modifier
                                         .size(20.dp),
                                     tint = Color.Black
                                 )
                                 Text(
-                                    text = "YonoTonioo@gmail.com",
+                                    text = stringResource(R.string.antonio_email),
                                     fontWeight = FontWeight.Light,
                                     color = Color.Black
                                 )
@@ -135,9 +135,9 @@ fun ProfileScreen(navController: NavHostController) {
                     Column(
                         verticalArrangement = Arrangement.spacedBy(16.dp)
                     ) {
-                        ItemProfileScreen(label = "Mobile Number", value = "+6289 1245 8131")
-                        ItemProfileScreen(label = "Username", value = "AntonYono")
-                        ItemProfileScreen(label = "Gender", value = "Laki-laki")
+                        ItemProfileScreen(label = stringResource(R.string.mobile_number), value = stringResource(R.string.antonio_number))
+                        ItemProfileScreen(label = stringResource(R.string.username), value = stringResource(R.string.antonio_username))
+                        ItemProfileScreen(label = stringResource(R.string.gender), value = stringResource(R.string.antonio_gender))
                     }
                 }
             }
@@ -161,7 +161,7 @@ fun ProfileScreen(navController: NavHostController) {
                         shape = RoundedCornerShape(8.dp)
                     ) {
                         Text(
-                            text = "Add Member",
+                            text = stringResource(R.string.add_member),
                             fontSize = 14.sp,
                             modifier = Modifier
                                 .padding(vertical = 4.dp)
@@ -184,7 +184,7 @@ fun ProfileScreen(navController: NavHostController) {
                         shape = RoundedCornerShape(8.dp)
                     ) {
                         Text(
-                            text = "Log out",
+                            text = stringResource(R.string.logout),
                             fontSize = 14.sp,
                             modifier = Modifier
                                 .padding(vertical = 4.dp)

@@ -54,7 +54,7 @@ fun BottomNavigationBar(navigationController: NavHostController) {
                     tint = if (currentRoute == Routes.Map.route) LightBlue else Gray
                 )
                 Text(
-                    text = "Peta",
+                    text = stringResource(R.string.map),
                     fontSize = 12.sp,
                     color = if (currentRoute == Routes.Map.route) LightBlue else Gray,
                     textAlign = TextAlign.Center
@@ -82,7 +82,7 @@ fun BottomNavigationBar(navigationController: NavHostController) {
                     tint = if (currentRoute == Routes.Timeline.route) LightBlue else Gray
                 )
                 Text(
-                    text = "Timeline",
+                    text = stringResource(R.string.navigation_timeline),
                     fontSize = 12.sp,
                     color = if (currentRoute == Routes.Timeline.route) LightBlue else Gray,
                     textAlign = TextAlign.Center

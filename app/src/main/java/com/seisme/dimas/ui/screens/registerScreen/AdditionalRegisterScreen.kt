@@ -23,10 +23,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.seisme.dimas.R
 import com.seisme.dimas.ui.components.form.AuthTextField
 import com.seisme.dimas.ui.components.form.PrimaryButton
 import com.seisme.dimas.ui.components.form.SecondaryButton
@@ -48,7 +50,7 @@ fun AdditionalRegisterScreen() {
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Text(
-                text = "Set up your profile",
+                text = stringResource(R.string.setup_profile),
                 color = Color.Black,
                 fontSize = 32.sp,
                 fontWeight = FontWeight.Bold
@@ -59,15 +61,15 @@ fun AdditionalRegisterScreen() {
         AuthTextField(
             value = "",
             onValueChange = {},
-            label = "Username",
-            placeholder = "Enter your username",
+            label = stringResource(R.string.username),
+            placeholder = stringResource(R.string.input_username),
             spacer = 16
         )
         AuthTextField(
             value = "",
             onValueChange = {},
-            label = "Contact",
-            placeholder = "Enter your contact",
+            label = stringResource(R.string.contact),
+            placeholder = stringResource(R.string.input_contact),
             spacer = 16
         )
 
@@ -78,8 +80,8 @@ fun AdditionalRegisterScreen() {
         AuthTextField(
             value = selectedGender,
             onValueChange = { selectedGender = it },
-            label = "Gender",
-            placeholder = "Select your gender",
+            label = stringResource(R.string.gender),
+            placeholder = stringResource(R.string.select_gender),
             spacer = 16,
             isDropdown = true,
             options = genderOptions
@@ -93,7 +95,7 @@ fun AdditionalRegisterScreen() {
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             SecondaryButton(
-                text = "Back",
+                text = stringResource(R.string.back),
                 textColor = Color.LightGray,
                 icon = {
                     Icon(
@@ -109,7 +111,7 @@ fun AdditionalRegisterScreen() {
             )
 
             PrimaryButton(
-                text = "Complete",
+                text = stringResource(R.string.complete),
                 textColor = White,
                 containerColor = LightBlue,
                 onClick = {},
