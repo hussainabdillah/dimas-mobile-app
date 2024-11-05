@@ -10,6 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.firestore.GeoPoint
@@ -32,7 +33,7 @@ fun MarkerShakingReport(shakingReportData: ShakeReport) {
 
     MarkerComposable(
         state = rememberMarkerState(position = shakingReportData.location.toLatLng()),
-        title = "Shaking Report",
+        title = stringResource(R.string.shaking_report),
         snippet = "Reported ${shakingReportData.intensity}"
     ) {
         Box(

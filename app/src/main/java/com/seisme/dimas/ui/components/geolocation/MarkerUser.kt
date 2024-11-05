@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.compose.MarkerComposable
@@ -21,7 +22,7 @@ import com.seisme.dimas.ui.theme.White
 fun MarkerUser(userLocation: LatLng) {
     MarkerComposable(
         state = rememberMarkerState(position = userLocation),
-        title = "Your Location",
+        title = stringResource(R.string.location),
         snippet = "User Location"
     ) {
         Box(

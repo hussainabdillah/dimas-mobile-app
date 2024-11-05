@@ -18,10 +18,10 @@ fun RequestLocationPermission(
         contract = ActivityResultContracts.RequestPermission(),
         onResult = { isGranted ->
             if (isGranted) {
-                Toast.makeText(context, "Location permission granted", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Perizinan lokasi disetujui", Toast.LENGTH_SHORT).show()
                 onPermissionGranted()
             } else {
-                Toast.makeText(context, "Permission denied", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "Perizinan lokasi ditolak", Toast.LENGTH_LONG).show()
             }
         }
     )

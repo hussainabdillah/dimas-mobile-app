@@ -70,4 +70,11 @@
     <string name="gender">Jenis kelamin</string>
     <string name="select_gender">Pilih jenis kelamin anda</string>
     <string name="complete">Selesai</string>
+
+    <!-- Geolocation -->
+    <string name="earthquake_location">Lokasi Gempa Bumi</string>
+    <string name="shaking_report">Laporan Goncangan</string>
+    <string name="location">Lokasi Anda</string>
+    <string name="permission_granted">Perizinan lokasi disetujui</string>
+    <string name="permission_denied">Perizinan ditolak</string>
 </resources>
