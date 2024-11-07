@@ -1,5 +1,6 @@
 package com.seisme.dimas.ui.screens.profileScreen
 
+import android.content.Context
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -33,6 +34,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -53,6 +55,8 @@ import com.seisme.dimas.ui.theme.White
 fun ProfileScreen(navController: NavHostController) {
 
     var showLogoutDialog by remember { mutableStateOf(false) }
+    val context = LocalContext.current
+    val sharedPreferences = context.getSharedPreferences("app_preferences", Context.MODE_PRIVATE)
 
     Scaffold(
         topBar = {
@@ -197,7 +201,9 @@ fun ProfileScreen(navController: NavHostController) {
                 LogoutConfirmationDialog(
                     onDismiss = { showLogoutDialog = false },
                     onConfirmLogout = {
+                        sharedPreferences.edit().putBoolean("isLoggedIn", false).apply()
                         showLogoutDialog = false
+
                         navController.navigate(Routes.Login.route) {
                             popUpTo(Routes.Map.route) { inclusive = true }
                         }

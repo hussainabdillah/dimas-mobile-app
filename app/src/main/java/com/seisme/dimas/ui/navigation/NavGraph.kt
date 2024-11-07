@@ -1,8 +1,10 @@
 package com.seisme.dimas.ui.navigation
 
+import android.content.Context
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -23,13 +25,16 @@ import com.seisme.dimas.ui.screens.mapScreen.ShakeReportScreen
 
 @Composable
 fun NavGraph(navController: NavHostController) {
-    val isLoggedIn = remember { mutableStateOf(true) }
+    val context = LocalContext.current
+    val sharedPreferences = context.getSharedPreferences("app_preferences", Context.MODE_PRIVATE)
+    val isLoggedIn = remember { mutableStateOf(sharedPreferences.getBoolean("isLoggedIn", false)) }
 
     NavHost(navController = navController, startDestination = if (isLoggedIn.value) Routes.Map.route else Routes.Login.route) {
 
         // Login Screen
         composable(Routes.Login.route) {
             LoginScreen(onNavigateToHome = {
+                sharedPreferences.edit().putBoolean("isLoggedIn", true).apply()
                 isLoggedIn.value = true
                 navController.navigate(Routes.Map.route) {
                     popUpTo(Routes.Login.route) { inclusive = true }
