@@ -13,6 +13,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -37,8 +38,7 @@ import com.seisme.dimas.ui.theme.White
 @Composable
 fun ShakeReportScreen(
     viewModel: ShakeReportViewModel = hiltViewModel(),
-    onCloseClick: () -> Unit = {},
-    user: String = stringResource(R.string.default_user),
+    onCloseClick: () -> Unit = {}
 ) {
     val intensity = viewModel.intensity
     val comment = viewModel.comment
@@ -46,6 +46,9 @@ fun ShakeReportScreen(
     val isLoading = viewModel.isLoading
     val isSuccess = viewModel.isSuccess
     val errorMessage = viewModel.errorMessage
+    val userData by viewModel.userData.observeAsState()
+    val user = userData?.username ?: stringResource(R.string.default_user)
+
 
     if (isSuccess) {
         Text(text = stringResource(R.string.report_success))

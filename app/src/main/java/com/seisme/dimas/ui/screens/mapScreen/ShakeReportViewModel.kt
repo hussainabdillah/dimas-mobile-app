@@ -10,11 +10,16 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.core.app.ActivityCompat
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.GeoPoint
 import com.seisme.dimas.data.model.ShakeReport
+import com.seisme.dimas.data.model.UserData
 import com.seisme.dimas.data.repository.ShakeReportRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -24,6 +29,24 @@ class ShakeReportViewModel @Inject constructor(
     private val repository: ShakeReportRepository,
     private val context: Context
 ) : ViewModel() {
+    private val firestore = FirebaseFirestore.getInstance()
+    private val auth = FirebaseAuth.getInstance()
+
+    private val _userData = MutableLiveData<UserData?>()
+    val userData: LiveData<UserData?> = _userData
+
+    init {
+        val uid = auth.currentUser?.uid
+        if (uid != null) {
+            firestore.collection("users").document(uid).get()
+                .addOnSuccessListener { document ->
+                    _userData.value = document.toObject(UserData::class.java)
+                }
+                .addOnFailureListener {
+                    // Handle error
+                }
+        }
+    }
 
     private val fusedLocationClient: FusedLocationProviderClient =
         LocationServices.getFusedLocationProviderClient(context)
