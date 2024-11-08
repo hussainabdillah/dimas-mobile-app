@@ -27,6 +27,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -40,6 +41,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.seisme.dimas.R
 import com.seisme.dimas.ui.components.item.ItemProfileScreen
@@ -52,11 +54,15 @@ import com.seisme.dimas.ui.theme.PrimaryBackground
 import com.seisme.dimas.ui.theme.White
 
 @Composable
-fun ProfileScreen(navController: NavHostController) {
+fun ProfileScreen(
+    navController: NavHostController,
+    viewModel: ProfileViewModel = hiltViewModel()
+    ) {
 
     var showLogoutDialog by remember { mutableStateOf(false) }
     val context = LocalContext.current
     val sharedPreferences = context.getSharedPreferences("app_preferences", Context.MODE_PRIVATE)
+    val userData by viewModel.userData.observeAsState()
 
     Scaffold(
         topBar = {
@@ -110,7 +116,7 @@ fun ProfileScreen(navController: NavHostController) {
                             verticalArrangement = Arrangement.spacedBy(6.dp)
                         ) {
                             Text(
-                                text = stringResource(R.string.antonio),
+                                text = userData?.username ?: stringResource(R.string.antonio),
                                 fontWeight = FontWeight.Bold,
                                 fontSize = 20.sp,
                                 color = Color.Black
@@ -128,7 +134,7 @@ fun ProfileScreen(navController: NavHostController) {
                                     tint = Color.Black
                                 )
                                 Text(
-                                    text = stringResource(R.string.antonio_email),
+                                    text = userData?.email ?: stringResource(R.string.antonio_email),
                                     fontWeight = FontWeight.Light,
                                     color = Color.Black
                                 )
@@ -139,9 +145,9 @@ fun ProfileScreen(navController: NavHostController) {
                     Column(
                         verticalArrangement = Arrangement.spacedBy(16.dp)
                     ) {
-                        ItemProfileScreen(label = stringResource(R.string.mobile_number), value = stringResource(R.string.antonio_number))
-                        ItemProfileScreen(label = stringResource(R.string.username), value = stringResource(R.string.antonio_username))
-                        ItemProfileScreen(label = stringResource(R.string.gender), value = stringResource(R.string.antonio_gender))
+                        ItemProfileScreen(label = stringResource(R.string.mobile_number), value = userData?.contact ?: stringResource(R.string.antonio_number))
+                        ItemProfileScreen(label = stringResource(R.string.username), value = userData?.username ?: stringResource(R.string.antonio_username))
+                        ItemProfileScreen(label = stringResource(R.string.gender), value = userData?.gender ?: stringResource(R.string.antonio_gender))
                     }
                 }
             }
