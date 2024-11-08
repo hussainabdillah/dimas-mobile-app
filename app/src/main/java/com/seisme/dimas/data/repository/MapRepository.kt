@@ -9,12 +9,11 @@ import com.seisme.dimas.data.remote.api.ApiService
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
-
-fun getUserLocation(): LatLng {
-    return LatLng(-6.355521,106.660981)
-}
-
 // data dummy
+//fun getUserLocation(): LatLng {
+//    return LatLng(-6.355521,106.660981)
+//}
+
 //fun getLatestEarthquakeLocation(): EarthquakeData {
 //    return EarthquakeData(LatLng(-7.081899,105.635777), 5)
 //}

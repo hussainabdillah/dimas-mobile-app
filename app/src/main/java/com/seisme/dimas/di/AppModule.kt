@@ -8,6 +8,7 @@ import com.seisme.dimas.data.repository.ShakeReportRepository
 import dagger.Binds
 import com.seisme.dimas.data.repository.EarthquakeRepository
 import com.seisme.dimas.data.repository.EarthquakeRepositoryImpl
+import com.seisme.dimas.ui.screens.mapScreen.LocationProvider
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -66,6 +67,12 @@ object AppModule {
     @Singleton
     fun provideShakeReportRepository(firestore: FirebaseFirestore): ShakeReportRepository {
         return ShakeReportRepository(firestore)
+    }
+
+    @Singleton
+    @Provides
+    fun provideLocationProvider(@ApplicationContext context: Context): LocationProvider {
+        return LocationProvider(context)
     }
 
 }

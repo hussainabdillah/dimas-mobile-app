@@ -24,6 +24,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
@@ -36,8 +37,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import com.google.android.gms.maps.model.LatLng
-import com.seisme.dimas.data.repository.getUserLocation
 import com.seisme.dimas.ui.components.geolocation.MapComponent
 import com.seisme.dimas.ui.components.navigation.BottomNavigationBar
 import com.seisme.dimas.ui.components.navigation.Header
@@ -55,6 +54,7 @@ fun MapScreen(
     val dropdownVisibility = remember { mutableStateOf(false) }
     val earthquakeData by viewModel.earthquakeData.observeAsState()
     val shakingReports = viewModel.shakingReports.value
+    val userLocation by viewModel.userLocation.collectAsState()
 
     LaunchedEffect(Unit) {
         viewModel.fetchLatestEarthquake()
@@ -133,7 +133,8 @@ fun MapScreen(
         BottomNavigationBar(navigationController = navController)
     }
     ) { padding ->
-        val userLocation: LatLng = getUserLocation()
+        // ini masih data dummy
+//        val userLocation: LatLng = getUserLocation()
 
         MapComponent(
             userLocation = userLocation,
