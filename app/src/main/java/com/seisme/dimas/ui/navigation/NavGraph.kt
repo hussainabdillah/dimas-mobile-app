@@ -75,14 +75,14 @@ fun NavGraph(navController: NavHostController) {
         composable(Routes.Timeline.route) { TimelineScreen(navController) }
         composable(Routes.TimelineDetail.route) { backStackEntry ->
             TimelineDetailScreen(
-                date = backStackEntry.arguments?.getString(stringResource(R.string.date)) ?: "",
-                time = backStackEntry.arguments?.getString(stringResource(R.string.time)) ?: "",
-                location = backStackEntry.arguments?.getString(stringResource(R.string.location)) ?: "",
-                magnitude = backStackEntry.arguments?.getString(stringResource(R.string.magnitude)) ?: "",
-                depth = backStackEntry.arguments?.getString(stringResource(R.string.depth)) ?: "",
-                coordinates = backStackEntry.arguments?.getString(stringResource(R.string.coordinates)) ?: "",
-                region = backStackEntry.arguments?.getString(stringResource(R.string.region)) ?: "",
-                felt = backStackEntry.arguments?.getString(stringResource(R.string.felt)) ?: "",
+                date = backStackEntry.arguments?.getString("date") ?: "",
+                time = backStackEntry.arguments?.getString("time") ?: "",
+                location = backStackEntry.arguments?.getString("location") ?: "",
+                magnitude = backStackEntry.arguments?.getString("magnitude") ?: "",
+                depth = backStackEntry.arguments?.getString("depth") ?: "",
+                coordinates = backStackEntry.arguments?.getString("coordinates") ?: "",
+                region = backStackEntry.arguments?.getString("region") ?: "",
+                felt = backStackEntry.arguments?.getString("felt") ?: "",
                 navController = navController
             )
         }

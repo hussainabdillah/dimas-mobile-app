@@ -112,7 +112,7 @@ fun TimelineScreen(
                                 location = earthquake.location,
                                 magnitude = earthquake.magnitude,
                                 onClick = {
-                                    navController.navigate("linimasaDetail/${earthquake.date}/${earthquake.time}/${earthquake.location}/${earthquake.magnitude}/${earthquake.depth}/${earthquake.coordinates}/")
+                                    navController.navigate("timelineDetail/${earthquake.date}/${earthquake.time}/${earthquake.location}/${earthquake.magnitude}/${earthquake.depth}/${earthquake.coordinates}/")
                                 }
                             )
                         }
