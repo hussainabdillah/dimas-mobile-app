@@ -22,6 +22,7 @@ import com.seisme.dimas.ui.screens.registerScreen.RegisterScreen
 import com.seisme.dimas.ui.screens.timelineScreen.TimelineDetailScreen
 import com.seisme.dimas.ui.screens.timelineScreen.TimelineScreen
 import com.seisme.dimas.ui.screens.mapScreen.ShakeReportScreen
+import com.seisme.dimas.ui.screens.registerScreen.AdditionalRegisterScreen
 
 @Composable
 fun NavGraph(navController: NavHostController) {
@@ -46,11 +47,26 @@ fun NavGraph(navController: NavHostController) {
 
         // Register Screen
         composable(Routes.Register.route) {
-            RegisterScreen(onNavigateToLogin = {
+            RegisterScreen(
+                onNavigateToLogin = {
                 navController.navigate(Routes.Login.route) {
                     popUpTo(Routes.Register.route) { inclusive = true }
                 }
-            })
+            },
+                navController = navController
+            )
+        }
+
+        // Additional Register Screen
+        composable(Routes.AdditionalRegister.route) {
+            AdditionalRegisterScreen(
+                onNavigateToLogin = {
+                navController.navigate(Routes.Login.route) {
+                    popUpTo(Routes.Register.route) { inclusive = true }
+                }
+            },
+                navController = navController
+            )
         }
 
         // Home Screen
