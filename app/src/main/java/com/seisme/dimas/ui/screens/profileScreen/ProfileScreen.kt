@@ -162,8 +162,8 @@ fun ProfileScreen(
                             disabledContainerColor = Color.Gray
                         ),
                         onClick = {
-                            navController.navigate(Routes.AddMember.route) {
-                                popUpTo(Routes.AddMember.route)
+                            navController.navigate(Routes.ListMember.route) {
+                                popUpTo(Routes.ListMember.route)
                             }
                         },
                         modifier = Modifier
@@ -171,7 +171,7 @@ fun ProfileScreen(
                         shape = RoundedCornerShape(8.dp)
                     ) {
                         Text(
-                            text = stringResource(R.string.add_member),
+                            text = stringResource(R.string.list_member),
                             fontSize = 14.sp,
                             modifier = Modifier
                                 .padding(vertical = 4.dp)

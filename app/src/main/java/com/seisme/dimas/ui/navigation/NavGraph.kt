@@ -22,6 +22,7 @@ import com.seisme.dimas.ui.screens.registerScreen.RegisterScreen
 import com.seisme.dimas.ui.screens.timelineScreen.TimelineDetailScreen
 import com.seisme.dimas.ui.screens.timelineScreen.TimelineScreen
 import com.seisme.dimas.ui.screens.mapScreen.ShakeReportScreen
+import com.seisme.dimas.ui.screens.profileScreen.addMemberScreen.ListMemberScreen
 import com.seisme.dimas.ui.screens.registerScreen.AdditionalRegisterScreen
 
 @Composable
@@ -89,6 +90,7 @@ fun NavGraph(navController: NavHostController) {
 
         composable(Routes.Profile.route) { ProfileScreen(navController) }
         composable(Routes.AddMember.route) { AddMemberScreen(navController) }
+        composable(Routes.ListMember.route) { ListMemberScreen(navController) }
         composable(Routes.Setting.route) { SettingScreen(navController) }
         composable(Routes.EarthquakeMitigation.route) { EarthquakeMitigationScreen(navController) }
         composable(Routes.TsunamiMitigation.route) { TsunamiMitigationScreen(navController) }

@@ -123,4 +123,8 @@
     <string name="antonio_number">+629 1245 8131</string>
     <string name="antonio_username">AntonYono</string>
     <string name="antonio_gender">Laki-laki</string>
+    <string name="list_member">Daftar Anggota</string>
+    <string name="add_member_confirmation">Apakah anda yakin ingin menambahkan pengguna berikut sebagai anggota?</string>
+    <string name="add_member_confirm">Tambah Anggota</string>
+    <string name="add">Tambahkan</string>
 </resources>

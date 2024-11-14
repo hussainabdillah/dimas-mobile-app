@@ -19,6 +19,7 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.AddCircle
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
@@ -26,7 +27,9 @@ import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -38,21 +41,32 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.seisme.dimas.R
+import com.seisme.dimas.data.model.UserData
 import com.seisme.dimas.ui.components.navigation.BottomNavigationBar
 import com.seisme.dimas.ui.components.navigation.Header
 import com.seisme.dimas.ui.navigation.Routes
+import com.seisme.dimas.ui.screens.profileScreen.logoutScreen.LogoutConfirmationDialog
 import com.seisme.dimas.ui.theme.LightBlue
 import com.seisme.dimas.ui.theme.PrimaryBackground
 
 @Composable
 fun AddMemberScreen(
-    navController: NavHostController
+    navController: NavHostController,
+    viewModel: MemberViewModel = hiltViewModel()
 ) {
+    var showAddMemberDialog by remember { mutableStateOf(false) }
     var searchQuery by remember { mutableStateOf("") }
+    val users by viewModel.users.observeAsState(emptyList())
+    var selectedUser by remember { mutableStateOf<UserData?>(null) }
+    var loading by remember { mutableStateOf(false) }
 
-    val items = listOf("Apple", "Banana", "Cherry", "Date", "Fig", "Grape", "Kiwi", "Lemon", "Banana", "Cherry", "Date", "Fig", "Grape", "Kiwi")
+    // fetch data user terbaru
+    LaunchedEffect(Unit) {
+        viewModel.fetchUsers()
+    }
 
     Scaffold(
         topBar = {
@@ -60,8 +74,8 @@ fun AddMemberScreen(
                 title = stringResource(R.string.add_member),
                 navigationIcon = Icons.AutoMirrored.Filled.ArrowBack,
                 onNavigationClick = {
-                    navController.navigate(Routes.Profile.route) {
-                        popUpTo(Routes.Profile.route)
+                    navController.navigate(Routes.ListMember.route) {
+                        popUpTo(Routes.ListMember.route)
                     }
                 },
                 isIconAtStart = true
@@ -127,10 +141,16 @@ fun AddMemberScreen(
                             )
                     )
                     LazyColumn {
-                        items(items.filter {
-                            it.contains(searchQuery, ignoreCase = true)
+                        items(users.filter {
+                            it.username.contains(searchQuery, ignoreCase = true)
                         }) { item ->
-                            MemberItem(name = item)
+                            AddMemberItem(
+                                name = item.username,
+                                onAddClick = {
+                                    selectedUser = item
+                                    showAddMemberDialog = true
+                                }
+                            )
                             Box(
                                 modifier = Modifier
                                     .fillMaxWidth()
@@ -142,12 +162,38 @@ fun AddMemberScreen(
                 }
             }
         }
+        if (showAddMemberDialog) {
+            AddMemberConfirmationDialog(
+                onDismiss = { showAddMemberDialog = false },
+                onConfirmAddMember = {
+                    // handle add member
+                    loading = true
+                    selectedUser?.let { user ->
+                        viewModel.addMemberBothUsers(user)
+                    }
+                    showAddMemberDialog = false
+                    navController.navigate(Routes.Profile.route) {
+                        popUpTo(Routes.Profile.route) { inclusive = true }
+                    }
+                }
+            )
+        }
+
+        if (loading) {
+            Box(
+                contentAlignment = Alignment.Center,
+                modifier = Modifier.fillMaxSize()
+            ) {
+                CircularProgressIndicator()
+            }
+        }
     }
 }
 
 @Composable
-fun MemberItem(
-    name: String
+fun AddMemberItem(
+    name: String,
+    onAddClick: () -> Unit
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -180,7 +226,7 @@ fun MemberItem(
             }
         }
         IconButton(
-            onClick = {  }
+            onClick = onAddClick
         ) {
             Icon(
                 imageVector = Icons.Filled.AddCircle,
