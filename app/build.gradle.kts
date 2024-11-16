@@ -83,6 +83,9 @@ dependencies {
     implementation(libs.firebase.auth.ktx)
     implementation(libs.firebase.firestore)
 
+    //alarm
+    implementation(libs.firebase.messaging)
+
     // flex
     implementation(libs.accompanist.flowlayout)
 
@@ -102,6 +105,7 @@ dependencies {
     implementation(libs.androidx.hilt.navigation.compose)
 //    implementation("androidx.hilt:hilt-navigation-fragment:1.0.0")
 //    implementation("androidx.hilt:hilt-work:1.0.0")
+
 }
 kapt {
     correctErrorTypes = true
