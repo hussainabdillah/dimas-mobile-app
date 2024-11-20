@@ -83,6 +83,11 @@ dependencies {
     implementation(libs.firebase.auth.ktx)
     implementation(libs.firebase.firestore)
 
+    // messaging
+    implementation(libs.firebase.inappmessaging.display)
+    implementation(libs.firebase.analytics)
+
+
     //alarm
     implementation(libs.firebase.messaging)
 

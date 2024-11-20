@@ -8,11 +8,26 @@ import android.content.Intent
 import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
+import com.google.firebase.installations.FirebaseInstallations
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.seisme.dimas.R
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
+
+    override fun onCreate() {
+        super.onCreate()
+
+        FirebaseInstallations.getInstance().id.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val installationId = task.result
+                Log.d("Firebase", "Firebase Installation ID: $installationId")
+                sendInstallationIdToServer(installationId)
+            } else {
+                Log.e("Firebase", "Gagal mendapatkan Firebase Installation ID", task.exception)
+            }
+        }
+    }
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
@@ -61,6 +76,10 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     }
 
     private fun sendTokenToServer(token: String) {
-        println("Token dikirim ke server: $token")
+        Log.d("Server", "Token dikirim ke server: $token")
+    }
+
+    private fun sendInstallationIdToServer(installationId: String) {
+        Log.d("Server", "FID dikirim ke server: $installationId")
     }
 }
