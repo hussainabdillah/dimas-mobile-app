@@ -1,7 +1,10 @@
 package com.seisme.dimas.ui.screens.mapScreen
 
 //noinspection UsingMaterialAndMaterial3Libraries
+import android.Manifest
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.pm.PackageManager
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -34,7 +37,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.seisme.dimas.ui.components.geolocation.MapComponent
@@ -133,9 +139,6 @@ fun MapScreen(
         BottomNavigationBar(navigationController = navController)
     }
     ) { padding ->
-        // ini masih data dummy
-//        val userLocation: LatLng = getUserLocation()
-
         MapComponent(
             userLocation = userLocation,
             earthquakeData = earthquakeData,

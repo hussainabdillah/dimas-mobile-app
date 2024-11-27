@@ -31,6 +31,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.seisme.dimas.R
+import com.seisme.dimas.ui.screens.loginScreen.REQUEST_LOCATION_PERMISSION
 import com.seisme.dimas.ui.theme.Orange
 import com.seisme.dimas.ui.theme.White
 
@@ -264,5 +265,3 @@ fun ShakeIntensityOption(
         )
     }
 }
-
-const val REQUEST_LOCATION_PERMISSION = 1001
