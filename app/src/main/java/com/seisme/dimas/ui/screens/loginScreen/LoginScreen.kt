@@ -119,6 +119,7 @@ fun LoginScreen(
         AuthTextField(
             value = state.password,
             onValueChange = viewModel::onPasswordChanged,
+            isPassword = true,
             label = stringResource(R.string.password),
             placeholder = stringResource(R.string.input_password),
             spacer = 16

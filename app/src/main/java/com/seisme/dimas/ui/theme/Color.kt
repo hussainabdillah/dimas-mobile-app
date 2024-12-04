@@ -30,6 +30,7 @@ val Orange = Color(0xFFFF6720)
 
 // Pin & Shaking Report
 val GreenPin = Color(0xFF3CC014)
+val BluePin = Color(0xFF2196F3)
 val YellowPin = Color(0xFFFCB639)
 val RedPin = Color(0xFFFF0000)
 val PurplePin = Color(0xFFE604B4)

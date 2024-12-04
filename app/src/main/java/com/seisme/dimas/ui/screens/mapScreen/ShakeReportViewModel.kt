@@ -76,6 +76,7 @@ class ShakeReportViewModel @Inject constructor(
             if (location != null) {
                 latitude = location.latitude
                 longitude = location.longitude
+                updateUserLocation()
                 submitReport(user)
             } else {
                 isLoading = false
@@ -106,5 +107,19 @@ class ShakeReportViewModel @Inject constructor(
                 errorMessage = exception.localizedMessage ?: "Unknown Error"
             }
         )
+    }
+
+    private fun updateUserLocation() {
+        val currentUserId = auth.currentUser?.uid ?: return
+        val userRef = firestore.collection("users").document(currentUserId)
+
+        val locationData = GeoPoint(latitude, longitude)
+        userRef.update("location", locationData)
+            .addOnSuccessListener {
+                // Lokasi berhasil diperbarui
+            }
+            .addOnFailureListener { exception ->
+                errorMessage = exception.localizedMessage ?: "Failed to update location"
+            }
     }
 }

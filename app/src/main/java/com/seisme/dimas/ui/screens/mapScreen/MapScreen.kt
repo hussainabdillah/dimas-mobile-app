@@ -61,10 +61,12 @@ fun MapScreen(
     val earthquakeData by viewModel.earthquakeData.observeAsState()
     val shakingReports = viewModel.shakingReports.value
     val userLocation by viewModel.userLocation.collectAsState()
+    val members by viewModel.members.observeAsState(emptyList())
 
     LaunchedEffect(Unit) {
         viewModel.fetchLatestEarthquake()
         viewModel.fetchRecentShakeReports()
+        viewModel.fetchMembers()
     }
 
     // format tanggal
@@ -142,7 +144,9 @@ fun MapScreen(
         MapComponent(
             userLocation = userLocation,
             earthquakeData = earthquakeData,
-            shakingReports = shakingReports
+            shakingReports = shakingReports,
+            memberData = members
+
         )
 
         AnimatedVisibility(

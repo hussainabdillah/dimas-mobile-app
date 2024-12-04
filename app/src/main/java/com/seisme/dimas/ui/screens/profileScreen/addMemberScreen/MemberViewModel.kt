@@ -8,6 +8,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.GeoPoint
 import com.google.gson.Gson
 import com.seisme.dimas.data.model.UserData
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -126,7 +127,8 @@ class MemberViewModel @Inject constructor(
                             email = memberMap["email"] as String,
                             username = memberMap["username"] as String,
                             contact = memberMap["contact"] as String,
-                            gender = memberMap["gender"] as String
+                            gender = memberMap["gender"] as String,
+                            location = memberMap["location"] as GeoPoint
                         )
                     } catch (e: Exception) {
                         null
@@ -141,7 +143,8 @@ class MemberViewModel @Inject constructor(
                             email = memberMap["email"] as String,
                             username = memberMap["username"] as String,
                             contact = memberMap["contact"] as String,
-                            gender = memberMap["gender"] as String
+                            gender = memberMap["gender"] as String,
+                            location = memberMap["location"] as GeoPoint
                         )
                     } catch (e: Exception) {
                         null
@@ -161,7 +164,8 @@ class MemberViewModel @Inject constructor(
                     email = auth.currentUser?.email ?: "",
                     username = it.username, // Sesuaikan dengan data yang dimiliki current user
                     contact = it.contact, // Sesuaikan dengan data yang dimiliki current user
-                    gender = it.gender // Sesuaikan dengan data yang dimiliki current user
+                    gender = it.gender, // Sesuaikan dengan data yang dimiliki current user
+                    location = it.location
                 )
             }
             if (!targetUserMembers.any { it.documentId == currentUserId }) {
