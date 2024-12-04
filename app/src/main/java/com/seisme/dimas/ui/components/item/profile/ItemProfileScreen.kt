@@ -1,4 +1,4 @@
-package com.seisme.dimas.ui.components.item
+package com.seisme.dimas.ui.components.item.profile
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement

@@ -1,4 +1,4 @@
-package com.seisme.dimas.ui.components.item
+package com.seisme.dimas.ui.components.item.profile
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -89,7 +89,7 @@ fun SectionBox(content: @Composable () -> Unit) {
 fun ItemSettingPreview() {
     ItemSetting(
         text = stringResource(R.string.notifications),
-        imgResId = com.seisme.dimas.R.drawable.ic_peta,  // Example icon
+        imgResId = R.drawable.ic_peta,  // Example icon
         isChecked = true,  // Example value
         onCheckedChange = { /* Handle switch change */ }
     )

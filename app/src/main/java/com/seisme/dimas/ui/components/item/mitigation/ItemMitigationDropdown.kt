@@ -1,11 +1,13 @@
-package com.seisme.dimas.ui.components.item
+package com.seisme.dimas.ui.components.item.mitigation
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -15,35 +17,47 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.foundation.layout.FlowRow
-import androidx.compose.ui.res.stringResource
-import com.seisme.dimas.R
+import com.seisme.dimas.data.repository.MitigationRepository
 import com.seisme.dimas.ui.theme.LightBlue
 import com.seisme.dimas.ui.theme.White
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun ItemMitigationDropdown() {
+fun ItemMitigationDropdown(
+    details: List<MitigationRepository.MitigationDetail>,
+    onItemClick: (MitigationRepository.MitigationDetail) -> Unit
+) {
+    var selectedItem by remember { mutableStateOf<MitigationRepository.MitigationDetail?>(null) }
+
     FlowRow(
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp, Alignment.Top),
-        horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.Start),
+        horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.Start)
     ) {
-        FlexItem(text = stringResource(R.string.home), imgResId = R.drawable.img_mitigation_1)
-        FlexItem(text = stringResource(R.string.bathroom), imgResId = R.drawable.img_mitigation_2)
-        FlexItem(text = stringResource(R.string.tall_building), imgResId = R.drawable.img_mitigation_3)
-        FlexItem(text = stringResource(R.string.school), imgResId = R.drawable.img_mitigation_1)
-        FlexItem(text = stringResource(R.string.elderly), isSelected = true, imgResId = R.drawable.img_mitigation_2)
-        FlexItem(text = stringResource(R.string.kids), imgResId = R.drawable.img_mitigation_2)
-        FlexItem(text = stringResource(R.string.elevator), imgResId = R.drawable.img_mitigation_3)
+        details.forEach { detail ->
+            val isSelected = detail == selectedItem
+            FlexItem(
+                text = detail.detailTitle,
+                imgResId = detail.detailImg,
+                isSelected = isSelected,
+                onClick = {
+                    selectedItem = if (isSelected) null else detail
+                    onItemClick(detail)
+                }
+            )
+        }
     }
 }
 
@@ -51,7 +65,8 @@ fun ItemMitigationDropdown() {
 fun FlexItem(
     text: String,
     imgResId: Int,
-    isSelected: Boolean = false
+    isSelected: Boolean = false,
+    onClick: () -> Unit
 ) {
     Box(
         contentAlignment = Alignment.Center,
@@ -61,6 +76,9 @@ fun FlexItem(
                 color = if (isSelected) LightBlue else White,
                 shape = RoundedCornerShape(8.dp)
             )
+            .clickable {
+                onClick()
+            }
     ) {
         Button(
             onClick = {},

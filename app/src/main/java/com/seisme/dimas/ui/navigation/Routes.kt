@@ -23,4 +23,7 @@ sealed class Routes(val route: String) {
     object Mitigation : Routes("mitigation")
 
     object Splash : Routes ("splash")
+    object MitigationPopUp : Routes("mitigation_pop_up/{title}/{imageRes}") {
+        fun createRoute(title: String, imageRes: Int) = "mitigation_detail/$title/$imageRes"
+    }
 }

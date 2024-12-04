@@ -44,7 +44,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.seisme.dimas.R
-import com.seisme.dimas.ui.components.item.ItemProfileScreen
+import com.seisme.dimas.ui.components.item.profile.ItemProfileScreen
 import com.seisme.dimas.ui.components.navigation.BottomNavigationBar
 import com.seisme.dimas.ui.components.navigation.Header
 import com.seisme.dimas.ui.navigation.Routes

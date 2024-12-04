@@ -1,4 +1,4 @@
-package com.seisme.dimas.ui.components.item
+package com.seisme.dimas.ui.components.item.mitigation
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
