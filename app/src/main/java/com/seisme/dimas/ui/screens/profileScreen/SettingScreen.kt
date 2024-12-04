@@ -19,9 +19,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.seisme.dimas.R
-import com.seisme.dimas.ui.components.item.ItemSetting
-import com.seisme.dimas.ui.components.item.ItemVolumeSetting
-import com.seisme.dimas.ui.components.item.SectionBox
+import com.seisme.dimas.ui.components.item.profile.ItemSetting
+import com.seisme.dimas.ui.components.item.profile.ItemVolumeSetting
+import com.seisme.dimas.ui.components.item.profile.SectionBox
 import com.seisme.dimas.ui.components.navigation.Header
 import com.seisme.dimas.ui.navigation.Routes
 import com.seisme.dimas.ui.theme.PrimaryBackground

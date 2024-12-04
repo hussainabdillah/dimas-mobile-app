@@ -1,7 +1,5 @@
 package com.seisme.dimas.ui.navigation
 
-import okhttp3.Route
-
 sealed class Routes(val route: String) {
     object Login : Routes("login")
     object Register : Routes("register")
@@ -21,4 +19,7 @@ sealed class Routes(val route: String) {
     object ShakingReportScreen : Routes("shakingReport")
 
     object Mitigation : Routes("mitigation")
+    object MitigationPopUp : Routes("mitigation_pop_up/{title}/{imageRes}") {
+        fun createRoute(title: String, imageRes: Int) = "mitigation_detail/$title/$imageRes"
+    }
 }

@@ -11,7 +11,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.seisme.dimas.R
 import com.seisme.dimas.data.model.EarthquakeData
 import com.seisme.dimas.ui.components.geolocation.MapComponent
-import com.seisme.dimas.ui.components.item.InformationDetail
+import com.seisme.dimas.ui.components.item.timeline.InformationDetail
 import com.seisme.dimas.ui.components.navigation.Header
 import com.seisme.dimas.ui.navigation.Routes
 

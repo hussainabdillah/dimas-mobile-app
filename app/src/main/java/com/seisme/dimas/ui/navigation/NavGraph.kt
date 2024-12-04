@@ -5,25 +5,23 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.seisme.dimas.R
 import com.seisme.dimas.ui.screens.loginScreen.LoginScreen
-import com.seisme.dimas.ui.screens.mitigationScreen.MitigationScreen
 import com.seisme.dimas.ui.screens.mapScreen.MapScreen
+import com.seisme.dimas.ui.screens.mapScreen.ShakeReportScreen
 import com.seisme.dimas.ui.screens.mitigationScreen.EarthquakeMitigationScreen
+import com.seisme.dimas.ui.screens.mitigationScreen.MitigationScreen
 import com.seisme.dimas.ui.screens.mitigationScreen.TsunamiMitigationScreen
 import com.seisme.dimas.ui.screens.profileScreen.ProfileScreen
 import com.seisme.dimas.ui.screens.profileScreen.SettingScreen
 import com.seisme.dimas.ui.screens.profileScreen.addMemberScreen.AddMemberScreen
+import com.seisme.dimas.ui.screens.profileScreen.addMemberScreen.ListMemberScreen
+import com.seisme.dimas.ui.screens.registerScreen.AdditionalRegisterScreen
 import com.seisme.dimas.ui.screens.registerScreen.RegisterScreen
 import com.seisme.dimas.ui.screens.timelineScreen.TimelineDetailScreen
 import com.seisme.dimas.ui.screens.timelineScreen.TimelineScreen
-import com.seisme.dimas.ui.screens.mapScreen.ShakeReportScreen
-import com.seisme.dimas.ui.screens.profileScreen.addMemberScreen.ListMemberScreen
-import com.seisme.dimas.ui.screens.registerScreen.AdditionalRegisterScreen
 
 @Composable
 fun NavGraph(navController: NavHostController) {
@@ -72,6 +70,7 @@ fun NavGraph(navController: NavHostController) {
 
         // Home Screen
         composable(Routes.Map.route) { MapScreen(navController) }
+        composable(Routes.ShakingReportScreen.route) { ShakeReportScreen()}
 
         composable(Routes.Timeline.route) { TimelineScreen(navController) }
         composable(Routes.TimelineDetail.route) { backStackEntry ->
@@ -88,16 +87,29 @@ fun NavGraph(navController: NavHostController) {
             )
         }
 
+        // Profile Screen
         composable(Routes.Profile.route) { ProfileScreen(navController) }
         composable(Routes.AddMember.route) { AddMemberScreen(navController) }
         composable(Routes.ListMember.route) { ListMemberScreen(navController) }
         composable(Routes.Setting.route) { SettingScreen(navController) }
-        composable(Routes.EarthquakeMitigation.route) { EarthquakeMitigationScreen(navController) }
-        composable(Routes.TsunamiMitigation.route) { TsunamiMitigationScreen(navController) }
-        composable(Routes.ShakingReportScreen.route) { ShakeReportScreen()}
 
+        // Mitigation Screen
         composable(Routes.Mitigation.route) { MitigationScreen(navController) }
         composable(Routes.EarthquakeMitigation.route) { EarthquakeMitigationScreen(navController) }
         composable(Routes.TsunamiMitigation.route) { TsunamiMitigationScreen(navController) }
+//        composable(
+//            Routes.MitigationPopUp.route + "/{title}/{imageRes}",
+//            arguments = listOf(
+//                navArgument("title") { type = NavType.StringType },
+//                navArgument("imageRes") { type = NavType.IntType }
+//            )
+//        ) { backStackEntry ->
+//            ItemMitigationPopUp(
+//                title = backStackEntry.arguments?.getString("title") ?: "",
+//                description = listOf(MitigationRepository.MitigationDetail.AnnotatedInfo("Sample Description", true)),
+//                imageRes = backStackEntry.arguments?.getInt("imageRes") ?: R.drawable.img_luar_ruangan,
+//                onCloseClick = { navController.popBackStack() }
+//            )
+//        }
     }
 }
