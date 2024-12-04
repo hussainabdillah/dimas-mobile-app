@@ -21,4 +21,6 @@ sealed class Routes(val route: String) {
     object ShakingReportScreen : Routes("shakingReport")
 
     object Mitigation : Routes("mitigation")
+
+    object Splash : Routes ("splash")
 }

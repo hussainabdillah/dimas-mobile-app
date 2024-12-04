@@ -24,6 +24,7 @@ import com.seisme.dimas.ui.screens.timelineScreen.TimelineScreen
 import com.seisme.dimas.ui.screens.mapScreen.ShakeReportScreen
 import com.seisme.dimas.ui.screens.profileScreen.addMemberScreen.ListMemberScreen
 import com.seisme.dimas.ui.screens.registerScreen.AdditionalRegisterScreen
+import com.seisme.dimas.ui.screens.splashScreen.SplashScreen
 
 @Composable
 fun NavGraph(navController: NavHostController) {
@@ -31,7 +32,13 @@ fun NavGraph(navController: NavHostController) {
     val sharedPreferences = context.getSharedPreferences("app_preferences", Context.MODE_PRIVATE)
     val isLoggedIn = remember { mutableStateOf(sharedPreferences.getBoolean("isLoggedIn", false)) }
 
-    NavHost(navController = navController, startDestination = if (isLoggedIn.value) Routes.Map.route else Routes.Login.route) {
+    NavHost(navController = navController, startDestination = Routes.Splash.route) {
+
+//        if (isLoggedIn.value) Routes.Map.route else Routes.Login.route)
+        // Splash Screen
+        composable(Routes.Splash.route) {
+            SplashScreen(navController)
+        }
 
         // Login Screen
         composable(Routes.Login.route) {
