@@ -1,3 +1,130 @@
 <resources>
     <string name="app_name">Dimas</string>
+    <string name="timeline_header">Linimasa Gempa Bumi</string>
+    <string name="earthquake_header">Gempa Bumi</string>
+    <string name="tsunami_header">Tsunami</string>
+    <string name="feature_evacuation">Persiapan Evakuasi</string>
+    <string name="feature_supply">Persiapan Persediaan</string>
+    <string name="navigation_map">Peta</string>
+    <string name="navigation_timeline">Linimasa</string>
+    <string name="navigation_mitigation">Mitigasi</string>
+    <string name="navigation_profile">Profil</string>
+    <string name="header_detail_informasi">Detail Informasi</string>
+    <string name="profile_header">Profil</string>
+    <string name="profile_settings">Pengaturan Profil</string>
+    <string name="volume_and_vibration">Volume dan Vibrasi</string>
+    <string name="volume">Volume</string>
+    <string name="when_manner_mode">Saat di Mode Senyap</string>
+    <string name="silent">Senyap</string>
+    <string name="vibration">Vibrasi</string>
+    <string name="manner_mode">Hanya Mode Senyap</string>
+    <string name="earthquake">Earthquake</string>
+    <string name="earthquake_info">Info Gempa Bumi</string>
+    <string name="early_warning_earthquake">Latihan Peringatan Dini Gempa Bumi</string>
+    <string name="participate">Ikut Serta</string>
+    <string name="tsunami">Tsunami</string>
+    <string name="tsunami_info">Info Tsunami</string>
+    <string name="receive">Terima</string>
+    <string name="early_warning_tsunami">Latihan Peringatan Dini Tsunami</string>
+    <string name="no_earthquake_data">Tidak ada data gempa.</string>
+
+    <!-- Detail Mitigasi -->
+    <string name="indoor">Di Dalam Ruangan</string>
+    <string name="outdoor">Di Luar Ruangan</string>
+    <string name="driving">Saat Berkendara</string>
+    <string name="tsunami_potency">Potensi Tsunami</string>
+
+    <!-- Dropdown Detail Mitigasi -->
+    <string name="home">Rumah</string>
+    <string name="bathroom">Kamar Mandi</string>
+    <string name="tall_building">Gedung Tinggi</string>
+    <string name="school">Sekolah</string>
+    <string name="elderly">Lansia</string>
+    <string name="kids">Anak-anak</string>
+    <string name="elevator">Elevator</string>
+
+    <!-- Log Out -->
+    <string name="logout">Keluar</string>
+    <string name="logout_confirm">Konfirmasi Keluar</string>
+    <string name="logout_confirmation">Ini akan mengakhiri sesi dan anda harus melakukan login kembali</string>
+    <string name="cancel">Batal</string>
+
+    <!-- Log In -->
+    <string name="login">Masuk</string>
+    <string name="enter_account">Masuk ke Akun Anda</string>
+    <string name="email">Email</string>
+    <string name="input_email">Masukkan email anda</string>
+    <string name="password">Kata sandi</string>
+    <string name="input_password">Masukkan kata sandi anda</string>
+    <string name="or">Atau</string>
+    <string name="continue_google">Masuk dengan Google</string>
+    <string name="dont_have_account">Tidak punya akun?</string>
+    <string name="register">Daftar</string>
+
+    <!-- Register -->
+    <string name="create_account">Membuat Akun</string>
+    <string name="confirm_password">Konfirmasi kata sandi</string>
+    <string name="input_confirm_password">Konfirmasi kata sandi anda</string>
+    <string name="back">Kembali</string>
+    <string name="next">Selanjutnya</string>
+    <string name="setup_profile">Atur profil anda</string>
+    <string name="username">Nama Pengguna</string>
+    <string name="input_username">Masukkan nama pengguna anda</string>
+    <string name="contact">Kontak</string>
+    <string name="input_contact">Masukkan kontak anda</string>
+    <string name="gender">Jenis Kelamin</string>
+    <string name="select_gender">Pilih jenis kelamin anda</string>
+    <string name="complete">Selesai</string>
+
+    <!-- Geolocation -->
+    <string name="earthquake_location">Lokasi Gempa Bumi</string>
+    <string name="shaking_report">Laporan Goncangan</string>
+    <string name="your_location">Lokasi Anda</string>
+    <string name="permission_granted">Perizinan lokasi disetujui</string>
+    <string name="permission_denied">Perizinan ditolak</string>
+
+    <!-- Item -->
+    <string name="date">Tanggal</string>
+    <string name="time">Waktu</string>
+    <string name="epicenter">Episentrum</string>
+    <string name="magnitude">Magnitudo</string>
+    <string name="depth">Kedalaman</string>
+    <string name="notifications">Menerima Notifikasi</string>
+    <string name="map">Peta</string>
+
+    <!-- navigation -->
+    <string name="location">Lokasi</string>
+    <string name="coordinates">Koordinat</string>
+    <string name="region">Wilayah</string>
+    <string name="felt">Terasa</string>
+    
+    <!-- screen -->
+    <string name="default_user">Pengguna default</string>
+    <string name="report_success">Laporan berhasil dikirim!</string>
+    <string name="close">Tutup</string>
+    <string name="felt_nothing">Tidak terasa</string>
+    <string name="slight_tremor">Getaran ringan</string>
+    <string name="medium_quake">Gempa sedang</string>
+    <string name="strong_quake">Gempa kuat</string>
+    <string name="very_scary">Sangat menakutkan</string>
+    <string name="input_comment">Masukkan komentar</string>
+    <string name="floor">Lantai: (opsional)</string>
+    <string name="submit">Mengirim...</string>
+    <string name="posting_report">Posting Laporan</string>
+    <string name="recommendation">Tindakan Yang Direkomendasikan</string>
+    <string name="additional_feature">Fitur Tambahan</string>
+    <string name="add_member">Tambahkan anggota</string>
+    <string name="search">Pencarian</string>
+    <string name="search_icon">Ikon Pencarian</string>
+    <string name="antonio">Antonio Yono</string>
+    <string name="email_navigate">Navigasi</string>
+    <string name="antonio_email">YonoTonioo@gmail.com</string>
+    <string name="mobile_number">Nomor Ponsel</string>
+    <string name="antonio_number">+629 1245 8131</string>
+    <string name="antonio_username">AntonYono</string>
+    <string name="antonio_gender">Laki-laki</string>
+    <string name="list_member">Daftar Anggota</string>
+    <string name="add_member_confirmation">Apakah anda yakin ingin menambahkan pengguna berikut sebagai anggota?</string>
+    <string name="add_member_confirm">Tambah Anggota</string>
+    <string name="add">Tambahkan</string>
 </resources>
